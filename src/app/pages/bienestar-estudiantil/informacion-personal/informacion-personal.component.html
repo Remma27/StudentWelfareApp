@@ -1,1 +1,85 @@
-<p>informacion-personal works!</p>
+<h1 class="titulo">{{ titulo }}</h1>
+
+<form [formGroup]="usuarioForm.baseForm">
+  <mat-form-field>
+    <mat-label>Boleta de Matricula</mat-label>
+    <input type="file" matInput formControlName="Boleta_Matricula" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Cedula</mat-label>
+    <input matInput type="number" formControlName="Estudiante_Id" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Genero</mat-label>
+    <input formControlName="Genero" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Fecha de Nacimiento</mat-label>
+    <input type="datetime" formControlName="Fecha_Nacimiento" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Telefono Principal</mat-label>
+    <input type="number" matInput formControlName="Telefono" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Telefono Secundario</mat-label>
+    <input type="number" matInput formControlName="Telefono2" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Correo Electronico</mat-label>
+    <input type="email" matInput formControlName="Correo_Electronico" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Distrito</mat-label>
+    <input matInput formControlName="Distrito_Id" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Direccion Exacta de Procedencia</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="Direccion_Exacta_Procedencia"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Direccion Exacta en Tiempo Lectivo</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="Direccion_Exacta_Tiempo_Lectivo"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nacionalidad</mat-label>
+    <input type="text" matInput formControlName="Nacionalidad" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Colegio de Procedencia</mat-label>
+    <input type="text" matInput formControlName="Colegio_Procedencia" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Ano de Graduacion de Secundaria</mat-label>
+    <input type="number" matInput formControlName="Ano_Graduacion_Secundaria" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Foto de Cedula</mat-label>
+    <input type="file" matInput formControlName="Foto_Cedula" />
+  </mat-form-field>
+</form>
+
+<div class="div-botones">
+  <button mat-button color="primary" (click)="guardar()">Finalizar</button>
+</div>
