@@ -7,6 +7,8 @@ import { AdecuacionCurricularComponent } from './adecuacion-curricular/adecuacio
 import { AtencionPsicologicaComponent } from './atencion-psicologica/atencion-psicologica.component';
 import { BitacoraProfesorComponent } from './bitacora-profesor/bitacora-profesor.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { MaterialModule } from 'src/app/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,11 @@ import { ReportesComponent } from './reportes/reportes.component';
     BitacoraProfesorComponent,
     ReportesComponent,
   ],
-  imports: [CommonModule, BienestarEstudiantilRoutingModule],
+  imports: [
+    CommonModule,
+    BienestarEstudiantilRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+  ],
 })
 export class BienestarEstudiantilModule {}
