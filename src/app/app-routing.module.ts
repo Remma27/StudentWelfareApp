@@ -2,20 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: 'BienestarEstudiantil',
-    loadChildren: () =>
-      import('./pages/bienestar-estudiantil/bienestar-estudiantil.module').then(
-        (m) => m.BienestarEstudiantilModule
-      ),
-  },
-  {
-    path: 'Seguridad',
-    loadChildren: () =>
-      import('./pages/seguridad/seguridad.module').then(
-        (m) => m.SeguridadModule
-      ),
-  },
+  { path: '', redirectTo: 'seguridad', pathMatch: 'full' },
 ];
 
 @NgModule({
