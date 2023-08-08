@@ -10,7 +10,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'registrarse',
+    path: 'Seguridad',
     loadChildren: () =>
       import('./pages/seguridad/seguridad.module').then(
         (m) => m.SeguridadModule
