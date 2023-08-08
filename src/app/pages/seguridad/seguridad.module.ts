@@ -15,8 +15,8 @@ import { LoginComponent } from './login/login.component';
     SeguridadRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
+    //MatFormFieldModule,
     RouterModule,
   ],
 })
-export class SeguridadModule {}
+export class SeguridadModule { }
