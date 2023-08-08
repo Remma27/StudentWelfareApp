@@ -6,9 +6,10 @@ import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [SeguridadComponent],
+  declarations: [SeguridadComponent, LoginComponent],
   imports: [
     CommonModule,
     SeguridadRoutingModule,
