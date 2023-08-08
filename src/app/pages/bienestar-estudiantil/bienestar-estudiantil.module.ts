@@ -9,6 +9,7 @@ import { BitacoraProfesorComponent } from './bitacora-profesor/bitacora-profesor
 import { ReportesComponent } from './reportes/reportes.component';
 import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,4 +27,4 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
 })
-export class BienestarEstudiantilModule {}
+export class BienestarEstudiantilModule { }
