@@ -6,11 +6,15 @@ import { BienestarEstudiantilComponent } from './pages/bienestar-estudiantil/bie
 const routes: Routes = [
   {
     path: 'BienestarEstudiantil',
-    component: BienestarEstudiantilComponent,
+    loadChildren: () =>
+      import('./pages/bienestar-estudiantil/bienestar-estudiantil.module').
+        then((b) => b.BienestarEstudiantilModule)
   },
   {
     path: 'Seguridad',
-    component: SeguridadComponent,
+    loadChildren: () =>
+      import('./pages/seguridad/seguridad.module').
+        then((s) => s.SeguridadModule)
   },
 ];
 
@@ -18,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
