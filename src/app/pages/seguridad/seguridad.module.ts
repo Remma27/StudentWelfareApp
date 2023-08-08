@@ -4,18 +4,16 @@ import { CommonModule } from '@angular/common';
 import { SeguridadRoutingModule } from './seguridad-routing.module';
 import { SeguridadComponent } from './seguridad.component';
 import { RegistrarseComponent } from './registrarse/registrarse.component';
-import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
-
+import { MaterialModule } from 'src/app/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    SeguridadComponent,
-    RegistrarseComponent,
-    InicioSesionComponent
-  ],
+  declarations: [SeguridadComponent, RegistrarseComponent],
   imports: [
     CommonModule,
-    SeguridadRoutingModule
-  ]
+    SeguridadRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+  ],
 })
-export class SeguridadModule { }
+export class SeguridadModule {}

@@ -1,1 +1,22 @@
-<p>registrarse works!</p>
+<h1 class="titulo">{{ titulo }}</h1>
+
+<form [formGroup]="usuarioForm.baseForm">
+  <mat-form-field>
+    <mat-label>Cedula</mat-label>
+    <input matInput type="number" formControlName="Estudiante_Id" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Correo Electronico</mat-label>
+    <input type="email" matInput formControlName="Correo_Electronico" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Contrasena</mat-label>
+    <input type="password" matInput formControlName="Distrito_Id" />
+  </mat-form-field>
+</form>
+
+<div class="div-botones">
+  <button mat-button color="primary" (click)="guardar()">Finalizar</button>
+</div>
