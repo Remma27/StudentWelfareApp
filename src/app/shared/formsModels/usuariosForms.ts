@@ -8,8 +8,8 @@ export class UsuariosForm {
     this.baseForm = this.fb.group({
       Usuario_Id: ['', [Validators.required, Validators.maxLength(9)]],
       Usuario: ['', [Validators.required, Validators.email]],
-      Perfil: ['', [Validators.required]],
-      Contrasena: ['', [Validators.required], Validators.minLength(8)],
+      Perfil: [''],
+      Contrasena: ['', [Validators.required, Validators.minLength(8)]], // Moví Validators.minLength(8) aquí
       Estado: true,
     });
   }
