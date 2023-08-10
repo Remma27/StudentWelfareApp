@@ -11,21 +11,21 @@ import { UsuariosService } from 'src/app/shared/services/usuarios.service';
 })
 export class LoginComponent {
   titulo = 'Informacion Personal';
-  isCreate: boolean = true;
+  isCreate = true;
   data: any;
   constructor(
     public usuarioForm: UsuariosForm,
     private srvUsuarios: UsuariosService,
     private mensajeria: ToastrService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      if (params['Usuario_Id']) {
+      if (params['id']) {
         this.isCreate = false;
         this.titulo = 'Modificar datos';
-        this.cargarDatosForm(params['Usuario_Id']);
+        this.cargarDatosForm(params['id']);
       } else {
         this.isCreate = true;
         this.titulo = 'Registrarse';
@@ -39,6 +39,7 @@ export class LoginComponent {
         this.usuarioForm.baseForm.patchValue({
           Usuario_Id: datosUsuario.Usuario_Id,
           Usuario: datosUsuario.Usuario,
+          Perfil: datosUsuario.Perfil,
           Contrasena: datosUsuario.Contrasena,
           Estado: datosUsuario.Estado,
         });
@@ -58,6 +59,7 @@ export class LoginComponent {
             this.mensajeria.success('Se guardó correctamente');
           },
           (error) => {
+            //console.log(error);
             this.mensajeria.error('Error al guardar');
           }
         );

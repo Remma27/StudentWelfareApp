@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, IsNull, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class Usuario {

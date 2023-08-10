@@ -38,18 +38,18 @@ export class UsuarioController {
         /*formato
 
         "Usuario_Id":1,
-        "usuario":"Daniela",
+        "Usuario":"Daniela",
         "Contrasena":"blablaplayos123",
         "Perfil":"Estudiante"
         */
         try {
-            const { Usuario_Id, usuario, Contrasena, Perfil } = req.body;
+            const { Usuario_Id, Usuario, Contrasena, Perfil } = req.body;
             const usuarioRepo = AppDataSource.getRepository(Usuario);
             const usuarioExistente = await usuarioRepo.findOne({ where: { Usuario_Id, Estado: true } });
             if (usuarioExistente) return res.status(400).json({ message: 'Usuario existente' });
             let usuarios = new Usuario();
             usuarios.Usuario_Id = Usuario_Id;
-            usuarios.Usuario = usuario;
+            usuarios.Usuario = Usuario;
             usuarios.Contrasena = Contrasena;
             usuarios.Perfil = Perfil;
             usuarios.Estado = true;
@@ -75,18 +75,18 @@ export class UsuarioController {
         /*formato
 
         "Usuario_Id":1,
-        "usuario":"Daniela",
+        "Usuario":"Daniela",
         "Contrasena":"blablaplayos123",
         "Perfil":"Estudiante"
         */
         try {
-            const { Usuario_Id, usuario, Contrasena, Perfil } = req.body;
+            const { Usuario_Id, Usuario, Contrasena, Perfil } = req.body;
             const usuarioRepo = AppDataSource.getRepository(Usuario);
             const usuarioExistente = await usuarioRepo.findOne({ where: { Usuario_Id } });
             if (!usuarioExistente) return res.status(404).json({ message: 'Usuario inexistente' });
             let usuarios = new Usuario();
             usuarios.Usuario_Id = Usuario_Id;
-            usuarios.Usuario = usuario;
+            usuarios.Usuario = Usuario;
             usuarios.Contrasena = Contrasena;
             usuarios.Perfil = Perfil;
             usuarios.Estado = true;
