@@ -14,10 +14,10 @@ export class Usuario {
   @Column()
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Contrasena: string;
-
+  /*
   @Column()
   Perfil: string;
-
+*/
   @Column()
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Estado: boolean;
