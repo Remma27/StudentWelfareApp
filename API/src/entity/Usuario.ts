@@ -9,7 +9,7 @@ export class Usuario {
 
   @Column()
   @IsNotEmpty({ message: 'Debe ingresar valores' })
-  Usuario: string;
+  Correo: string;
 
   @Column()
   @IsNotEmpty({ message: 'Debe ingresar valores' })

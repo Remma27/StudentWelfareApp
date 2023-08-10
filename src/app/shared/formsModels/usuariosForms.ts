@@ -7,7 +7,7 @@ export class UsuariosForm {
   constructor(private fb: FormBuilder) {
     this.baseForm = this.fb.group({
       Usuario_Id: ['', [Validators.required, Validators.maxLength(9)]],
-      Usuario: ['', [Validators.required, Validators.email]],
+      Correo: ['', [Validators.required, Validators.email]],
       /*Perfil: 'Estudiante',*/
       Contrasena: ['', [Validators.required, Validators.minLength(8)]], // Moví Validators.minLength(8) aquí
       Estado: true,

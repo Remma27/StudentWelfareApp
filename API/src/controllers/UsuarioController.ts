@@ -36,46 +36,53 @@ export class UsuarioController {
     }
   };
 
-  static insert = async (req: Request, res: Response) => {
-    /*formato
-
-        "Usuario_Id":1,
-        "usuario":"Daniela",
-        "Contrasena":"blablaplayos123",
-        "Perfil":"Estudiante"
-        */
+  static insert = async (req: Request, resp: Response) => {
     try {
-      const { Usuario_Id, usuario, Contrasena, Perfil } = req.body;
-      const usuarioRepo = AppDataSource.getRepository(Usuario);
-      const usuarioExistente = await usuarioRepo.findOne({
-        where: { Usuario_Id },
-      });
-      if (usuarioExistente)
-        return res.status(404).json({ message: 'Usuario existente' });
-      let usuarios = new Usuario();
-      usuarios.Usuario_Id = Usuario_Id;
-      usuarios.Usuario = usuario;
-      usuarios.Contrasena = Contrasena;
-      /*usuarios.Perfil = 'Estudiante';*/
-      usuarios.Estado = true;
-      const errors = await validate(usuarios, {
+      //DESTRUCTURING
+      const { Usuario_Id, Correo, Contrasena } = req.body;
+
+      /*
+      //validacion de datos de entrada
+      if (!Usuario_Id) {
+        return resp.status(404).json({ mensaje: 'Debe indicar el ID' });
+      }
+      if (!Correo) {
+        return resp.status(404).json({ mensaje: 'Debe indicar el correo' });
+      }
+      if (Contrasena) {
+        return resp.status(404).json({ mensaje: 'Debe indicar la contrasena' });
+      }
+      */
+
+      //validacion de reglas de negocio
+      const Repo = AppDataSource.getRepository(Usuario);
+      const usu = await Repo.findOne({ where: { Usuario_Id } });
+
+      if (usu) {
+        return resp
+          .status(404)
+          .json({ mensaje: 'El usuario ya existe en la base datos.' });
+      }
+
+      let usuario = new Usuario();
+      (usuario.Usuario_Id = Usuario_Id),
+        (usuario.Correo = Correo),
+        (usuario.Contrasena = Contrasena);
+      usuario.Estado = true;
+
+      //validar con class validator
+      const errors = await validate(usuario, {
         validationError: { target: false, value: false },
       });
+
       if (errors.length > 0) {
-        return res.status(400).json(errors);
+        return resp.status(400).json(errors);
       }
-      try {
-        await usuarioRepo.save(usuarios);
-        return res
-          .status(201)
-          .json({ message: 'Usuario insertado correctamente' });
-      } catch (error) {
-        return res
-          .status(400)
-          .json({ message: 'No se pudo insertar el usuario' });
-      }
+
+      await Repo.save(usuario);
+      return resp.status(201).json({ mensaje: 'Usuario creado' });
     } catch (error) {
-      return res.status(400).json({ error: error });
+      return resp.status(400).json({ mensaje: error });
     }
   };
 
@@ -88,7 +95,7 @@ export class UsuarioController {
         "Perfil":"Estudiante"
         */
     try {
-      const { Usuario_Id, usuario, Contrasena, Perfil } = req.body;
+      const { Usuario_Id, Correo, Contrasena, Perfil } = req.body;
       const usuarioRepo = AppDataSource.getRepository(Usuario);
       const usuarioExistente = await usuarioRepo.findOne({
         where: { Usuario_Id },
@@ -97,7 +104,7 @@ export class UsuarioController {
         return res.status(404).json({ message: 'Usuario inexistente' });
       let usuarios = new Usuario();
       usuarios.Usuario_Id = Usuario_Id;
-      usuarios.Usuario = usuario;
+      usuarios.Correo = Correo;
       usuarios.Contrasena = Contrasena;
       /*usuarios.Perfil = Perfil;*/
       usuarios.Estado = true;
