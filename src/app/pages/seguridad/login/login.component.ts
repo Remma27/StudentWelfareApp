@@ -16,62 +16,18 @@ export class LoginComponent {
   constructor(
     public usuarioForm: UsuariosForm,
     private srvUsuarios: UsuariosService,
-    private mensajeria: ToastrService,
-    private route: ActivatedRoute
+    private mensajeria: ToastrService
   ) {}
 
-  ngOnInit() {
-    this.route.params.subscribe((params) => {
-      if (params['Usuario_Id']) {
-        this.isCreate = false;
-        this.titulo = 'Modificar datos';
-        this.cargarDatosForm(params['Usuario_Id']);
-      } else {
-        this.isCreate = true;
-        this.titulo = 'Registrarse';
-      }
-    });
-  }
-
-  cargarDatosForm(usuario_Id: number) {
-    this.srvUsuarios.getById(usuario_Id).subscribe(
-      (datosUsuario) => {
-        this.usuarioForm.baseForm.patchValue({
-          Usuario_Id: datosUsuario.Usuario_Id,
-          Usuario: datosUsuario.Usuario,
-          Contrasena: datosUsuario.Contrasena,
-          Estado: datosUsuario.Estado,
-        });
+  guardar() {
+    this.srvUsuarios.insert(this.usuarioForm.baseForm.value).subscribe(
+      (dato) => {
+        this.usuarioForm.baseForm.reset();
+        this.mensajeria.success('¡Guardado correctamente!');
       },
       (error) => {
-        this.mensajeria.error('Error al cargar los datos del usuario');
+        this.mensajeria.error('Error al guardar');
       }
     );
-  }
-
-  guardar() {
-    if (this.usuarioForm.baseForm.valid) {
-      if (this.isCreate) {
-        this.srvUsuarios.insert(this.usuarioForm.baseForm.value).subscribe(
-          (dato) => {
-            this.usuarioForm.baseForm.reset();
-            this.mensajeria.success('Se guardó correctamente');
-          },
-          (error) => {
-            this.mensajeria.error('Error al guardar');
-          }
-        );
-      } else {
-        this.srvUsuarios.update(this.usuarioForm.baseForm.value).subscribe(
-          (dato) => {
-            this.usuarioForm.baseForm.reset();
-            this.mensajeria.success('Se modificó correctamente');
-          },
-          (error) => {
-            this.mensajeria.error('Error al modificar');
-          }
-        );
-      }
-    }
   }
 }
