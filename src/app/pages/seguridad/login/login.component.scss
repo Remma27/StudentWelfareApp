@@ -1,0 +1,70 @@
+body{
+    background-color: #1b3069;
+    
+}
+
+.container{
+    color: white;
+    
+}
+
+.texto{
+    text-align: left;
+    padding: 100px;
+    left: 150px;
+    padding: 5px;
+   
+}
+
+p{
+    font-size: 70px;
+    margin-top: 80px;
+}
+
+footer{
+    background-color: #1b3069;
+    color: white;
+    
+}
+
+.form{
+    position: relative;
+    width: 40%;
+    height: 100%;
+    padding: 90px;
+    background-color: white;
+    color: black;
+    float: right;
+    top: -205px;
+    border: 3px solid black; /* Borde de color gris */
+  box-shadow: 10px black; /* Sombra */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    
+}
+mat-form-field{
+
+    display: block;
+    margin: 5px;
+    width: 300px;
+    
+  }
+  .titulo{
+    
+  text-align: center;
+  margin:25px;
+  font-size: 2em;
+  }
+
+  a{
+    float: right;
+    padding: 10px;
+  }
+
+  .boton1{
+    height: 40px;
+    width: 305px;
+    background-color:  #1b3069;
+    color: white;
+    text-align: center;
+
+  }
