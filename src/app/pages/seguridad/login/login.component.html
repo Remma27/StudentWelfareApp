@@ -15,43 +15,46 @@
   <body>
     <div class="container">
       <div class="row">
-
-      
-      <div class="col-6 texto">
-        <p>BIENVENIDO</p>
-      </div>
-
-      <div class="col-6 form">
-        <img src="../../../../assets/imagenes/Logo UTN.png" />
-        <h1 class="titulo">Registrarse</h1>
-
-        <form [formGroup]="usuarioForm.baseForm">
-          <mat-form-field>
-            <mat-label>Cedula</mat-label>
-            <input matInput type="number" formControlName="Usuario_Id" />
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Correo Electronico</mat-label>
-            <input type="email" matInput formControlName="Correo" />
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Contrasena</mat-label>
-            <input type="password" matInput formControlName="Contrasena" />
-          </mat-form-field>
-        </form>
-
-        <div class="div-botones boton1">
-          <button mat-button color="primary" (click)="guardar()">
-            Inicio Sesión
-          </button>
+        <div class="col-6 texto">
+          <p>BIENVENIDO</p>
         </div>
 
-        <a href="">¿Olvidó su contraseña?</a>
+        <div class="col-6 form">
+          <img src="../../../../assets/imagenes/Logo UTN.png" />
+          <h1 class="titulo">Registrarse</h1>
+
+          <form [formGroup]="usuarioForm.baseForm">
+            <mat-form-field>
+              <mat-label>Cedula</mat-label>
+              <input matInput type="number" formControlName="Usuario_Id" />
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Correo Electronico</mat-label>
+              <input type="email" matInput formControlName="Correo" />
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Contrasena</mat-label>
+              <input type="password" matInput formControlName="Contrasena" />
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Repetir Contrasena</mat-label>
+              <input type="password" matInput />
+            </mat-form-field>
+          </form>
+
+          <div class="div-botones boton1">
+            <button mat-button color="primary" (click)="guardar()">
+              Inicio Sesión
+            </button>
+          </div>
+
+          <a href="">¿Olvidó su contraseña?</a>
+        </div>
       </div>
     </div>
-  </div>
   </body>
 
   <footer>

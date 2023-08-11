@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn, Unique } from 'typeorm';
 
 @Entity()
 export class Usuario {
@@ -7,7 +7,7 @@ export class Usuario {
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Usuario_Id: number;
 
-  @Column()
+  @Column({ unique: true })
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Correo: string;
 

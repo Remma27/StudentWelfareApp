@@ -41,7 +41,6 @@ export class UsuarioController {
       //DESTRUCTURING
       const { Usuario_Id, Correo, Contrasena } = req.body;
 
-      /*
       //validacion de datos de entrada
       if (!Usuario_Id) {
         return resp.status(404).json({ mensaje: 'Debe indicar el ID' });
@@ -49,19 +48,26 @@ export class UsuarioController {
       if (!Correo) {
         return resp.status(404).json({ mensaje: 'Debe indicar el correo' });
       }
-      if (Contrasena) {
+      if (!Contrasena) {
         return resp.status(404).json({ mensaje: 'Debe indicar la contrasena' });
       }
-      */
 
       //validacion de reglas de negocio
       const Repo = AppDataSource.getRepository(Usuario);
-      const usu = await Repo.findOne({ where: { Usuario_Id } });
+      let usu = await Repo.findOne({ where: { Usuario_Id } });
 
       if (usu) {
         return resp
           .status(404)
-          .json({ mensaje: 'El usuario ya existe en la base datos.' });
+          .json({ mensaje: 'Ya hay un usuario existente con esta cedula' });
+      }
+
+      usu = await Repo.findOne({ where: { Correo } });
+
+      if (usu) {
+        return resp
+          .status(404)
+          .json({ mensaje: 'Ya hay un usuario existente con este correo' });
       }
 
       let usuario = new Usuario();
