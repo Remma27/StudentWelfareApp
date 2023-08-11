@@ -1,7 +1,7 @@
 export interface Usuarios {
   Usuario_Id: number;
-  Usuario: string;
+  Correo: string;
   Contrasena: string;
-  Perfil: string;
+  /*Perfil: string;*/
   Estado: boolean;
 }
