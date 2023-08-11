@@ -101,7 +101,7 @@ export class UsuarioController {
         "Perfil":"Estudiante"
         */
     try {
-      const { Usuario_Id, Correo, Contrasena, Perfil } = req.body;
+      const { Usuario_Id, Correo, Contrasena } = req.body;
       const usuarioRepo = AppDataSource.getRepository(Usuario);
       const usuarioExistente = await usuarioRepo.findOne({
         where: { Usuario_Id },

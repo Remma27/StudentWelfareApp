@@ -9,23 +9,27 @@ import { UsuariosService } from 'src/app/shared/services/usuarios.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  titulo = 'Informacion Personal';
-  isCreate: boolean = true;
-  data: any;
   constructor(
     public usuarioForm: UsuariosForm,
     private srvUsuarios: UsuariosService,
     private mensajeria: ToastrService
   ) {}
 
-  guardar() {
-    this.srvUsuarios.insert(this.usuarioForm.baseForm.value).subscribe(
-      (dato) => {
-        this.usuarioForm.baseForm.reset();
-        this.mensajeria.success('¡Guardado correctamente!');
+  IniciarSesion() {
+    const Usuario_Id = this.usuarioForm.baseForm.get('Usuario_Id')?.value;
+    const Contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
+
+    this.srvUsuarios.getById(Usuario_Id).subscribe(
+      (usuario) => {
+        if (usuario && usuario.Contrasena === Contrasena) {
+          // Inicio de sesión exitoso, realizar redirección u otras acciones
+          this.mensajeria.success('Inicio de sesión exitoso');
+        } else {
+          this.mensajeria.error('Cédula o contraseña incorrectos');
+        }
       },
       (error) => {
-        this.mensajeria.error('Error al guardar');
+        this.mensajeria.error('Error al iniciar sesión');
       }
     );
   }

@@ -9,7 +9,8 @@ export class UsuariosForm {
       Usuario_Id: ['', [Validators.required, Validators.maxLength(9)]],
       Correo: ['', [Validators.required, Validators.email]],
       /*Perfil: 'Estudiante',*/
-      Contrasena: ['', [Validators.required, Validators.minLength(8)]], // Moví Validators.minLength(8) aquí
+      Contrasena: ['', [Validators.required, Validators.minLength(8)]],
+      RepetirContrasena: ['', Validators.required],
       Estado: true,
     });
   }
