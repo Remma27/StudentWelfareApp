@@ -6,8 +6,8 @@ import { SignupComponent } from './signup/signup.component';
 import { PasswordComponent } from './password/password.component';
 
 const routes: Routes = [
-  { path: '', component: SeguridadComponent },
-  { path: 'Login', component: LoginComponent },
+  //{ path: '', component: SeguridadComponent },
+  { path: '', component: LoginComponent },
   { path: 'SignUp', component: SignupComponent },
   { path: 'Password', component: PasswordComponent },
 ];
@@ -16,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class SeguridadRoutingModule {}
+export class SeguridadRoutingModule { }

@@ -18,7 +18,7 @@ export class SignupComponent {
     private srvUsuarios: UsuariosService,
     private mensajeria: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   Registrarse() {
     if (this.contrasenasNoCoinciden) {
@@ -30,7 +30,7 @@ export class SignupComponent {
       (dato) => {
         this.usuarioForm.baseForm.reset();
         this.mensajeria.success('¡Guardado correctamente!');
-        this.router.navigate(['http://localhost:4200/Seguridad/Login']);
+        this.router.navigate(['/']);
       },
       (error) => {
         this.mensajeria.error('Error al guardar');

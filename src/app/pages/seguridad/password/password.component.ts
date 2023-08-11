@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuariosForm } from 'src/app/shared/formsModels/usuariosForms';
 import { UsuariosService } from 'src/app/shared/services/usuarios.service';
@@ -12,8 +13,9 @@ export class PasswordComponent {
   constructor(
     public usuarioForm: UsuariosForm,
     private srvUsuarios: UsuariosService,
-    private mensajeria: ToastrService
-  ) {}
+    private mensajeria: ToastrService,
+    private route: Router
+  ) { }
 
   ModificarContrasena() {
     if (this.contrasenasNoCoinciden) {
@@ -37,6 +39,7 @@ export class PasswordComponent {
           this.srvUsuarios.update(usuarioActualizado).subscribe(
             () => {
               this.usuarioForm.baseForm.reset();
+              this.route.navigate(['/']);
               this.mensajeria.success('Contraseña modificada correctamente');
             },
             (error) => {
