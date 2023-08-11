@@ -8,7 +8,7 @@ import { InformacionPersonalComponent } from './informacion-personal/informacion
 import { ReportesComponent } from './reportes/reportes.component';
 
 const routes: Routes = [
-  { path: '', component: BienestarEstudiantilComponent },
+  { path: 'Menu', component: BienestarEstudiantilComponent },
   { path: 'AdecuacionCurricular', component: AdecuacionCurricularComponent },
   { path: 'AtencionPsicologica', component: AtencionPsicologicaComponent },
   { path: 'BitacoraProfesor', component: BitacoraProfesorComponent },
@@ -20,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class BienestarEstudiantilRoutingModule {}
+export class BienestarEstudiantilRoutingModule { }
