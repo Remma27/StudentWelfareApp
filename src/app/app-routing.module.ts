@@ -9,7 +9,7 @@ const routes: Routes = [
         then((b) => b.BienestarEstudiantilModule)
   },
   {
-    path: 'Seguridad',
+    path: '',
     loadChildren: () =>
       import('./pages/seguridad/seguridad.module').
         then((s) => s.SeguridadModule)

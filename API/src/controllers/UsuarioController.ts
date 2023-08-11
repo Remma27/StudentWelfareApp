@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { AppDataSource } from '../data-source';
 import { Usuario } from '../entity/Usuario';
 import { validate } from 'class-validator';
+import { tiempoSesion } from '../middlewares/tiempoSesion';
 
 export class UsuarioController {
   static getAll = async (req: Request, res: Response) => {
@@ -76,6 +77,8 @@ export class UsuarioController {
         (usuario.Contrasena = Contrasena);
       usuario.Estado = true;
 
+      //usuario.hash();
+
       //validar con class validator
       const errors = await validate(usuario, {
         validationError: { target: false, value: false },
@@ -96,7 +99,7 @@ export class UsuarioController {
     /*formato
 
         "Usuario_Id":1,
-        "usuario":"Daniela",
+        "Usuario":"Daniela",
         "Contrasena":"blablaplayos123",
         "Perfil":"Estudiante"
         */

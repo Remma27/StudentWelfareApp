@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuariosForm } from 'src/app/shared/formsModels/usuariosForms';
 import { UsuariosService } from 'src/app/shared/services/usuarios.service';
@@ -12,8 +13,9 @@ export class LoginComponent {
   constructor(
     public usuarioForm: UsuariosForm,
     private srvUsuarios: UsuariosService,
-    private mensajeria: ToastrService
-  ) {}
+    private mensajeria: ToastrService,
+    private router: Router,
+  ) { }
 
   IniciarSesion() {
     const Usuario_Id = this.usuarioForm.baseForm.get('Usuario_Id')?.value;
@@ -24,6 +26,7 @@ export class LoginComponent {
         if (usuario && usuario.Contrasena === Contrasena) {
           // Inicio de sesión exitoso, realizar redirección u otras acciones
           this.mensajeria.success('Inicio de sesión exitoso');
+          this.router.navigate(['/BienestarEstudiantil/Reportes']);
         } else {
           this.mensajeria.error('Cédula o contraseña incorrectos');
         }

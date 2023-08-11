@@ -11,6 +11,9 @@ AppDataSource.initialize().then(async () => {
    const app = express();
 
    app.use(cors());
+   app.use(cors({
+      origin: 'http://localhost:4200'
+   }));
    app.use(helmet());
    app.use(express.json());
 
