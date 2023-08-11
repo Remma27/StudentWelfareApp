@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuariosForm } from 'src/app/shared/formsModels/usuariosForms';
 import { UsuariosService } from 'src/app/shared/services/usuarios.service';
+import * as bcr from "bcryptjs";
 
 @Component({
   selector: 'app-login',
@@ -20,13 +21,14 @@ export class LoginComponent {
   IniciarSesion() {
     const Usuario_Id = this.usuarioForm.baseForm.get('Usuario_Id')?.value;
     const Contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
+    this.hash(Contrasena);
 
     this.srvUsuarios.getById(Usuario_Id).subscribe(
       (usuario) => {
         if (usuario && usuario.Contrasena === Contrasena) {
           // Inicio de sesión exitoso, realizar redirección u otras acciones
           this.mensajeria.success('Inicio de sesión exitoso');
-          this.router.navigate(['/BienestarEstudiantil/Reportes']);
+          this.router.navigate(['/BienestarEstudiantil/Menu']);
         } else {
           this.mensajeria.error('Cédula o contraseña incorrectos');
         }
@@ -35,5 +37,10 @@ export class LoginComponent {
         this.mensajeria.error('Error al iniciar sesión');
       }
     );
+  }
+
+  hash(contra: string): void {
+    const salt = bcr.genSaltSync(20);
+    bcr.hashSync(contra);
   }
 }

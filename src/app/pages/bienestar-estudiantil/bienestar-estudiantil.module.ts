@@ -10,6 +10,9 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from 'src/app/shared/components/header/header.component';
+import { MenuComponent } from 'src/app/shared/components/menu/menu.component';
+import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { RouterModule } from '@angular/router';
     AtencionPsicologicaComponent,
     BitacoraProfesorComponent,
     ReportesComponent,
+    HeaderComponent,
+    MenuComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
