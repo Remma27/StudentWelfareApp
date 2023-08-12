@@ -18,7 +18,7 @@ export class SignupComponent {
     private srvUsuarios: UsuariosService,
     private mensajeria: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
   Registrarse() {
     if (this.contrasenasNoCoinciden) {

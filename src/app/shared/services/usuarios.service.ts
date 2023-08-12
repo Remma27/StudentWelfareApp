@@ -27,6 +27,19 @@ export class UsuariosService {
       .pipe(catchError(this.handleError));
   }
 
+  comparePassword(
+    usuarioId: string,
+    password: string
+  ): Observable<{ success: boolean }> {
+    const data = { Usuario_Id: usuarioId, Contrasena: password };
+    return this.http
+      .post<{ success: boolean }>(
+        'http://localhost:3000/Usuarios/compare-password', // Asegúrate de tener la ruta correcta
+        data
+      )
+      .pipe(catchError(this.handleError));
+  }
+
   update(usuario: Usuarios): Observable<Usuarios> {
     return this.http
       .patch<Usuarios>(

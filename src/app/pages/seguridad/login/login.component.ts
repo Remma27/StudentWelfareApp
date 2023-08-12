@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuariosForm } from 'src/app/shared/formsModels/usuariosForms';
 import { UsuariosService } from 'src/app/shared/services/usuarios.service';
-import * as bcr from 'bcryptjs';
 
 @Component({
   selector: 'app-login',
@@ -22,29 +21,17 @@ export class LoginComponent {
     const Usuario_Id = this.usuarioForm.baseForm.get('Usuario_Id')?.value;
     const Contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
 
-    this.srvUsuarios.getById(Usuario_Id).subscribe(
-      (usuario) => {
-        if (usuario && usuario.Contrasena === Contrasena) {
-          const usuarioActualizado = {
-            Usuario_Id: usuario.Usuario_Id,
-            Correo: usuario.Correo,
-            Contrasena: usuario.Contrasena,
-            Perfil: usuario.Perfil,
-            EstaEnSesion: true,
-            Estado: usuario.Estado,
-          };
-
-          this.srvUsuarios.update(usuarioActualizado).subscribe(
-            () => {
-              this.usuarioForm.baseForm.reset();
-              this.mensajeria.success('Inicio de sesión exitoso');
-              this.router.navigate(['/BienestarEstudiantil/Menu']);
-            },
-            (error) => {
-              this.mensajeria.error('Error al iniciar sesión');
-            }
-          );
+    // Enviar la solicitud al servidor para comparar contraseñas
+    this.srvUsuarios.comparePassword(Usuario_Id, Contrasena).subscribe(
+      (response) => {
+        if (response.success) {
+          // El inicio de sesión fue exitoso en el servidor
+          // Realiza otras operaciones de inicio de sesión y redirección
+          this.usuarioForm.baseForm.reset();
+          this.mensajeria.success('Inicio de sesión exitoso');
+          this.router.navigate(['/BienestarEstudiantil/Menu']);
         } else {
+          // El inicio de sesión falló en el servidor
           this.mensajeria.error('Cédula o contraseña incorrectos');
         }
       },
