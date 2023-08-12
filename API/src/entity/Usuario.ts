@@ -26,7 +26,7 @@ export class Usuario {
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Estado: boolean;
 
-  hash(contra?: string): void {
+  hash(): void {
     const salt = bcr.genSaltSync(20);
     this.Contrasena = bcr.hashSync(this.Contrasena);
   }

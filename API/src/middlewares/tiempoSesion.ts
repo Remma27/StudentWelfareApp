@@ -9,7 +9,7 @@ export const tiempoSesion = (req: Request, res: Response, next: NextFunction) =>
 
     if (userSessions[userId]) {
         const currentTime = Date.now();
-        const sessionDuration = 1 * 60 * 1000;
+        const sessionDuration = 10 * 60 * 1000;
 
         if (currentTime - userSessions[userId] > sessionDuration) {
             delete userSessions[userId];
