@@ -21,7 +21,6 @@ export class LoginComponent {
   IniciarSesion() {
     const Usuario_Id = this.usuarioForm.baseForm.get('Usuario_Id')?.value;
     const Contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
-    this.hash(Contrasena);
 
     this.srvUsuarios.getById(Usuario_Id).subscribe(
       (usuario) => {
@@ -37,10 +36,5 @@ export class LoginComponent {
         this.mensajeria.error('Error al iniciar sesión');
       }
     );
-  }
-
-  hash(contra: string): void {
-    const salt = bcr.genSaltSync(20);
-    bcr.hashSync(contra);
   }
 }

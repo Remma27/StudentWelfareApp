@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UsuariosForm } from 'src/app/shared/formsModels/usuariosForms';
 import { UsuariosService } from 'src/app/shared/services/usuarios.service';
 import { Router } from '@angular/router';
+import * as bcr from "bcryptjs";
 
 @Component({
   selector: 'app-signup',
@@ -13,6 +14,7 @@ export class SignupComponent {
   titulo = 'Informacion Personal';
   isCreate: boolean = true;
   data: any;
+
   constructor(
     public usuarioForm: UsuariosForm,
     private srvUsuarios: UsuariosService,
@@ -40,8 +42,7 @@ export class SignupComponent {
 
   get contrasenasNoCoinciden() {
     const contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
-    const repetirContrasena =
-      this.usuarioForm.baseForm.get('RepetirContrasena')?.value;
+    const repetirContrasena = this.usuarioForm.baseForm.get('RepetirContrasena')?.value;
     return contrasena !== repetirContrasena;
   }
 }
