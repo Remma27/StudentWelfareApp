@@ -97,17 +97,13 @@ export class UsuarioController {
       usuario.Usuario_Id = Usuario_Id;
       usuario.Correo = Correo;
 
-      const saltRounds = 10; // Número de rondas de sal para la encriptación
+      const saltRounds = 10;
       const hashedPassword = await bcrypt.hash(Contrasena, saltRounds);
 
       usuario.Contrasena = hashedPassword;
       usuario.Perfil = 'Estudiante';
       usuario.EstaEnSesion = false;
       usuario.Estado = true;
-
-      //usuario.hash();
-
-      //validar con class validator
       const errors = await validate(usuario, {
         validationError: { target: false, value: false },
       });
@@ -135,7 +131,7 @@ export class UsuarioController {
       let usuario = new Usuario();
       usuario.Usuario_Id = Usuario_Id;
       usuario.Correo = Correo;
-      const saltRounds = 10; // Número de rondas de sal para la encriptación
+      const saltRounds = 10;
       const hashedPassword = await bcrypt.hash(Contrasena, saltRounds);
 
       usuario.Contrasena = hashedPassword;

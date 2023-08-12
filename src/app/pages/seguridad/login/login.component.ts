@@ -21,17 +21,13 @@ export class LoginComponent {
     const Usuario_Id = this.usuarioForm.baseForm.get('Usuario_Id')?.value;
     const Contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
 
-    // Enviar la solicitud al servidor para comparar contraseñas
     this.srvUsuarios.comparePassword(Usuario_Id, Contrasena).subscribe(
       (response) => {
         if (response.success) {
-          // El inicio de sesión fue exitoso en el servidor
-          // Realiza otras operaciones de inicio de sesión y redirección
           this.usuarioForm.baseForm.reset();
           this.mensajeria.success('Inicio de sesión exitoso');
           this.router.navigate(['/BienestarEstudiantil/Menu']);
         } else {
-          // El inicio de sesión falló en el servidor
           this.mensajeria.error('Cédula o contraseña incorrectos');
         }
       },
