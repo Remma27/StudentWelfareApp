@@ -7,9 +7,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { PasswordComponent } from './password/password.component';
 
 @NgModule({
-  declarations: [SeguridadComponent, LoginComponent],
+  declarations: [SeguridadComponent, LoginComponent, SignupComponent, PasswordComponent],
   imports: [
     CommonModule,
     SeguridadRoutingModule,
