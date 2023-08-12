@@ -39,21 +39,8 @@ export class UsuarioController {
 
   static insert = async (req: Request, resp: Response) => {
     try {
-      //DESTRUCTURING
       const { Usuario_Id, Correo, Contrasena } = req.body;
 
-      //validacion de datos de entrada
-      if (!Usuario_Id) {
-        return resp.status(404).json({ mensaje: 'Debe indicar el ID' });
-      }
-      if (!Correo) {
-        return resp.status(404).json({ mensaje: 'Debe indicar el correo' });
-      }
-      if (!Contrasena) {
-        return resp.status(404).json({ mensaje: 'Debe indicar la contrasena' });
-      }
-
-      //validacion de reglas de negocio
       const Repo = AppDataSource.getRepository(Usuario);
       let usu = await Repo.findOne({ where: { Usuario_Id } });
 
@@ -72,9 +59,11 @@ export class UsuarioController {
       }
 
       let usuario = new Usuario();
-      (usuario.Usuario_Id = Usuario_Id),
-        (usuario.Correo = Correo),
-        (usuario.Contrasena = Contrasena);
+      usuario.Usuario_Id = Usuario_Id;
+      usuario.Correo = Correo;
+      usuario.Contrasena = Contrasena;
+      usuario.Perfil = 'Estudiante';
+      usuario.EstaEnSesion = false;
       usuario.Estado = true;
 
       //usuario.hash();
@@ -96,15 +85,8 @@ export class UsuarioController {
   };
 
   static update = async (req: Request, res: Response) => {
-    /*formato
-
-        "Usuario_Id":1,
-        "Usuario":"Daniela",
-        "Contrasena":"blablaplayos123",
-        "Perfil":"Estudiante"
-        */
     try {
-      const { Usuario_Id, Correo, Contrasena } = req.body;
+      const { Usuario_Id, Correo, Contrasena, Perfil, EstaEnSesion } = req.body;
       const usuarioRepo = AppDataSource.getRepository(Usuario);
       const usuarioExistente = await usuarioRepo.findOne({
         where: { Usuario_Id },
@@ -115,7 +97,8 @@ export class UsuarioController {
       usuarios.Usuario_Id = Usuario_Id;
       usuarios.Correo = Correo;
       usuarios.Contrasena = Contrasena;
-      /*usuarios.Perfil = Perfil;*/
+      usuarios.Perfil = Perfil;
+      usuarios.EstaEnSesion = EstaEnSesion;
       usuarios.Estado = true;
       const erros = await validate(usuarios, {
         validationError: { target: false, value: false },

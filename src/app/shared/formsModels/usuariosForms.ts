@@ -11,7 +11,7 @@ export class UsuariosForm {
       /*Perfil: 'Estudiante',*/
       Contrasena: ['', [Validators.required, Validators.minLength(8)]],
       RepetirContrasena: ['', Validators.required],
-      Estado: true,
+      Perfil: ['', Validators.required],
     });
   }
 }
