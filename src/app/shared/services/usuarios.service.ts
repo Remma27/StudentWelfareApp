@@ -7,7 +7,7 @@ import { Usuarios } from '../models/usuarios';
   providedIn: 'root',
 })
 export class UsuariosService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAll(): Observable<Usuarios[]> {
     return this.http
