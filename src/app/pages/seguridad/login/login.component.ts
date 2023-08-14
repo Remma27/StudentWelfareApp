@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuariosForm } from 'src/app/shared/formsModels/usuariosForms';
 import { UsuariosService } from 'src/app/shared/services/usuarios.service';
-import * as bcr from "bcryptjs";
+
 
 @Component({
   selector: 'app-login',
