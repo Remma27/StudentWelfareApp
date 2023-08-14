@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { UsuariosForm } from 'src/app/shared/formsModels/usuariosForms';
 import { UsuariosService } from 'src/app/shared/services/usuarios.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,18 +14,17 @@ export class LoginComponent {
     public usuarioForm: UsuariosForm,
     private srvUsuarios: UsuariosService,
     private mensajeria: ToastrService,
-    private router: Router,
-  ) { }
+    private router: Router
+  ) {}
 
   IniciarSesion() {
     const Usuario_Id = this.usuarioForm.baseForm.get('Usuario_Id')?.value;
     const Contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
-    this.hash(Contrasena);
 
-    this.srvUsuarios.getById(Usuario_Id).subscribe(
-      (usuario) => {
-        if (usuario && usuario.Contrasena === Contrasena) {
-          // Inicio de sesión exitoso, realizar redirección u otras acciones
+    this.srvUsuarios.comparePassword(Usuario_Id, Contrasena).subscribe(
+      (response) => {
+        if (response.success) {
+          this.usuarioForm.baseForm.reset();
           this.mensajeria.success('Inicio de sesión exitoso');
           this.router.navigate(['/BienestarEstudiantil/Menu']);
         } else {
@@ -37,10 +35,5 @@ export class LoginComponent {
         this.mensajeria.error('Error al iniciar sesión');
       }
     );
-  }
-
-  hash(contra: string): void {
-    const salt = bcr.genSaltSync(20);
-    bcr.hashSync(contra);
   }
 }
