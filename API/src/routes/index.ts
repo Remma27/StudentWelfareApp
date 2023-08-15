@@ -9,6 +9,7 @@ import seguimiento from "./seguimiento";
 import evaluacionServicio from "./evaluacionServicio";
 import cuestionario from "./cuestionario";
 import respuestaDocumento from "./respuestaDocumento";
+import reportes from "./reportes";
 
 const routes = Router();
 
@@ -22,5 +23,6 @@ routes.use("/Seguimientos", seguimiento);
 routes.use("/EvaluacionServicio", evaluacionServicio);
 routes.use("/Cuestionarios", cuestionario);
 routes.use("/RespuestaDocumento", respuestaDocumento);
+routes.use('/Reportes', reportes);
 
 export default routes;
