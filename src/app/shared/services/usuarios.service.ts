@@ -7,7 +7,7 @@ import { Usuarios } from '../models/usuarios';
   providedIn: 'root',
 })
 export class UsuariosService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<Usuarios[]> {
     return this.http
@@ -55,7 +55,7 @@ export class UsuariosService {
       .pipe(catchError(this.handleError));
   }
 
-  private handleError(error: HttpErrorResponse) {
+  public handleError(error: HttpErrorResponse) {
     let mensaje = 'Error desconocido, reporte al administrador.';
     if (error.error instanceof ErrorEvent) {
       mensaje = 'Error en el cliente: ' + error.error.message;
