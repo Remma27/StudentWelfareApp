@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 import { MenuComponent } from 'src/app/shared/components/menu/menu.component';
 import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
+import { ReportesService } from 'src/app/shared/services/reportes.service';
+
 
 @NgModule({
   declarations: [
@@ -32,5 +34,6 @@ import { FooterComponent } from 'src/app/shared/components/footer/footer.compone
     MaterialModule,
     ReactiveFormsModule,
   ],
+  providers: [ReportesService],
 })
 export class BienestarEstudiantilModule { }
