@@ -1,12 +1,12 @@
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Estudiante } from "./Estudiante";
 
 
 @Entity()
 export class BitacoraDocente {
 
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     @IsNotEmpty({ message: 'Debe ingresar valores' })
     Bitacora_Id: number;
 
@@ -37,4 +37,6 @@ export class BitacoraDocente {
     @Column({ default: true })
     @IsNotEmpty({ message: 'Debe ingresar valores' })
     Estado: boolean;
+
+    
 }

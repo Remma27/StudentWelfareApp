@@ -1,5 +1,4 @@
 import { Router } from "express";
-import bitacoraDocente from "./bitacoraDocente";
 import cita from "./cita";
 import estudiante from "./estudiante";
 import pregunta from "./pregunta";
@@ -8,9 +7,9 @@ import usuario from "./usuario";
 import seguimiento from "./seguimiento";
 import evaluacionServicio from "./evaluacionServicio";
 import cuestionario from "./cuestionario";
-import respuestaDocumento from "./respuestaDocumento";
+import respuestaDocumento from "./respuestaDocumento"
+import bitacoraDocente from "./bitacoraDocente"
 import reportes from "./reportes";
-
 const routes = Router();
 
 routes.use("/Bitacoras", bitacoraDocente);

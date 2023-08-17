@@ -3,7 +3,7 @@ import { AppDataSource } from '../data-source';
 import { Usuario } from '../entity/Usuario';
 import { validate } from 'class-validator';
 import { tiempoSesion } from '../middlewares/tiempoSesion';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs'
 
 export class UsuarioController {
   static getAll = async (req: Request, res: Response) => {
