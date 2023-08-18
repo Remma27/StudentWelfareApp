@@ -1,17 +1,112 @@
-
-.container{
+/* Estilos personalizados */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
     background-color:  #1b3069;
-    padding: 1%;
-    margin: 0;
-    top: 0;
-    left: 0;
-    right: 10%;
-    height: 100px;
-
-}
-
-h1{
     color: white;
-    float: right;
-    right: 100px;
+    position: relative;
 }
+
+.left-div {
+    display: flex;
+    align-items: center;
+}
+
+.left-div img {
+    max-width: 120px;
+    margin-right: 50px;
+    margin-left: 20px;
+}
+
+.left-div h2{
+    font-size: 40px;
+}
+
+.right-div {
+    display: flex;
+    align-items: center;
+    margin-top: 90px;
+}
+.right-div .btn {
+    margin-right: 0px;
+    border-radius: 0; /* Borde completamente cuadrado */
+    
+}
+
+.right-div .btn-special {
+    background-color: white; /* Cambia el color de fondo a blanco */
+            color: black; /* Cambia el color del texto a negro */
+}
+
+
+.right-div .image-container1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right-div .image-container1 i {
+    margin-left: 10px; /* Ajusta el margen izquierdo del icono */
+    font-size: 30px;
+}
+
+.right-div .btn-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right-div .btn i {
+    margin-left: 10px; /* Ajusta el margen izquierdo del icono */
+    font-size: 24px; /* Tamaño del icono */
+}
+
+.dropdown-container {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+}
+
+.dropdown-toggle .fa-solid {
+    max-width: 20px; /* Ajusta el tamaño de la imagen dentro del botón */
+}
+
+/* Estilos para dispositivos móviles (hasta 575.98px) */
+@media (max-width: 575.98px) {
+    .header {
+        padding: 10px;
+        flex-direction: column; /* Cambia la dirección de la flexbox en dispositivos pequeños */
+        align-items: center; /* Alinear elementos al centro */
+        text-align: center; /* Alinear texto al centro */
+        max-width: 100%;
+    }
+
+    .left-div img {
+        max-width: 100%; /* La imagen ocupará el ancho completo del contenedor */
+        margin-right: 0; /* Elimina el margen derecho */
+        margin-bottom: 10px; /* Agrega un margen inferior */
+        margin-left: 0; /* Elimina el margen izquierdo */
+    }
+
+    .left-div h2 {
+        font-size: 24px;
+        margin-top: 10px; /* Agrega un margen superior */
+    }
+
+    .right-div {
+        margin-top: 20px; /* Ajusta el margen superior */
+    }
+
+    .right-div .btn {
+        margin-right: 0;
+        font-size: 12px; /* Ajusta el tamaño de fuente de los botones */
+    }
+
+    .right-div .image-container1 i {
+        font-size: 20px; /* Reduce el tamaño del icono */
+    }
+}
+
+
