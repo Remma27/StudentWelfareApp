@@ -16,7 +16,7 @@ export const AppDataSource = new DataSource({
   host: 'localhost',
   port: 3306,
   username: 'root',
-  password: 'root',
+  password: '1234',
   database: 'BienestarEstudiantil',
   synchronize: false, //cambiar a true antes de levantar por primera vez
   logging: false,
