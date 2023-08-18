@@ -17,11 +17,14 @@ export class BitacoraProfesorComponent {
     private mensajeria: ToastrService
   ) {}
 
+
+    
   guardar() {
     this.srvBitacora.insert(this.bitacoraForm.baseForm.value).subscribe(
       (dato) => {
         this.mensajeria.success('¡Guardado correctamente!');
         this.bitacoraForm.baseForm.reset();
+        window.location.reload();
       },
       (error) => {
         console.error('Error al guardar:', error);
