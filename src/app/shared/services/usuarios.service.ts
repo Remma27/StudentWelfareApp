@@ -7,7 +7,7 @@ import { Usuarios } from '../models/usuarios';
   providedIn: 'root',
 })
 export class UsuariosService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<Usuarios[]> {
     return this.http
@@ -27,6 +27,19 @@ export class UsuariosService {
       .pipe(catchError(this.handleError));
   }
 
+  comparePassword(
+    usuarioId: string,
+    password: string
+  ): Observable<{ success: boolean }> {
+    const data = { Usuario_Id: usuarioId, Contrasena: password };
+    return this.http
+      .post<{ success: boolean }>(
+        'http://localhost:3000/Usuarios/compare-password', // Asegúrate de tener la ruta correcta
+        data
+      )
+      .pipe(catchError(this.handleError));
+  }
+
   update(usuario: Usuarios): Observable<Usuarios> {
     return this.http
       .patch<Usuarios>(
@@ -42,7 +55,7 @@ export class UsuariosService {
       .pipe(catchError(this.handleError));
   }
 
-  private handleError(error: HttpErrorResponse) {
+  public handleError(error: HttpErrorResponse) {
     let mensaje = 'Error desconocido, reporte al administrador.';
     if (error.error instanceof ErrorEvent) {
       mensaje = 'Error en el cliente: ' + error.error.message;

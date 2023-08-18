@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 import { BitacoraDocente } from "../entity/BitacoraDocente";
 import { validate } from "class-validator";
+import { Estudiante } from "../entity/Estudiante";
 
 
 export class BitacoraDocenteController {
@@ -40,24 +41,28 @@ export class BitacoraDocenteController {
     }
 
     static insert = async (req: Request, res: Response) => {
-
-        /*formato 
-            "Bitacora_Id":1,
-            "Estudiante_Id":1,
-            "Profesor_Cedula":7271819,
-            "Profesor_Nombre":"Juan Carlos",
-            "Nombre_Curso":"Gastronomia 1",
-            "Observacion":"Se encuentra como loco legalmente"
-        */
         try {
             const { Bitacora_Id, Estudiante_Id,
                 Profesor_Cedula, Profesor_Nombre,
                 Nombre_Curso, Observacion } = req.body;
+
+
+            const estudianteRepo = AppDataSource.getRepository(Estudiante);
+
+            // Verificar si el estudiante existe
+            const estudianteExistente = await estudianteRepo.findOne({ where: { Estudiante_Id } });
+
+            if (!estudianteExistente) {
+                return res.status(404).json({ message: 'El estudiante no existe' });
+            }
+
             const bitacorasRepo = AppDataSource.getRepository(BitacoraDocente);
             const bitacoraExistente = await bitacorasRepo.findOne({
                 where: { Bitacora_Id, Estado: true },
                 relations: { estudiante: true }
             });
+
+
             if (bitacoraExistente) return res.status(400).json({ message: 'Bitacora existente' });
             let bitacora = new BitacoraDocente();
             let fecha = new Date();

@@ -3,6 +3,7 @@ import { AppDataSource } from '../data-source';
 import { Usuario } from '../entity/Usuario';
 import { validate } from 'class-validator';
 import { tiempoSesion } from '../middlewares/tiempoSesion';
+import * as bcrypt from 'bcryptjs'
 
 export class UsuarioController {
   static getAll = async (req: Request, res: Response) => {
@@ -37,23 +38,44 @@ export class UsuarioController {
     }
   };
 
+  static CompararContrasena = async (req: Request, res: Response) => {
+    try {
+      const { Usuario_Id, Contrasena } = req.body;
+      const usuarioRepo = AppDataSource.getRepository(Usuario);
+      let usuario;
+
+      try {
+        usuario = await usuarioRepo.findOneOrFail({
+          where: { Usuario_Id, Estado: true },
+        });
+
+        const passwordsMatch = await bcrypt.compare(
+          Contrasena,
+          usuario.Contrasena
+        );
+
+        if (passwordsMatch) {
+          return res.status(200).json({ success: true });
+        } else {
+          return res.status(200).json({ success: false });
+        }
+      } catch (error) {
+        return res.status(404).json({
+          success: false,
+          message: 'Usuario no encontrado o inactivo',
+        });
+      }
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ success: false, message: 'Error en el servidor' });
+    }
+  };
+
   static insert = async (req: Request, resp: Response) => {
     try {
-      //DESTRUCTURING
       const { Usuario_Id, Correo, Contrasena } = req.body;
 
-      //validacion de datos de entrada
-      if (!Usuario_Id) {
-        return resp.status(404).json({ mensaje: 'Debe indicar el ID' });
-      }
-      if (!Correo) {
-        return resp.status(404).json({ mensaje: 'Debe indicar el correo' });
-      }
-      if (!Contrasena) {
-        return resp.status(404).json({ mensaje: 'Debe indicar la contrasena' });
-      }
-
-      //validacion de reglas de negocio
       const Repo = AppDataSource.getRepository(Usuario);
       let usu = await Repo.findOne({ where: { Usuario_Id } });
 
@@ -72,14 +94,16 @@ export class UsuarioController {
       }
 
       let usuario = new Usuario();
-      (usuario.Usuario_Id = Usuario_Id),
-        (usuario.Correo = Correo),
-        (usuario.Contrasena = Contrasena);
+      usuario.Usuario_Id = Usuario_Id;
+      usuario.Correo = Correo;
+
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(Contrasena, saltRounds);
+
+      usuario.Contrasena = hashedPassword;
+      usuario.Perfil = 'Estudiante';
+      usuario.EstaEnSesion = false;
       usuario.Estado = true;
-
-      //usuario.hash();
-
-      //validar con class validator
       const errors = await validate(usuario, {
         validationError: { target: false, value: false },
       });
@@ -96,35 +120,32 @@ export class UsuarioController {
   };
 
   static update = async (req: Request, res: Response) => {
-    /*formato
-
-        "Usuario_Id":1,
-        "Usuario":"Daniela",
-        "Contrasena":"blablaplayos123",
-        "Perfil":"Estudiante"
-        */
     try {
-      const { Usuario_Id, Correo, Contrasena } = req.body;
+      const { Usuario_Id, Correo, Contrasena, Perfil, EstaEnSesion } = req.body;
       const usuarioRepo = AppDataSource.getRepository(Usuario);
       const usuarioExistente = await usuarioRepo.findOne({
         where: { Usuario_Id },
       });
       if (!usuarioExistente)
         return res.status(404).json({ message: 'Usuario inexistente' });
-      let usuarios = new Usuario();
-      usuarios.Usuario_Id = Usuario_Id;
-      usuarios.Correo = Correo;
-      usuarios.Contrasena = Contrasena;
-      /*usuarios.Perfil = Perfil;*/
-      usuarios.Estado = true;
-      const erros = await validate(usuarios, {
+      let usuario = new Usuario();
+      usuario.Usuario_Id = Usuario_Id;
+      usuario.Correo = Correo;
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(Contrasena, saltRounds);
+
+      usuario.Contrasena = hashedPassword;
+      usuario.Perfil = Perfil;
+      usuario.EstaEnSesion = EstaEnSesion;
+      usuario.Estado = true;
+      const erros = await validate(usuario, {
         validationError: { target: false, value: false },
       });
       if (erros.length > 0) {
         return res.status(400).json(erros);
       }
       try {
-        await usuarioRepo.save(usuarios);
+        await usuarioRepo.save(usuario);
         return res
           .status(200)
           .json({ message: 'Usuario actualizado correctamente' });

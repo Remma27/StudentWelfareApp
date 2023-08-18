@@ -1,7 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 import { Column, Entity, PrimaryColumn, Unique } from 'typeorm';
-import * as bcr from "bcryptjs";
-
+import * as bcr from 'bcryptjs';
 
 @Entity()
 export class Usuario {
@@ -16,11 +15,14 @@ export class Usuario {
   @Column()
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Contrasena: string;
-  /*
+
   @Column()
   Perfil: string;
-*/
-  @Column()
+
+  @Column({ default: false })
+  EstaEnSesion: boolean;
+
+  @Column({ default: true })
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Estado: boolean;
 
@@ -32,4 +34,3 @@ export class Usuario {
     return bcr.compareSync(contra, this.Contrasena);
   }
 }
-
