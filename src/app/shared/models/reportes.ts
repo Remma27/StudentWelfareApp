@@ -1,3 +1,4 @@
+import { Bitacora } from "./bitacora";
 import { Citas } from "./citas";
 import { Estudiantes } from "./estudiantes";
 import { EvaluacionServicio } from "./evaluacionServicio";
@@ -8,5 +9,6 @@ export interface Reportes {
     Citas?: Citas[];
     Seguimientos?: Seguimientos[];
     Evaluaciones?: EvaluacionServicio[];
-    //Bitacoras?: Bitacora[];
+    Bitacoras?: Bitacora[];
+    //poner o quitar ?
 }

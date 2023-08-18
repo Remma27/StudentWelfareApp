@@ -38,5 +38,5 @@ export class BitacoraDocente {
     @IsNotEmpty({ message: 'Debe ingresar valores' })
     Estado: boolean;
 
-    
+
 }

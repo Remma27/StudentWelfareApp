@@ -41,22 +41,20 @@ export class BitacoraDocenteController {
     }
 
     static insert = async (req: Request, res: Response) => {
-
-      
         try {
             const { Bitacora_Id, Estudiante_Id,
                 Profesor_Cedula, Profesor_Nombre,
                 Nombre_Curso, Observacion } = req.body;
 
-                
-        const estudianteRepo = AppDataSource.getRepository(Estudiante); 
 
-        // Verificar si el estudiante existe
-        const estudianteExistente = await estudianteRepo.findOne({where:{Estudiante_Id}});
+            const estudianteRepo = AppDataSource.getRepository(Estudiante);
 
-        if (!estudianteExistente) {
-            return res.status(404).json({ message: 'El estudiante no existe' });
-        }
+            // Verificar si el estudiante existe
+            const estudianteExistente = await estudianteRepo.findOne({ where: { Estudiante_Id } });
+
+            if (!estudianteExistente) {
+                return res.status(404).json({ message: 'El estudiante no existe' });
+            }
 
             const bitacorasRepo = AppDataSource.getRepository(BitacoraDocente);
             const bitacoraExistente = await bitacorasRepo.findOne({
@@ -64,7 +62,7 @@ export class BitacoraDocenteController {
                 relations: { estudiante: true }
             });
 
-            
+
             if (bitacoraExistente) return res.status(400).json({ message: 'Bitacora existente' });
             let bitacora = new BitacoraDocente();
             let fecha = new Date();

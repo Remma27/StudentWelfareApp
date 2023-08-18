@@ -15,11 +15,12 @@ export class BitacoraProfesorComponent {
     public bitacoraForm: BitacoraForm,
     private srvBitacora: BitacoraServices,
     private mensajeria: ToastrService
-  ) {}
+  ) { }
 
   guardar() {
     this.srvBitacora.insert(this.bitacoraForm.baseForm.value).subscribe(
       (dato) => {
+        console.log(dato);
         this.mensajeria.success('¡Guardado correctamente!');
         this.bitacoraForm.baseForm.reset();
       },
