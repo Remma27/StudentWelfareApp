@@ -3,6 +3,8 @@ import { MatSelectionList } from '@angular/material/list';
 import { ToastrService } from 'ngx-toastr';
 import { ReportesService } from 'src/app/shared/services/reportes.service';
 import { saveAs } from 'file-saver';
+import { MatDialog } from '@angular/material/dialog';
+import { AdminReportesComponent } from './admin-reportes/admin-reportes.component';
 
 @Component({
   selector: 'app-reportes',
@@ -19,27 +21,25 @@ export class ReportesComponent {
     'Combinacion de todos los anteriores'];
 
   constructor(private msj: ToastrService,
-    private srvReportes: ReportesService) { }
+    private srvReportes: ReportesService,
+    public dialog: MatDialog) { }
 
-  continuar() {
-    const opcSeleccionada = this.opcios.selectedOptions.selected[0];
 
-    if (opcSeleccionada) {
-      console.log('Opción seleccionada:', opcSeleccionada.value);
 
-      this.srvReportes.getReporte(opcSeleccionada.value).subscribe(
-        (data: any) => {
-          const blob = new Blob([data], { type: 'application/pdf' });
-          const url = window.URL.createObjectURL(blob);
-          const fileName = 'reporte.pdf';
-          saveAs(blob, fileName);
-        },
-        (error) => {
-          console.error('Error al obtener el reporte:', error);
-          this.msj.error('Error al obtener el reporte.');
+  abrirDialog() {
+    if (this.opcios.selectedOptions.hasValue()) {
+      const opcSeleccionada = this.opcios.selectedOptions.selected[0].value;
+      const dialogo = this.dialog.open(AdminReportesComponent, {
+        width: '900px',
+        height: '600px',
+        data: { opcion: opcSeleccionada }
+      });
+      dialogo.afterClosed().subscribe((data) => {
+        console.log(data);
+        if (data) {
+          // Realizar acciones después de cerrar el diálogo si es necesario
         }
-      );
-
+      });
     } else {
       this.msj.error('Por favor, seleccione una opción antes de continuar.');
     }

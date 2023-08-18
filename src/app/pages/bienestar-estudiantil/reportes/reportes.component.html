@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="reportes.component.scss" />
 
 <div class="container-fluid">
-    <div class="row m-3 head gy-2">
+<!--<div class="row m-3 head gy-2">
         <div class="col-md-6 rpt">
           <img src="assets/imagenes/Logo UTN - Copy.png" alt="" class="img1">
           Reportes
@@ -23,7 +23,7 @@
             </section>
 
         </div>
-    </div>   
+    </div>-->   
       
     <div class="row m-5 p-2 columns shadow">
         <div class="col encasillado">
@@ -37,7 +37,7 @@
       
             <p class="text-center">
               Opcion escogida: <br>{{opcios.selectedOptions.hasValue() ? opcios.selectedOptions.selected[0].value : 'None'}}
-              <button type="button" class="btn btnds position-static" (click)="continuar()">Continuar</button>
+              <button type="button" class="btn btnds position-static" (click)="abrirDialog()">Continuar</button>
             </p>
         </div>
     </div>

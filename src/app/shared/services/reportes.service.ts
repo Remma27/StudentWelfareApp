@@ -11,7 +11,7 @@ export class ReportesService {
 
   constructor(private http: HttpClient, private handler: UsuariosService,) { }
 
-  private rutaPorOpcion: { [opcion: string]: string } = {
+  /*private rutaPorOpcion: { [opcion: string]: string } = {
     'Por tipo de problema atendido': 'tipoDeProblema',
     'Por genero': 'genero',
     'Por edad': 'edad',
@@ -29,5 +29,35 @@ export class ReportesService {
     } else {
       throw new Error('Opción no válida');
     }
+  }*/
+
+  getTipoDeProblema(): Observable<Reportes[]> {
+    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/tipoDeProblema').
+      pipe(catchError(this.handler.handleError));
   }
+  getEdad(): Observable<Reportes[]> {
+    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/edad').
+      pipe(catchError(this.handler.handleError));
+  }
+  getGenero(): Observable<Reportes[]> {
+    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/genero').
+      pipe(catchError(this.handler.handleError));
+  }
+  getZonaProcedencia(): Observable<Reportes[]> {
+    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/zonaProcedencia').
+      pipe(catchError(this.handler.handleError));
+  }
+  getRangoFecha(): Observable<Reportes[]> {
+    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/rangoFecha').
+      pipe(catchError(this.handler.handleError));
+  }
+  getRecursosInvertidos(): Observable<Reportes[]> {
+    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/recursosInvertidos').
+      pipe(catchError(this.handler.handleError));
+  }
+  getCombinacion(): Observable<Reportes[]> {
+    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/combinacion').
+      pipe(catchError(this.handler.handleError));
+  }
+
 }

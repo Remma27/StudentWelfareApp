@@ -14,6 +14,7 @@ import { HeaderComponent } from 'src/app/shared/components/header/header.compone
 import { MenuComponent } from 'src/app/shared/components/menu/menu.component';
 import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { ReportesService } from 'src/app/shared/services/reportes.service';
+import { AdminReportesComponent } from './reportes/admin-reportes/admin-reportes.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ReportesService } from 'src/app/shared/services/reportes.service';
     ReportesComponent,
     HeaderComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    AdminReportesComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,6 @@ import { ReportesService } from 'src/app/shared/services/reportes.service';
     MaterialModule,
     ReactiveFormsModule,
   ],
-  providers: [ReportesService],
+  providers: [/*ReportesService*/],
 })
 export class BienestarEstudiantilModule { }
