@@ -9,26 +9,19 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <ng-container *ngFor="let Estudiantes of displayedColumns" [matColumnDef]="Estudiantes">
-      <th mat-header-cell *matHeaderCellDef>{{ Estudiantes }}</th>
-      <td mat-cell *matCellDef="let row">{{ row[Estudiantes] }}</td>
-    </ng-container>
-    <ng-container *ngFor="let Citas of displayedColumns" [matColumnDef]="Citas">
-      <th mat-header-cell *matHeaderCellDef>{{ Citas }}</th>
-      <td mat-cell *matCellDef="let row">{{ row[Citas] }}</td>
-    </ng-container>
-    <ng-container *ngFor="let Seguimientos of displayedColumns" [matColumnDef]="Seguimientos">
-      <th mat-header-cell *matHeaderCellDef>{{ Seguimientos }}</th>
-      <td mat-cell *matCellDef="let row">{{ row[Seguimientos] }}</td>
-    </ng-container>
-    <ng-container *ngFor="let Evaluaciones of displayedColumns" [matColumnDef]="Evaluaciones">
-      <th mat-header-cell *matHeaderCellDef>{{ Evaluaciones }}</th>
-      <td mat-cell *matCellDef="let row">{{ row[Evaluaciones] }}</td>
-    </ng-container>
-    <ng-container *ngFor="let Bitacoras of displayedColumns" [matColumnDef]="Bitacoras">
-      <th mat-header-cell *matHeaderCellDef>{{ Bitacoras }}</th>
-      <td mat-cell *matCellDef="let row">{{ row[Bitacoras] }}</td>
-    </ng-container>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+        <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+          <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+          <td mat-cell *matCellDef="let row">{{ row[column] }}</td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+      </table>
+    </div>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -42,7 +35,7 @@
 </div>
 
 <div class="text-center">
-<button mat-button color="primary" (click)="exportToCSV()">Descargar</button>
+<button mat-button color="primary" (click)="exportPDF()">Descargar</button>
 <button mat-button color="primary" mat-dialog-close>Cancelar</button>
 </div>
 

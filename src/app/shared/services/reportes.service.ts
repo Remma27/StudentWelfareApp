@@ -3,6 +3,8 @@ import { Inject, Injectable } from '@angular/core';
 import { UsuariosService } from './usuarios.service';
 import { Observable, catchError } from 'rxjs';
 import { Reportes } from '../models/reportes';
+import jsPDF from 'jspdf';
+import autotable from 'jspdf-autotable';
 
 @Injectable({
   providedIn: 'root'
@@ -60,4 +62,33 @@ export class ReportesService {
       pipe(catchError(this.handler.handleError));
   }
 
+
+  getPDF(
+    encabezado: string[],
+    titulo: string,
+    nombreArchivo: string,
+    cuerpo?: any[],
+  ): void {
+
+    const doc = new jsPDF({
+      orientation: 'portrait',
+      unit: 'px',
+      format: 'letter'
+    });
+
+    doc.text(titulo, doc.internal.pageSize.width / 2, 25, { align: 'center' });
+
+    const options = {
+      head: [encabezado],
+      body: cuerpo,
+      margin: { top: 40 },
+      styles: {
+        fontSize: 10,
+        cellPadding: { top: 5, right: 5, bottom: 5, left: 5 }
+      }
+    };
+
+    autotable(doc, options);
+    doc.save(nombreArchivo + '.pdf');
+  }
 }
