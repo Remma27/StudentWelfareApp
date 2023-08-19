@@ -15,10 +15,8 @@ export class BitacoraProfesorComponent {
     public bitacoraForm: BitacoraForm,
     private srvBitacora: BitacoraServices,
     private mensajeria: ToastrService
-  ) { }
+  ) {}
 
-
-    
   guardar() {
     this.srvBitacora.insert(this.bitacoraForm.baseForm.value).subscribe(
       (dato) => {
