@@ -2,9 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="login.component.scss" />
     <link
@@ -21,55 +27,88 @@
         <p>BIENVENIDO</p>
       </div>
 
-    <a href="https://front.codes/" class="logo" target="_blank">
-      <img src="../../../../assets/imagenes/Logo UTN.png"
-      class="img-fluid"
-      alt="UTN Logo" alt="">
-  </a>
-  
-    <div class="section">
-      <div class="container">
+      <a href="https://front.codes/" class="logo" target="_blank">
+        <img
+          src="../../../../assets/imagenes/Logo UTN.png"
+          class="img-fluid"
+          alt="UTN Logo"
+          alt=""
+        />
+      </a>
+
+      <div class="section">
+        <div class="container">
           <div class="row full-height justify-content-center">
-              <div class="col-12 text-center align-self-center py-5">
-                  <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                      <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
-                      <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
-                      <label for="reg-log"></label>
-                      <div class="card-3d-wrap mx-auto">
-                          <div class="card-3d-wrapper">
-                              <div class="card-front">
-                                  <div class="center-wrap">
-                                      <div class="section text-center">
-                                          <h4 class="mb-4 pb-3">Log In</h4>
-                                          <form [formGroup]="usuarioForm.baseForm"> <!-- Formulario de inicio de sesión -->
-                                              <mat-form-field>
-                                                  <mat-label>Cedula</mat-label>
-                                                  <input matInput type="number" formControlName="Usuario_Id" />
-                                              </mat-form-field>
-                                              <mat-form-field>
-                                                  <mat-label>Correo Electronico</mat-label>
-                                                  <input type="email" matInput formControlName="Usuario"     />
-                                              </mat-form-field>
-                                              <mat-form-field>
-                                                  <mat-label>Contrasena</mat-label>
-                                                  <input type="password" matInput formControlName="Contrasena" />
-                                              </mat-form-field>
-                                              <button mat-raised-button color="primary" class="mt-4">Submit</button>
-                                          </form>
-                                          <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="card-back">
-                                  <!-- Formulario de registro similar al de inicio de sesión -->
-                              </div>
-                          </div>
+            <div class="col-12 text-center align-self-center py-5">
+              <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                <h6 class="mb-0 pb-3">
+                  <span>Log In </span><span>Sign Up</span>
+                </h6>
+                <input
+                  class="checkbox"
+                  type="checkbox"
+                  id="reg-log"
+                  name="reg-log"
+                />
+                <label for="reg-log"></label>
+                <div class="card-3d-wrap mx-auto">
+                  <div class="card-3d-wrapper">
+                    <div class="card-front">
+                      <div class="center-wrap">
+                        <div class="section text-center">
+                          <h4 class="mb-4 pb-3">Log In</h4>
+                          <form [formGroup]="usuarioForm.baseForm">
+                            <!-- Formulario de inicio de sesión -->
+                            <mat-form-field>
+                              <mat-label>Cedula</mat-label>
+                              <input
+                                matInput
+                                type="number"
+                                formControlName="Usuario_Id"
+                              />
+                            </mat-form-field>
+                            <mat-form-field>
+                              <mat-label>Correo Electronico</mat-label>
+                              <input
+                                type="email"
+                                matInput
+                                formControlName="Usuario"
+                              />
+                            </mat-form-field>
+                            <mat-form-field>
+                              <mat-label>Contrasena</mat-label>
+                              <input
+                                type="password"
+                                matInput
+                                formControlName="Contrasena"
+                              />
+                            </mat-form-field>
+                            <button
+                              mat-raised-button
+                              color="primary"
+                              class="mt-4"
+                            >
+                              Submit
+                            </button>
+                          </form>
+                          <p class="mb-0 mt-4 text-center">
+                            <a href="#0" class="link">Forgot your password?</a>
+                          </p>
+                        </div>
                       </div>
+                    </div>
+                    <div class="card-back">
+                      <!-- Formulario de registro similar al de inicio de sesión -->
+                    </div>
                   </div>
+                </div>
               </div>
+            </div>
           </div>
+        </div>
       </div>
-  </div>
+    </div>
+
     <footer>
       <div class="row">
         <div class="col-md-6 p-4">
