@@ -2,28 +2,29 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Usuarios } from '../models/usuarios';
+import { environments } from 'src/environments/enviroments';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsuariosService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAll(): Observable<Usuarios[]> {
     return this.http
-      .get<Usuarios[]>('http://localhost:3000/Usuarios/')
+      .get<Usuarios[]>(`${environments.API_URL}/Usuarios/`)
       .pipe(catchError(this.handleError));
   }
 
   getById(Usuario_Id: number): Observable<Usuarios> {
     return this.http
-      .get<Usuarios>('http://localhost:3000/Usuarios/' + Usuario_Id)
+      .get<Usuarios>(`${environments.API_URL}/Usuarios/` + Usuario_Id)
       .pipe(catchError(this.handleError));
   }
 
   insert(usuario: Usuarios): Observable<Usuarios> {
     return this.http
-      .post<Usuarios>('http://localhost:3000/Usuarios/', usuario)
+      .post<Usuarios>(`${environments.API_URL}/Usuarios`, usuario)
       .pipe(catchError(this.handleError));
   }
 
@@ -32,9 +33,10 @@ export class UsuariosService {
     password: string
   ): Observable<{ success: boolean }> {
     const data = { Usuario_Id: usuarioId, Contrasena: password };
+
     return this.http
       .post<{ success: boolean }>(
-        'http://localhost:3000/Usuarios/compare-password', // Asegúrate de tener la ruta correcta
+        `${environments.API_URL}/Usuarios/compare-password`,
         data
       )
       .pipe(catchError(this.handleError));
@@ -42,16 +44,13 @@ export class UsuariosService {
 
   update(usuario: Usuarios): Observable<Usuarios> {
     return this.http
-      .patch<Usuarios>(
-        'http://localhost:3000/Usuarios/' + usuario.Usuario_Id,
-        usuario
-      )
+      .patch<Usuarios>(`${environments.API_URL}/Usuarios/`, +usuario.Usuario_Id)
       .pipe(catchError(this.handleError));
   }
 
   delete(Usuario_Id: number): Observable<Usuarios> {
     return this.http
-      .delete<Usuarios>('http://localhost:3000/Usuarios/' + Usuario_Id)
+      .delete<Usuarios>(`${environments.API_URL}/Usuarios/` + Usuario_Id)
       .pipe(catchError(this.handleError));
   }
 
