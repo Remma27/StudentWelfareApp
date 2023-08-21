@@ -27,7 +27,6 @@ export class Estudiante {
   Telefono: number;
 
   @Column()
-  @IsNotEmpty({ message: 'Debe ingresar valores' })
   Telefono2: number;
 
   @Column()
