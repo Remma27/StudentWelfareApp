@@ -1,5 +1,6 @@
 export interface Estudiantes {
   Estudiante_Id: number;
+  Cedula: number;
   Genero: string;
   Fecha_Nacimiento: Date;
   Telefono: number;
@@ -11,7 +12,5 @@ export interface Estudiantes {
   Nacionalidad: string;
   Colegio_Procedencia: string;
   Ano_Graduacion_Secundaria: number;
-  Boleta_Matricula: string;
-  Foto_Cedula: string;
   Estado: boolean;
 }

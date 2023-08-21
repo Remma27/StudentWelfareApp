@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'AdecuacionCurricular', component: AdecuacionCurricularComponent },
   { path: 'AtencionPsicologica', component: AtencionPsicologicaComponent },
   { path: 'BitacoraProfesor', component: BitacoraProfesorComponent },
- {path: 'InformacionPersonal',component:InformacionPersonalComponent},
+  { path: 'InformacionPersonal', component: InformacionPersonalComponent },
   { path: 'Reportes', component: ReportesComponent },
 ];
 

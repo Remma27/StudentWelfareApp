@@ -5,7 +5,12 @@ import { ToastrService } from 'ngx-toastr';
 import { EstudiantesForm } from 'src/app/shared/formsModels/estudiantesForms';
 import { EstudiantesService } from 'src/app/shared/services/estudiantes.service';
 
-interface bitacora {
+interface informacion {
+  value: string;
+  viewValue: string;
+}
+
+interface nacimiento {
   value: string;
   viewValue: string;
 }
@@ -16,31 +21,20 @@ interface bitacora {
   styleUrls: ['./informacion-personal.component.scss'],
 })
 export class InformacionPersonalComponent {
-  bitacora: bitacora[] = [
-    { value: '1', viewValue: 'I cuatrimestre' },
-    { value: '2', viewValue: 'II cuatrimestre' },
-    { value: '3', viewValue: 'III cuatrimestre' },
+  informacion: informacion[] = [
+    { value: '1', viewValue: 'I Cuatrimestre' },
+    { value: '2', viewValue: 'II Cuatrimestre' },
+    { value: '3', viewValue: 'III Cuatrimestre' },
   ];
-  titulo = 'Informacion Personal';
-  isCreate: boolean = true;
+
+  nacimiento: nacimiento[] = [
+    { value: '1', viewValue: 'Costarricense' },
+    { value: '2', viewValue: 'Extranjero' },
+  ];
+
   constructor(
     public estudianteForm: EstudiantesForm,
     private srvEstudiante: EstudiantesService,
     private mensajeria: ToastrService
   ) {}
-
-  guardar() {
-    this.srvEstudiante.insert(this.estudianteForm.baseForm.value).subscribe(
-      (dato) => {
-        console.log(dato);
-        this.mensajeria.success('¡Guardado correctamente!');
-        this.estudianteForm.baseForm.reset();
-        window.location.reload();
-      },
-      (error) => {
-        console.error('Error al guardar:', error);
-        this.mensajeria.error('Error al guardar');
-      }
-    );
-  }
 }

@@ -1,15 +1,13 @@
 body{
     background-color: white;
 }
-
-
 .div1{
     position: relative;
     width: 700px;
     height: 50px;
     background-color:  #e4e4e4;
-    text-align: center;
-    margin-left: 80px;
+    text-align: center;  
+   margin-left: 80px;
     top: 90px;
     z-index: 2;
     border-radius: 4px;
@@ -18,13 +16,14 @@ body{
     
 }
 
+
 .div2{
     position: absolute;
     background-color: #f7f7f7;
     width: 900px;
-    height: 830px;
+    height: 2650px;
     top: 120px;
-    padding: 70px;
+    padding: 80px;
     z-index: 1;
      box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
      border: solid 1px ;
@@ -38,3 +37,10 @@ body{
     
 }
 
+h2{
+    padding: 10px;
+}
+
+mat-form-field{
+    padding: 10px;
+}
