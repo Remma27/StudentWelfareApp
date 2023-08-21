@@ -15,6 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="col-2 div1">
+<<<<<<< Updated upstream
           <p>Información Personal</p>
         </div>
 
@@ -182,6 +183,37 @@
           </div>
         </div>
         
+=======
+          <p>Bitacora profesor</p>
+        </div>
+
+        <div class="col-8 div2">
+          <form [formGroup]="estudianteForm.baseForm">
+            <p>Digite su numero de cedula</p>
+            <mat-form-field>
+              <mat-label></mat-label>
+              <input matInput type="number" />
+            </mat-form-field>
+
+            <p>Cuatrimestre que cursa</p>
+            <mat-form-field>
+              <mat-label>Cuatrimestre</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let bitacora of bitacora" [value]="bitacora.value">
+                  {{ bitacora.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </form>
+
+          <div class="example-button-row boton">
+            <button mat-flat-button color="primary" (click)="guardar()">
+              Finalizar
+            </button>
+          </div>
+        </div>
+        <div class="col-2"></div>
+>>>>>>> Stashed changes
       </div>
     </div>
   </body>
