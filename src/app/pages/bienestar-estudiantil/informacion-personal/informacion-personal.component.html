@@ -15,175 +15,6 @@
     <div class="container">
       <div class="row">
         <div class="col-2 div1">
-<<<<<<< Updated upstream
-          <p>Información Personal</p>
-        </div>
-
-        <div class="col-10 div2">
-          <form [formGroup]="estudianteForm.baseForm">
-
-            <h2>Boleta de matricula</h2>
-            <p>Digite su numero de cedula</p>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <input matInput type="number" />
-            </mat-form-field>
-
-            <h4>Seleccione el Cuatrimestre</h4>
-            <mat-form-field>
-              <mat-label>Cuatrimestre</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let informacion of informacion" [value]="informacion.value">
-                  {{ informacion.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <div class="mb-3 ">
-              <label for="formFile" class="form-label">Boleta de matricula</label>
-              <input class="form-control" type="file" id="formFile">
-            </div>
-
-            <div class="mb-3 ">
-              <label for="formFile" class="form-label">Subir foto de la cedula</label>
-              <input class="form-control" type="file" id="formFile">
-            </div>
-            <hr>
-
-            <H2>Datos Personales</H2>
-            <div class="check">
-              <div class="form-check form-check-inline ">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                <label class="form-check-label" for="inlineRadio1">Masculino</label>
-              </div>
-              <div class="form-check form-check-inline ">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">Femenino</label>
-              </div>
-            </div>
-            
-<br>
-<br>
-            
-            <p>Fecha de nacimiento</p>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <input matInput type="date" />
-            </mat-form-field>
-
-
-            <h4>Nacionalidad</h4>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <mat-select>
-                <mat-option *ngFor="let nacimiento of nacimiento" [value]="nacimiento.value">
-                  {{ nacimiento.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-
-            <p>Colegio de procedencia</p>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <input matInput  />
-            </mat-form-field>
-
-            <p>Año de gracuación de secundaria</p>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <input matInput type="number"  />
-            </mat-form-field>
-
-            <hr>
-            <h2>  Contacto</h2>
-
-            <p>Numero de telefono</p>
-            <mat-form-field>
-              <mat-label>Obligatorio</mat-label>
-              <input matInput type="number"  />
-            </mat-form-field>
-
-            <mat-form-field>
-              <mat-label>Opcional</mat-label>
-              <input matInput type="number"   />
-            </mat-form-field>
-
-            <p>Correo electrónico</p>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <input matInput type="email"   />
-            </mat-form-field>
-
-            <hr>
-            <h2>Ubicación</h2>
-
-            <h4>Provincia</h4>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <mat-select>
-                <mat-option *ngFor="let nacimiento of nacimiento" [value]="nacimiento.value">
-                  {{ nacimiento.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <h4>Canton</h4>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <mat-select>
-                <mat-option *ngFor="let nacimiento of nacimiento" [value]="nacimiento.value">
-                  {{ nacimiento.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <h4>Distrito</h4>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <mat-select>
-                <mat-option *ngFor="let nacimiento of nacimiento" [value]="nacimiento.value">
-                  {{ nacimiento.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <p>Dirección exacta de procedencia</p>
-            <mat-form-field>
-              <mat-label>Observaciones</mat-label>
-              <textarea matInput formControlName="Observacion"> </textarea>
-            </mat-form-field>
-          
-
-          <p>Dirección exacta durante tiempo lectivo</p>
-            <mat-form-field>
-              <mat-label>Observaciones</mat-label>
-              <textarea matInput formControlName="Observacion"> </textarea>
-            </mat-form-field>
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          </form>
-
-          <div class="example-button-row boton">
-            <button mat-flat-button color="primary">Finalizar</button>
-          </div>
-        </div>
-        
-=======
           <p>Bitacora profesor</p>
         </div>
 
@@ -199,7 +30,10 @@
             <mat-form-field>
               <mat-label>Cuatrimestre</mat-label>
               <mat-select>
-                <mat-option *ngFor="let bitacora of bitacora" [value]="bitacora.value">
+                <mat-option
+                  *ngFor="let bitacora of bitacora"
+                  [value]="bitacora.value"
+                >
                   {{ bitacora.viewValue }}
                 </mat-option>
               </mat-select>
@@ -213,7 +47,6 @@
           </div>
         </div>
         <div class="col-2"></div>
->>>>>>> Stashed changes
       </div>
     </div>
   </body>
