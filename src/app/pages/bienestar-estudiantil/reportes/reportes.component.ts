@@ -24,13 +24,11 @@ export class ReportesComponent {
     private srvReportes: ReportesService,
     public dialog: MatDialog) { }
 
-
-
   abrirDialog() {
     if (this.opcios.selectedOptions.hasValue()) {
       const opcSeleccionada = this.opcios.selectedOptions.selected[0].value;
       const dialogo = this.dialog.open(AdminReportesComponent, {
-        width: '900px',
+        width: '1500px',
         height: '600px',
         data: { opcion: opcSeleccionada }
       });

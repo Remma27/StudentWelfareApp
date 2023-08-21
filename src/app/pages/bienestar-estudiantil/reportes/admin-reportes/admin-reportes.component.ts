@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { tr } from 'date-fns/locale';
+import { da, tr } from 'date-fns/locale';
 import { saveAs } from 'file-saver';
 import { ToastrService } from 'ngx-toastr';
 import { Reportes } from 'src/app/shared/models/reportes';
@@ -16,6 +16,7 @@ export class AdminReportesComponent implements OnInit {
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<any>;
   datosCargados = false;
+  tituloReporte = undefined;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { opcion: string },
@@ -35,7 +36,11 @@ export class AdminReportesComponent implements OnInit {
         this.srvReportes.getTipoDeProblema().subscribe(
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
-              this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              //this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              this.displayedColumns = ['Estudiante_Id', 'Telefono', 'Telefono2',
+                'Correo_Electronico', 'Cita_Id', 'Encargado_Nombre', 'Fecha_Cita',
+                'Seguimiento_Id', 'Resumen_Cita', 'Fecha_Correspondiente', 'Evaluacion_Id',
+                'Profesor_Cedula', 'Profesor_Nombre', 'Observacion'];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
@@ -52,7 +57,11 @@ export class AdminReportesComponent implements OnInit {
         this.srvReportes.getGenero().subscribe(
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
-              this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              //this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              this.displayedColumns = ['Genero', 'Telefono', 'Telefono2',
+                'Correo_Electronico', 'Foto_Cedula', 'Cita_Id', 'Encargado_Nombre', 'Fecha_Cita',
+                'Seguimiento_Id', 'Resumen_Cita', 'Fecha_Correspondiente', 'Evaluacion_Id',
+                'Profesor_Cedula', 'Profesor_Nombre', 'Observacion'];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
@@ -68,7 +77,11 @@ export class AdminReportesComponent implements OnInit {
         this.srvReportes.getEdad().subscribe(
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
-              this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              //this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              this.displayedColumns = ['Fecha_Nacimiento', 'Telefono', 'Telefono2',
+                'Correo_Electronico', 'Cita_Id', 'Encargado_Nombre', 'Fecha_Cita',
+                'Seguimiento_Id', 'Resumen_Cita', 'Fecha_Correspondiente', 'Evaluacion_Id',
+                'Profesor_Cedula', 'Profesor_Nombre', 'Observacion'];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
@@ -84,7 +97,11 @@ export class AdminReportesComponent implements OnInit {
         this.srvReportes.getZonaProcedencia().subscribe(
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
-              this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              //this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              this.displayedColumns = ['Distrito_Id', 'Telefono', 'Telefono2',
+                'Correo_Electronico', 'Cita_Id', 'Encargado_Nombre', 'Fecha_Cita',
+                'Seguimiento_Id', 'Resumen_Cita', 'Fecha_Correspondiente', 'Evaluacion_Id',
+                'Profesor_Cedula', 'Profesor_Nombre', 'Observacion'];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
@@ -100,7 +117,11 @@ export class AdminReportesComponent implements OnInit {
         this.srvReportes.getRangoFecha().subscribe(
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
-              this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              //this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              this.displayedColumns = ['Boleta_Matricula', 'Telefono', 'Telefono2',
+                'Correo_Electronico', 'Cita_Id', 'Encargado_Nombre', 'Fecha_Cita',
+                'Seguimiento_Id', 'Resumen_Cita', 'Fecha_Correspondiente', 'Evaluacion_Id',
+                'Profesor_Cedula', 'Profesor_Nombre', 'Observacion'];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
@@ -116,7 +137,10 @@ export class AdminReportesComponent implements OnInit {
         this.srvReportes.getRecursosInvertidos().subscribe(
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
-              this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              this.displayedColumns = ['Cita_Id', 'Estudiante_Id', 'Encargado_Nombre',
+                'Aprobacion_Cita', 'Fecha_Cita', 'Seguimiento_Id', 'Cita_Id',
+                'Agenda_Cita', 'Resumen_Cita', 'Fecha_Correspondiente',
+                'Profesor_Cedula', 'Profesor_Nombre', 'Nombre_Curso', 'Observacion'];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
@@ -132,7 +156,18 @@ export class AdminReportesComponent implements OnInit {
         this.srvReportes.getCombinacion().subscribe(
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
-              this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              //this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
+              this.displayedColumns = ['Estudiante_Id', 'Genero',
+                'Fecha_Nacimiento', 'Telefono', 'Telefono2', 'Correo_Electronico',
+                'Distrito_Id', 'Direccion_Exacta_Procedencia',
+                'Direccion_Exacta_Tiempo_Lectivo', 'Nacionalidad',
+                'Colegio_Procedencia', 'Ano_Graduacion_Secundaria',
+                'Boleta_Matricula', 'Foto_Cedula', 'Cita_Id', 'Estudiante_Id', 'Encargado_Nombre',
+                'Aprobacion_Cita', 'Fecha_Cita', 'Seguimiento_Id', 'Cita_Id',
+                'Agenda_Cita', 'Resumen_Cita', 'Fecha_Correspondiente',
+                'Evaluacion_Id', 'Estudiante_Id', 'Bitacora_Id',
+                'Estudiante_Id', 'Profesor_Cedula', 'Profesor_Nombre',
+                'Nombre_Curso', 'Fecha', 'Observacion'];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
@@ -158,6 +193,21 @@ export class AdminReportesComponent implements OnInit {
     const csvString = csvData.join('\n');
     const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
     saveAs(blob, 'reporte.csv');
+  }
+
+  exportPDF(): void {
+    const datos = this.dataSource.data.map((reporte: Reportes) => {
+      const row = [
+        reporte.Estudiantes,
+        reporte.Citas,
+        reporte.Seguimientos,
+        reporte.Evaluaciones,
+        reporte.Bitacoras,
+      ];
+      return row;
+    });
+
+    this.srvReportes.getPDF(this.dataSource.data, 'Lista de reportes', 'Reportes', datos);
   }
 
 }
