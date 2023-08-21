@@ -19,6 +19,7 @@ const lista = [
   MatSelectModule,
   MatListModule,
   MatProgressSpinnerModule,
+  
 ];
 
 @NgModule({
