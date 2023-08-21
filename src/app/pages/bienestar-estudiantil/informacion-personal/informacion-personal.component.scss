@@ -1,11 +1,61 @@
-mat-form-field{
-    display: block;
-    margin: 5px;
+body{
+    background-color: white;
 }
 
-.titulo{
+
+.div1{
+    position: relative;
+    width: 700px;
+    height: 50px;
+    background-color:  #e4e4e4;
     text-align: center;
-    margin: 25px;
-    font-size: 10emx;
-    color: white;
+    margin-left: 80px;
+    top: 90px;
+    z-index: 2;
+    border-radius: 4px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    border: solid 1px;
+    
 }
+
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
+.div2{
+    position: absolute;
+    background-color: #f7f7f7;
+    width: 900px;
+<<<<<<< Updated upstream
+    height: 2650px;
+    top: 120px;
+    padding: 80px;
+=======
+    height: 830px;
+    top: 120px;
+    padding: 70px;
+>>>>>>> Stashed changes
+    z-index: 1;
+     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+     border: solid 1px ;
+}
+
+.boton{
+    position: relative;
+    top: 50px;
+    float: right;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    
+}
+
+<<<<<<< Updated upstream
+h2{
+    padding: 10px;
+}
+
+mat-form-field{
+    padding: 10px;
+}
+
+=======
+>>>>>>> Stashed changes
