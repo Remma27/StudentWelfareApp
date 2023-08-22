@@ -10,6 +10,9 @@ import { Usuario } from './entity/Usuario';
 import { EvaluacionServicio } from './entity/EvaluacionServicio';
 import { Cuestionario } from './entity/Cuestionario';
 import { RespuestaDocumento } from './entity/RespuestaDocumento';
+import { Provincia } from './entity/Provincia';
+import { Canton } from './entity/Canton';
+import { Distrito } from './entity/Distrito';
 
 export const AppDataSource = new DataSource({
   type: 'mysql',
@@ -18,7 +21,7 @@ export const AppDataSource = new DataSource({
   username: 'root',
   password: 'root',
   database: 'BienestarEstudiantil',
-  synchronize: false, //cambiar a true antes de levantar por primera vez
+  synchronize: false,
   logging: false,
   entities: [
     Estudiante,
@@ -31,9 +34,10 @@ export const AppDataSource = new DataSource({
     EvaluacionServicio,
     Cuestionario,
     RespuestaDocumento,
+    Provincia,
+    Canton,
+    Distrito,
   ],
   migrations: [],
   subscribers: [],
 });
-
-//modificar datasource

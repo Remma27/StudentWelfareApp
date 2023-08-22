@@ -33,10 +33,10 @@
               <mat-label>Cuatrimestre</mat-label>
               <mat-select>
                 <mat-option
-                  *ngFor="let informacion of informacion"
-                  [value]="informacion.value"
+                  *ngFor="let cuatrimestre of Cuatrimestre"
+                  [value]="cuatrimestre.value"
                 >
-                  {{ informacion.viewValue }}
+                  {{ cuatrimestre.viewValue }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -64,7 +64,8 @@
                   type="radio"
                   name="inlineRadioOptions"
                   id="inlineRadio1"
-                  value="option1"
+                  formControlName="Genero"
+                  value="M"
                 />
                 <label class="form-check-label" for="inlineRadio1"
                   >Masculino</label
@@ -76,7 +77,8 @@
                   type="radio"
                   name="inlineRadioOptions"
                   id="inlineRadio2"
-                  value="option2"
+                  formControlName="Genero"
+                  value="F"
                 />
                 <label class="form-check-label" for="inlineRadio2"
                   >Femenino</label
@@ -96,12 +98,12 @@
             <h4>Nacionalidad</h4>
             <mat-form-field>
               <mat-label></mat-label>
-              <mat-select>
+              <mat-select formControlName="Nacionalidad">
                 <mat-option
-                  *ngFor="let nacimiento of nacimiento"
-                  [value]="nacimiento.value"
+                  *ngFor="let nacionalidad of Nacionalidad"
+                  [value]="nacionalidad.value"
                 >
-                  {{ nacimiento.viewValue }}
+                  {{ nacionalidad.viewValue }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -152,12 +154,16 @@
             <h4>Provincia</h4>
             <mat-form-field>
               <mat-label></mat-label>
-              <mat-select>
+              <mat-select
+                [disabled]="
+                  estudianteForm.baseForm.get('Nacionalidad')?.value !== 'C'
+                "
+              >
                 <mat-option
-                  *ngFor="let nacimiento of nacimiento"
-                  [value]="nacimiento.value"
+                  *ngFor="let provincia of provincias"
+                  [value]="provincia.Provincia_Id"
                 >
-                  {{ nacimiento.viewValue }}
+                  {{ provincia.Nombre | uppercase }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -165,12 +171,17 @@
             <h4>Canton</h4>
             <mat-form-field>
               <mat-label></mat-label>
-              <mat-select>
+              <mat-select
+                formControlName="Canton"
+                [disabled]="
+                  estudianteForm.baseForm.get('Nacionalidad')?.value !== 'C'
+                "
+              >
                 <mat-option
-                  *ngFor="let nacimiento of nacimiento"
-                  [value]="nacimiento.value"
+                  *ngFor="let canton of cantones"
+                  [value]="canton.Canton_Id"
                 >
-                  {{ nacimiento.viewValue }}
+                  {{ canton.Nombre | uppercase }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -178,12 +189,17 @@
             <h4>Distrito</h4>
             <mat-form-field>
               <mat-label></mat-label>
-              <mat-select>
+              <mat-select
+                formControlName="Distrito"
+                [disabled]="
+                  estudianteForm.baseForm.get('Nacionalidad')?.value !== 'C'
+                "
+              >
                 <mat-option
-                  *ngFor="let nacimiento of nacimiento"
-                  [value]="nacimiento.value"
+                  *ngFor="let distrito of distritos"
+                  [value]="distrito.Distrito_Id"
                 >
-                  {{ nacimiento.viewValue }}
+                  {{ distrito.Nombre | uppercase }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
