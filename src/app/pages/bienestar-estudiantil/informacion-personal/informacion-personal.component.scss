@@ -1,4 +1,4 @@
-body{
+/*body{
     background-color: white;
 }
 .div1{
@@ -42,5 +42,21 @@ h2{
 
 mat-form-field{
     padding: 10px;
-}
+}*/
+
+.container {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    border: solid 1px;
+    border-radius: 4px;
+    margin-top: 20px;
+  }
+  
+  .boton {
+    text-align: right;
+    margin-top: 20px;
+  }
+  
+  
 

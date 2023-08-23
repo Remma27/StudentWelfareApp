@@ -100,7 +100,7 @@ export class ReportesController {
             const Estudiantes = await repoEstudiantes.find({
                 select: ['Genero', 'Telefono',
                     'Telefono2', 'Correo_Electronico',
-                    'Foto_Cedula']
+            /*'Foto_Cedula'*/]
             });
             if (Estudiantes.length === 0) return res.status(404).json({ msg: 'No hay estudiantes' });
             const Citas = await repoCitas.find({
@@ -181,7 +181,7 @@ export class ReportesController {
             const Estudiantes = await repoEstudiantes.find({
                 select: ['Fecha_Nacimiento', 'Telefono',
                     'Telefono2', 'Correo_Electronico',
-                    'Foto_Cedula']
+                    /*'Foto_Cedula'*/]
             });
             const estudiantesConEdad = Estudiantes.map(estudiante => {
                 const edad = differenceInYears(new Date(), parseISO(estudiante.Fecha_Nacimiento.toISOString()));
@@ -269,7 +269,7 @@ export class ReportesController {
             const Estudiantes = await repoEstudiantes.find({
                 select: ['Distrito_Id', 'Telefono',
                     'Telefono2', 'Correo_Electronico',
-                    'Foto_Cedula']
+                    /*'Foto_Cedula'*/]
             });
             if (Estudiantes.length === 0) return res.status(404).json({ msg: 'No hay estudiantes' });
             const Citas = await repoCitas.find({
@@ -348,9 +348,9 @@ export class ReportesController {
             const repoEvaluaciones = AppDataSource.getRepository(EvaluacionServicio);
             const repoBitacoras = AppDataSource.getRepository(BitacoraDocente);
             const Estudiantes = await repoEstudiantes.find({
-                select: ['Boleta_Matricula', 'Telefono',
+                select: [/*'Boleta_Matricula'*/, 'Telefono',
                     'Telefono2', 'Correo_Electronico',
-                    'Foto_Cedula']
+            /*'Foto_Cedula'*/]
             });
             if (Estudiantes.length === 0) return res.status(404).json({ msg: 'No hay estudiantes' });
             const Citas = await repoCitas.find({
@@ -430,7 +430,7 @@ export class ReportesController {
             const Estudiantes = await repoEstudiantes.find({
                 select: ['Estudiante_Id', 'Telefono',
                     'Telefono2', 'Correo_Electronico',
-                    'Foto_Cedula']
+                    /*'Foto_Cedula'*/]
             });
             if (Estudiantes.length === 0) return res.status(404).json({ msg: 'No hay estudiantes' });
             const Citas = await repoCitas.find();
