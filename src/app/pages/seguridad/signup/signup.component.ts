@@ -38,6 +38,9 @@ export class SignupComponent {
     );
   }
 
+  //En este metodo lo que estamos haciendo es comparar la contrasena encriptada en la base de datos 
+  //Con la contrasena que esta escribiendo el usuario, por seguridad no tenemos que desencriptar
+  //Si no, encriptar y comparar las dos contrasenas encripatas, esto devuelve un true o false
   get contrasenasNoCoinciden() {
     const contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
     const repetirContrasena =
