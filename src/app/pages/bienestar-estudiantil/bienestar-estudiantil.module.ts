@@ -15,6 +15,8 @@ import { MenuComponent } from 'src/app/shared/components/menu/menu.component';
 import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { ReportesService } from 'src/app/shared/services/reportes.service';
 import { AdminReportesComponent } from './reportes/admin-reportes/admin-reportes.component';
+import { CitaComponent } from './cita/cita.component';
+import { SeguimientoComponent } from './seguimiento/seguimiento.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { AdminReportesComponent } from './reportes/admin-reportes/admin-reportes
     HeaderComponent,
     MenuComponent,
     FooterComponent,
-    AdminReportesComponent
+    AdminReportesComponent,
+    CitaComponent,
+    SeguimientoComponent
   ],
   imports: [
     CommonModule,

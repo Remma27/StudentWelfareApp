@@ -6,6 +6,8 @@ import { AtencionPsicologicaComponent } from './atencion-psicologica/atencion-ps
 import { BitacoraProfesorComponent } from './bitacora-profesor/bitacora-profesor.component';
 import { InformacionPersonalComponent } from './informacion-personal/informacion-personal.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { CitaComponent } from './cita/cita.component';
+import { SeguimientoComponent } from './seguimiento/seguimiento.component';
 
 const routes: Routes = [
   { path: 'Menu', component: BienestarEstudiantilComponent },
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'BitacoraProfesor', component: BitacoraProfesorComponent },
   { path: 'InformacionPersonal', component: InformacionPersonalComponent },
   { path: 'Reportes', component: ReportesComponent },
+  {path:'Cita', component:CitaComponent},
+  {path:'Seguimiento', component:SeguimientoComponent}
 ];
 
 @NgModule({
