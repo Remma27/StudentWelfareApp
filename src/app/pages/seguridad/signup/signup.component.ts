@@ -27,13 +27,13 @@ export class SignupComponent {
     }
 
     this.srvUsuarios.insert(this.usuarioForm.baseForm.value).subscribe(
-      (dato) => {
+      () => {
         this.usuarioForm.baseForm.reset();
         this.mensajeria.success('¡Guardado correctamente!');
         this.router.navigate(['/']);
       },
       (error) => {
-        this.mensajeria.error('Error al guardar');
+        this.mensajeria.error(error);
       }
     );
   }

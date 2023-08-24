@@ -17,6 +17,8 @@ export class PasswordComponent {
     private route: Router
   ) {}
 
+  //En este metodo modificar estamos haciendo uso de todo el update de la entidad usuario, sin embargo
+  //Solo estamos actualizando la contrasena.
   ModificarContrasena() {
     if (this.contrasenasNoCoinciden) {
       this.mensajeria.error('Las contraseñas no coinciden');
@@ -45,7 +47,7 @@ export class PasswordComponent {
               this.mensajeria.success('Contraseña modificada correctamente');
             },
             (error) => {
-              this.mensajeria.error('Error al modificar la contraseña');
+              this.mensajeria.error(error);
             }
           );
         } else {
@@ -53,11 +55,14 @@ export class PasswordComponent {
         }
       },
       (error) => {
-        this.mensajeria.error('Error al obtener usuario');
+        this.mensajeria.error(error);
       }
     );
   }
 
+  //En este metodo lo que estamos haciendo es comparar la contrasena encriptada en la base de datos
+  //Con la contrasena que esta escribiendo el usuario, por seguridad no tenemos que desencriptar
+  //Si no, encriptar y comparar las dos contrasenas encripatas, esto devuelve un true o false
   get contrasenasNoCoinciden() {
     const contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
     const repetirContrasena =

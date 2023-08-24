@@ -54,6 +54,8 @@ export class InformacionPersonalComponent {
     this.CargarDatos();
   }
 
+  //En este metodo estamos almacenando los datos que tiene nuestra base de datos
+  //Para llenar el array y imprimir la informacion en el HTML
   CargarDatos() {
     this.srvProvincias.getAll().subscribe((provincias) => {
       this.provincias = provincias;
@@ -71,12 +73,12 @@ export class InformacionPersonalComponent {
   guardar() {
     if (this.estudianteForm.baseForm.valid) {
       this.srvEstudiantes.insert(this.estudianteForm.baseForm.value).subscribe(
-        (dato) => {
+        () => {
           this.estudianteForm.baseForm.reset();
           this.mensajeria.success('Sus datos se guardaron correctamente');
         },
         (error) => {
-          this.mensajeria.error('Se produjo un error guardando sus datos');
+          this.mensajeria.error(error);
         }
       );
     } else {
