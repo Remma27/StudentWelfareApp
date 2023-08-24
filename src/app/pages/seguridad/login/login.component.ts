@@ -15,7 +15,7 @@ export class LoginComponent {
     private srvUsuarios: UsuariosService,
     private mensajeria: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   IniciarSesion() {
     const Usuario_Id = this.usuarioForm.baseForm.get('Usuario_Id')?.value;
@@ -26,7 +26,7 @@ export class LoginComponent {
         if (response.success) {
           this.usuarioForm.baseForm.reset();
           this.mensajeria.success('Inicio de sesión exitoso');
-          this.router.navigate(['/BienestarEstudiantil/Menu']);
+          this.router.navigate(['/BienestarEstudiantil']);
         } else {
           this.mensajeria.error('Cédula o contraseña incorrectos');
         }

@@ -8,16 +8,22 @@ import { InformacionPersonalComponent } from './informacion-personal/informacion
 import { ReportesComponent } from './reportes/reportes.component';
 
 const routes: Routes = [
-  { path: 'Menu', component: BienestarEstudiantilComponent },
-  { path: 'AdecuacionCurricular', component: AdecuacionCurricularComponent },
-  { path: 'AtencionPsicologica', component: AtencionPsicologicaComponent },
-  { path: 'BitacoraProfesor', component: BitacoraProfesorComponent },
-  { path: 'InformacionPersonal', component: InformacionPersonalComponent },
-  { path: 'Reportes', component: ReportesComponent },
+  {
+    path: '',
+    component: BienestarEstudiantilComponent, // cargar el componente bienestar estudiantil en todas sus subrutas
+    children: [
+      { path: 'AdecuacionCurricular', component: AdecuacionCurricularComponent },
+      { path: 'AtencionPsicologica', component: AtencionPsicologicaComponent },
+      { path: 'BitacoraProfesor', component: BitacoraProfesorComponent },
+      { path: 'InformacionPersonal', component: InformacionPersonalComponent },
+      { path: 'Reportes', component: ReportesComponent },
+      { path: '', redirectTo: 'AdecuacionCurricular', pathMatch: 'full' }, //ruta por defecot
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class BienestarEstudiantilRoutingModule {}
+export class BienestarEstudiantilRoutingModule { }
