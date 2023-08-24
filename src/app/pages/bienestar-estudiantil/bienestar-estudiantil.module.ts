@@ -11,11 +11,11 @@ import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
-import { MenuComponent } from 'src/app/shared/components/menu/menu.component';
+//import { MenuComponent } from 'src/app/shared/components/menu/menu.component';
 import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { ReportesService } from 'src/app/shared/services/reportes.service';
 import { AdminReportesComponent } from './reportes/admin-reportes/admin-reportes.component';
-
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +26,10 @@ import { AdminReportesComponent } from './reportes/admin-reportes/admin-reportes
     BitacoraProfesorComponent,
     ReportesComponent,
     HeaderComponent,
-    MenuComponent,
+    //MenuComponent,
     FooterComponent,
-    AdminReportesComponent
+    AdminReportesComponent,
+    MenuComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +37,8 @@ import { AdminReportesComponent } from './reportes/admin-reportes/admin-reportes
     MaterialModule,
     ReactiveFormsModule,
   ],
-  providers: [/*ReportesService*/],
+  providers: [
+    /*ReportesService*/
+  ],
 })
-export class BienestarEstudiantilModule { }
+export class BienestarEstudiantilModule {}
