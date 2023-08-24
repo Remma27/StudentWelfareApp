@@ -1,3 +1,5 @@
+import { Distrito } from './distrito';
+
 export interface Estudiantes {
   Estudiante_Id: number;
   Cedula: number;
@@ -6,7 +8,7 @@ export interface Estudiantes {
   Telefono: number;
   Telefono2: number;
   Correo_Electronico: string;
-  Distrito_Id: number;
+  Distrito_Id: Distrito;
   Direccion_Exacta_Procedencia: string;
   Direccion_Exacta_Tiempo_Lectivo: string;
   Nacionalidad: string;

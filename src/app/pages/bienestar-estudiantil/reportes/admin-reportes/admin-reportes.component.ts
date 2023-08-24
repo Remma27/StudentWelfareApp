@@ -10,7 +10,7 @@ import { ReportesService } from 'src/app/shared/services/reportes.service';
 @Component({
   selector: 'app-admin-reportes',
   templateUrl: './admin-reportes.component.html',
-  styleUrls: ['./admin-reportes.component.scss']
+  styleUrls: ['./admin-reportes.component.scss'],
 })
 export class AdminReportesComponent implements OnInit {
   displayedColumns: string[] = [];
@@ -37,10 +37,22 @@ export class AdminReportesComponent implements OnInit {
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
               //this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
-              this.displayedColumns = ['Estudiante_Id', 'Telefono', 'Telefono2',
-                'Correo_Electronico', 'Cita_Id', 'Encargado_Nombre', 'Fecha_Cita',
-                'Seguimiento_Id', 'Resumen_Cita', 'Fecha_Correspondiente', 'Evaluacion_Id',
-                'Profesor_Cedula', 'Profesor_Nombre', 'Observacion'];
+              this.displayedColumns = [
+                'Estudiante_Id',
+                'Telefono',
+                'Telefono2',
+                'Correo_Electronico',
+                'Cita_Id',
+                'Encargado_Nombre',
+                'Fecha_Cita',
+                'Seguimiento_Id',
+                'Resumen_Cita',
+                'Fecha_Correspondiente',
+                'Evaluacion_Id',
+                'Profesor_Cedula',
+                'Profesor_Nombre',
+                'Observacion',
+              ];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
@@ -49,7 +61,7 @@ export class AdminReportesComponent implements OnInit {
           },
           (error) => {
             console.log(error);
-            this.msj.error('Error al cargar los reportes.');
+            this.msj.error(error);
           }
         );
         break;
@@ -58,18 +70,31 @@ export class AdminReportesComponent implements OnInit {
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
               //this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
-              this.displayedColumns = ['Genero', 'Telefono', 'Telefono2',
-                'Correo_Electronico', 'Foto_Cedula', 'Cita_Id', 'Encargado_Nombre', 'Fecha_Cita',
-                'Seguimiento_Id', 'Resumen_Cita', 'Fecha_Correspondiente', 'Evaluacion_Id',
-                'Profesor_Cedula', 'Profesor_Nombre', 'Observacion'];
+              this.displayedColumns = [
+                'Genero',
+                'Telefono',
+                'Telefono2',
+                'Correo_Electronico',
+                'Foto_Cedula',
+                'Cita_Id',
+                'Encargado_Nombre',
+                'Fecha_Cita',
+                'Seguimiento_Id',
+                'Resumen_Cita',
+                'Fecha_Correspondiente',
+                'Evaluacion_Id',
+                'Profesor_Cedula',
+                'Profesor_Nombre',
+                'Observacion',
+              ];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
               this.msj.info('No hay datos disponibles para mostrar');
             }
-          }, (error) => {
-            console.log(error);
-            this.msj.error('Error al cargar los reportes');
+          },
+          (error) => {
+            this.msj.error(error);
           }
         );
         break;
@@ -78,18 +103,30 @@ export class AdminReportesComponent implements OnInit {
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
               //this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
-              this.displayedColumns = ['Fecha_Nacimiento', 'Telefono', 'Telefono2',
-                'Correo_Electronico', 'Cita_Id', 'Encargado_Nombre', 'Fecha_Cita',
-                'Seguimiento_Id', 'Resumen_Cita', 'Fecha_Correspondiente', 'Evaluacion_Id',
-                'Profesor_Cedula', 'Profesor_Nombre', 'Observacion'];
+              this.displayedColumns = [
+                'Fecha_Nacimiento',
+                'Telefono',
+                'Telefono2',
+                'Correo_Electronico',
+                'Cita_Id',
+                'Encargado_Nombre',
+                'Fecha_Cita',
+                'Seguimiento_Id',
+                'Resumen_Cita',
+                'Fecha_Correspondiente',
+                'Evaluacion_Id',
+                'Profesor_Cedula',
+                'Profesor_Nombre',
+                'Observacion',
+              ];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
               this.msj.info('No hay datos disponibles para mostrar');
             }
-          }, (error) => {
-            console.log(error);
-            this.msj.error('Error al cargar los reportes');
+          },
+          (error) => {
+            this.msj.error(error);
           }
         );
         break;
@@ -98,18 +135,30 @@ export class AdminReportesComponent implements OnInit {
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
               //this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
-              this.displayedColumns = ['Distrito_Id', 'Telefono', 'Telefono2',
-                'Correo_Electronico', 'Cita_Id', 'Encargado_Nombre', 'Fecha_Cita',
-                'Seguimiento_Id', 'Resumen_Cita', 'Fecha_Correspondiente', 'Evaluacion_Id',
-                'Profesor_Cedula', 'Profesor_Nombre', 'Observacion'];
+              this.displayedColumns = [
+                'Distrito_Id',
+                'Telefono',
+                'Telefono2',
+                'Correo_Electronico',
+                'Cita_Id',
+                'Encargado_Nombre',
+                'Fecha_Cita',
+                'Seguimiento_Id',
+                'Resumen_Cita',
+                'Fecha_Correspondiente',
+                'Evaluacion_Id',
+                'Profesor_Cedula',
+                'Profesor_Nombre',
+                'Observacion',
+              ];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
               this.msj.info('No hay datos disponibles para mostrar');
             }
-          }, (error) => {
-            console.log(error);
-            this.msj.error('Error al cargar los reportes');
+          },
+          (error) => {
+            this.msj.error(error);
           }
         );
         break;
@@ -118,18 +167,30 @@ export class AdminReportesComponent implements OnInit {
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
               //this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
-              this.displayedColumns = ['Boleta_Matricula', 'Telefono', 'Telefono2',
-                'Correo_Electronico', 'Cita_Id', 'Encargado_Nombre', 'Fecha_Cita',
-                'Seguimiento_Id', 'Resumen_Cita', 'Fecha_Correspondiente', 'Evaluacion_Id',
-                'Profesor_Cedula', 'Profesor_Nombre', 'Observacion'];
+              this.displayedColumns = [
+                'Boleta_Matricula',
+                'Telefono',
+                'Telefono2',
+                'Correo_Electronico',
+                'Cita_Id',
+                'Encargado_Nombre',
+                'Fecha_Cita',
+                'Seguimiento_Id',
+                'Resumen_Cita',
+                'Fecha_Correspondiente',
+                'Evaluacion_Id',
+                'Profesor_Cedula',
+                'Profesor_Nombre',
+                'Observacion',
+              ];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
               this.msj.info('No hay datos disponibles para mostrar');
             }
-          }, (error) => {
-            console.log(error);
-            this.msj.error('Error al cargar los reportes');
+          },
+          (error) => {
+            this.msj.error(error);
           }
         );
         break;
@@ -137,18 +198,30 @@ export class AdminReportesComponent implements OnInit {
         this.srvReportes.getRecursosInvertidos().subscribe(
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
-              this.displayedColumns = ['Cita_Id', 'Estudiante_Id', 'Encargado_Nombre',
-                'Aprobacion_Cita', 'Fecha_Cita', 'Seguimiento_Id', 'Cita_Id',
-                'Agenda_Cita', 'Resumen_Cita', 'Fecha_Correspondiente',
-                'Profesor_Cedula', 'Profesor_Nombre', 'Nombre_Curso', 'Observacion'];
+              this.displayedColumns = [
+                'Cita_Id',
+                'Estudiante_Id',
+                'Encargado_Nombre',
+                'Aprobacion_Cita',
+                'Fecha_Cita',
+                'Seguimiento_Id',
+                'Cita_Id',
+                'Agenda_Cita',
+                'Resumen_Cita',
+                'Fecha_Correspondiente',
+                'Profesor_Cedula',
+                'Profesor_Nombre',
+                'Nombre_Curso',
+                'Observacion',
+              ];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
               this.msj.info('No hay datos disponibles para mostrar');
             }
-          }, (error) => {
-            console.log(error);
-            this.msj.error('Error al cargar los reportes');
+          },
+          (error) => {
+            this.msj.error(error);
           }
         );
         break;
@@ -157,25 +230,49 @@ export class AdminReportesComponent implements OnInit {
           (reportes: Reportes[]) => {
             if (reportes && reportes.length > 0) {
               //this.displayedColumns = ['Estudiantes', 'Citas', 'Seguimientos', 'Evaluaciones', 'Bitacoras'];
-              this.displayedColumns = ['Estudiante_Id', 'Genero',
-                'Fecha_Nacimiento', 'Telefono', 'Telefono2', 'Correo_Electronico',
-                'Distrito_Id', 'Direccion_Exacta_Procedencia',
-                'Direccion_Exacta_Tiempo_Lectivo', 'Nacionalidad',
-                'Colegio_Procedencia', 'Ano_Graduacion_Secundaria',
-                'Boleta_Matricula', 'Foto_Cedula', 'Cita_Id', 'Estudiante_Id', 'Encargado_Nombre',
-                'Aprobacion_Cita', 'Fecha_Cita', 'Seguimiento_Id', 'Cita_Id',
-                'Agenda_Cita', 'Resumen_Cita', 'Fecha_Correspondiente',
-                'Evaluacion_Id', 'Estudiante_Id', 'Bitacora_Id',
-                'Estudiante_Id', 'Profesor_Cedula', 'Profesor_Nombre',
-                'Nombre_Curso', 'Fecha', 'Observacion'];
+              this.displayedColumns = [
+                'Estudiante_Id',
+                'Genero',
+                'Fecha_Nacimiento',
+                'Telefono',
+                'Telefono2',
+                'Correo_Electronico',
+                'Distrito_Id',
+                'Direccion_Exacta_Procedencia',
+                'Direccion_Exacta_Tiempo_Lectivo',
+                'Nacionalidad',
+                'Colegio_Procedencia',
+                'Ano_Graduacion_Secundaria',
+                'Boleta_Matricula',
+                'Foto_Cedula',
+                'Cita_Id',
+                'Estudiante_Id',
+                'Encargado_Nombre',
+                'Aprobacion_Cita',
+                'Fecha_Cita',
+                'Seguimiento_Id',
+                'Cita_Id',
+                'Agenda_Cita',
+                'Resumen_Cita',
+                'Fecha_Correspondiente',
+                'Evaluacion_Id',
+                'Estudiante_Id',
+                'Bitacora_Id',
+                'Estudiante_Id',
+                'Profesor_Cedula',
+                'Profesor_Nombre',
+                'Nombre_Curso',
+                'Fecha',
+                'Observacion',
+              ];
               this.dataSource = new MatTableDataSource(reportes);
               this.datosCargados = true;
             } else {
               this.msj.info('No hay datos disponibles para mostrar');
             }
-          }, (error) => {
-            console.log(error);
-            this.msj.error('Error al cargar los reportes');
+          },
+          (error) => {
+            this.msj.error(error);
           }
         );
         break;
@@ -186,8 +283,8 @@ export class AdminReportesComponent implements OnInit {
   }
 
   exportToCSV() {
-    const csvData = this.dataSource.data.map(item => {
-      return this.displayedColumns.map(col => item[col]).join(',');
+    const csvData = this.dataSource.data.map((item) => {
+      return this.displayedColumns.map((col) => item[col]).join(',');
     });
 
     const csvString = csvData.join('\n');
@@ -207,7 +304,11 @@ export class AdminReportesComponent implements OnInit {
       return row;
     });
 
-    this.srvReportes.getPDF(this.dataSource.data, 'Lista de reportes', 'Reportes', datos);
+    this.srvReportes.getPDF(
+      this.dataSource.data,
+      'Lista de reportes',
+      'Reportes',
+      datos
+    );
   }
-
 }

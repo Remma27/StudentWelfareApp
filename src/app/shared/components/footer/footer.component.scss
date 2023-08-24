@@ -1,5 +1,5 @@
 
-.container {
+/*.container {
     position: absolute;
     bottom: 0;
     width: 2000px;
@@ -15,4 +15,30 @@
     margin-left: 20px;
     margin-top: 10px;
 
+  }*/
+
+  footer {
+    width: 100%;
+    background-color: #1b3069;
+    padding: 20px 0;
+    color: #ffffff;
   }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+  }
+  
+  .fa-brands {
+    font-size: 45px;
+    margin-right: 20px;
+  }
+  
+  /* Estilos para asegurar que el footer se ajuste dinámicamente */
+  body {
+    margin-bottom: 80px; /* Ajusta este valor según la altura de tu footer */
+  }
+  
+  
