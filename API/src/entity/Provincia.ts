@@ -1,11 +1,17 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Canton } from './Canton';
 import { Distrito } from './Distrito';
 
 @Entity()
 export class Provincia {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Provincia_Id: number;
 

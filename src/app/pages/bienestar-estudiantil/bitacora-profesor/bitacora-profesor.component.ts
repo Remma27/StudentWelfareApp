@@ -26,8 +26,7 @@ export class BitacoraProfesorComponent {
         window.location.reload();
       },
       (error) => {
-        console.error('Error al guardar:', error);
-        this.mensajeria.error('Error al guardar');
+        this.mensajeria.error(error);
       }
     );
   }

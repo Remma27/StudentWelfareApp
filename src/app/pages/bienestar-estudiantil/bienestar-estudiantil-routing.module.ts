@@ -6,6 +6,7 @@ import { AtencionPsicologicaComponent } from './atencion-psicologica/atencion-ps
 import { BitacoraProfesorComponent } from './bitacora-profesor/bitacora-profesor.component';
 import { InformacionPersonalComponent } from './informacion-personal/informacion-personal.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
   {

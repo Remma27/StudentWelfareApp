@@ -27,17 +27,20 @@ export class SignupComponent {
     }
 
     this.srvUsuarios.insert(this.usuarioForm.baseForm.value).subscribe(
-      (dato) => {
+      () => {
         this.usuarioForm.baseForm.reset();
         this.mensajeria.success('¡Guardado correctamente!');
         this.router.navigate(['/']);
       },
       (error) => {
-        this.mensajeria.error('Error al guardar');
+        this.mensajeria.error(error);
       }
     );
   }
 
+  //En este metodo lo que estamos haciendo es comparar la contrasena encriptada en la base de datos 
+  //Con la contrasena que esta escribiendo el usuario, por seguridad no tenemos que desencriptar
+  //Si no, encriptar y comparar las dos contrasenas encripatas, esto devuelve un true o false
   get contrasenasNoCoinciden() {
     const contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
     const repetirContrasena =

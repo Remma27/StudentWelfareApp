@@ -7,11 +7,10 @@ import jsPDF from 'jspdf';
 import autotable from 'jspdf-autotable';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReportesService {
-
-  constructor(private http: HttpClient, private handler: UsuariosService,) { }
+  constructor(private http: HttpClient, private handler: UsuariosService) {}
 
   /*private rutaPorOpcion: { [opcion: string]: string } = {
     'Por tipo de problema atendido': 'tipoDeProblema',
@@ -34,46 +33,51 @@ export class ReportesService {
   }*/
 
   getTipoDeProblema(): Observable<Reportes[]> {
-    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/tipoDeProblema').
-      pipe(catchError(this.handler.handleError));
+    return this.http
+      .get<Reportes[]>('http://localhost:3000/Reportes/tipoDeProblema')
+      .pipe(catchError(this.handler.handleError));
   }
   getEdad(): Observable<Reportes[]> {
-    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/edad').
-      pipe(catchError(this.handler.handleError));
+    return this.http
+      .get<Reportes[]>('http://localhost:3000/Reportes/edad')
+      .pipe(catchError(this.handler.handleError));
   }
   getGenero(): Observable<Reportes[]> {
-    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/genero').
-      pipe(catchError(this.handler.handleError));
+    return this.http
+      .get<Reportes[]>('http://localhost:3000/Reportes/genero')
+      .pipe(catchError(this.handler.handleError));
   }
   getZonaProcedencia(): Observable<Reportes[]> {
-    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/zonaProcedencia').
-      pipe(catchError(this.handler.handleError));
+    return this.http
+      .get<Reportes[]>('http://localhost:3000/Reportes/zonaProcedencia')
+      .pipe(catchError(this.handler.handleError));
   }
   getRangoFecha(): Observable<Reportes[]> {
-    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/rangoFecha').
-      pipe(catchError(this.handler.handleError));
+    return this.http
+      .get<Reportes[]>('http://localhost:3000/Reportes/rangoFecha')
+      .pipe(catchError(this.handler.handleError));
   }
   getRecursosInvertidos(): Observable<Reportes[]> {
-    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/recursosInvertidos').
-      pipe(catchError(this.handler.handleError));
+    return this.http
+      .get<Reportes[]>('http://localhost:3000/Reportes/recursosInvertidos')
+      .pipe(catchError(this.handler.handleError));
   }
   getCombinacion(): Observable<Reportes[]> {
-    return this.http.get<Reportes[]>('http://localhost:3000/Reportes/combinacion').
-      pipe(catchError(this.handler.handleError));
+    return this.http
+      .get<Reportes[]>('http://localhost:3000/Reportes/combinacion')
+      .pipe(catchError(this.handler.handleError));
   }
-
 
   getPDF(
     encabezado: string[],
     titulo: string,
     nombreArchivo: string,
-    cuerpo?: any[],
+    cuerpo?: any[]
   ): void {
-
     const doc = new jsPDF({
       orientation: 'portrait',
       unit: 'px',
-      format: 'letter'
+      format: 'letter',
     });
 
     doc.text(titulo, doc.internal.pageSize.width / 2, 25, { align: 'center' });
@@ -84,8 +88,8 @@ export class ReportesService {
       margin: { top: 40 },
       styles: {
         fontSize: 10,
-        cellPadding: { top: 5, right: 5, bottom: 5, left: 5 }
-      }
+        cellPadding: { top: 5, right: 5, bottom: 5, left: 5 },
+      },
     };
 
     autotable(doc, options);
