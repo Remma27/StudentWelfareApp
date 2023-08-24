@@ -1,12 +1,11 @@
 body {
-  background-color: #1b3069;
-}
-body {
-  background-color: #1b3069;
+ background-color: #f5f8f5;
+ 
+  background-size: 300%;
 }
 
 .container {
-  color: white;
+  color: #e7e8e7;
 }
 
 .texto {
@@ -31,9 +30,6 @@ p {
 footer {
   background-color: #1b3069;
   color: white;
-footer {
-  background-color: #1b3069;
-  color: white;
 }
 
 .form {
@@ -41,7 +37,7 @@ footer {
   width: 40%;
   height: 100%;
   padding: 90px;
-  background-color: white;
+  background-color: #1b3069;
   color: black;
   float: right;
   top: -205px;
@@ -51,14 +47,13 @@ footer {
 }
 mat-form-field {
   display: block;
-  margin: 5px;
-  width: 300px;
+  
+  
 }
 .titulo {
   text-align: center;
   margin: 25px;
   font-size: 2em;
-}
 }
 
 a {
@@ -74,9 +69,9 @@ a {
   text-align: center;
 }
 img {
-    width: -webkit-fill-available;
+  width: -webkit-fill-available;
 
-margin-left: 45px;
+  margin-left: 45px;
   width: 250px;
   height: 200px;
 }
@@ -87,11 +82,16 @@ a {
 a:hover {
   text-decoration: none;
 }
+
+
+
+
+
 .link {
-  color: #c4c3ca;
+  color: #102770;
 }
 .link:hover {
-  color: #ffeba7;
+  color: #102770;
 }
 p {
   font-weight: 500;
@@ -100,6 +100,7 @@ p {
 }
 h4 {
   font-weight: 600;
+  color: #102770;
 }
 h6 span {
   padding: 0 20px;
@@ -130,7 +131,7 @@ h6 span {
   padding: 0;
   margin: 10px auto;
   cursor: pointer;
-  background-color: #ffeba7;
+  background-color: #ffcd2a;
 }
 .checkbox:checked + label:before,
 .checkbox:not(:checked) + label:before {
@@ -139,7 +140,7 @@ h6 span {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color: #ffeba7;
+  color: #000000;
   background-color: #102770;
   font-family: "unicons";
   content: "\eb4f";
@@ -176,13 +177,14 @@ h6 span {
 }
 .card-front,
 .card-back {
-  width: 100%;
+  width: 800px;
   height: 100%;
-  background-color: #ffffff;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
+  background-color: #c4c3ca;
+ 
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: 300%;
+
   position: absolute;
   border-radius: 6px;
   left: 0;
@@ -328,26 +330,21 @@ h6 span {
 }
 .btn:active,
 .btn:focus {
-  background-color: #102770;
-  color: #ffeba7;
+  background-color: #263258;
+  color: #263258;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
 .btn:hover {
-  background-color: #102770;
-  color: #ffeba7;
+  background-color: #263258;
+  color: #263258;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
 }
-.logo {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  display: block;
-  z-index: 100;
-  transition: all 250ms linear;
-}
+
 .logo img {
-  height: 26px;
-  width: auto;
+  
+  width: 112px;
+  height: 80px;
+  padding-top: 8px;
   display: block;
 }
 a {
@@ -358,7 +355,7 @@ a:hover {
   text-decoration: none;
 }
 .link {
-  color: #c4c3ca;
+  color: #1b3069;
 }
 .link:hover {
   color: #ffeba7;
@@ -373,8 +370,17 @@ h4 {
 }
 h6 span {
   padding: 0 20px;
+  color: #000000;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 800;
+}
+
+h3 span {
+  padding: 0 20px;
+  color: #000000;
+  font-size: larger;
+  text-transform: uppercase;
+  font-weight: 800;
 }
 .section {
   position: relative;
@@ -383,6 +389,7 @@ h6 span {
 }
 .full-height {
   min-height: 100vh;
+  padding-bottom: 150px;
 }
 [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked) {
@@ -400,7 +407,7 @@ h6 span {
   padding: 0;
   margin: 10px auto;
   cursor: pointer;
-  background-color: #ffeba7;
+  background-color: #beb8b8;
 }
 .checkbox:checked + label:before,
 .checkbox:not(:checked) + label:before {
@@ -409,7 +416,7 @@ h6 span {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color: #ffeba7;
+  color: #ffcb1f;
   background-color: #102770;
   font-family: "unicons";
   content: "\eb4f";
@@ -447,11 +454,9 @@ h6 span {
 .card-front,
 .card-back {
   width: 100%;
-  height: 100%;
-  background-color: #ffffff;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
-  background-position: bottom center;
-  background-repeat: no-repeat;
+  height: 140%;
+  background-color: #e7e8e7;
+
   background-size: 300%;
   position: absolute;
   border-radius: 6px;
@@ -606,17 +611,4 @@ h6 span {
   background-color: #102770;
   color: #ffeba7;
   box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
-}
-.logo {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  display: block;
-  z-index: 100;
-  transition: all 250ms linear;
-}
-.logo img {
-  height: 26px;
-  width: auto;
-  display: block;
 }

@@ -53,4 +53,32 @@ export class LoginComponent {
       }
     );
   }
+
+
+
+  Registrarse() {
+    if (this.contrasenasNoCoinciden) {
+      this.mensajeria.error('Las contraseñas no coinciden');
+      return;
+    }
+
+    this.srvUsuarios.insert(this.usuarioForm.baseForm.value).subscribe(
+      (dato) => {
+        this.usuarioForm.baseForm.reset();
+        this.mensajeria.success('¡Guardado correctamente!');
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        this.mensajeria.error('Error al guardar');
+      }
+    );
+  }
+
+  get contrasenasNoCoinciden() {
+    const contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
+    const repetirContrasena =
+      this.usuarioForm.baseForm.get('RepetirContrasena')?.value;
+    return contrasena !== repetirContrasena;
+  }
+
 }
