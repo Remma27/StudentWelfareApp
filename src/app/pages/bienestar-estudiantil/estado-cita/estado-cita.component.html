@@ -1,6 +1,7 @@
 <H2>Citas pendientes</H2>
 <br />
 
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="Cita_Id">
     <th mat-header-cell *matHeaderCellDef><h3>Id</h3></th>
@@ -42,6 +43,7 @@
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
 
   <tr class="mat-row" *matNoDataRow>
     <td class="mat-cell" colspan="4">
@@ -147,6 +149,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
+
   <tr class="mat-row" *matNoDataRow>
     <td class="mat-cell" colspan="4">
       <h2>No hay datos en esta tablas</h2>
@@ -199,6 +202,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
+
   <tr class="mat-row" *matNoDataRow>
     <td class="mat-cell" colspan="4">
       <h2>No hay datos en esta tablas</h2>
@@ -208,6 +212,7 @@
 <br />
 <h2>Citas completadas</h2>
 <br />
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="Cita_Id">
     <th mat-header-cell *matHeaderCellDef><h3>Id</h3></th>
