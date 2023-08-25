@@ -20,7 +20,7 @@ export const AppDataSource = new DataSource({
   username: 'root',
   password: 'root',
   database: 'BienestarEstudiantil',
-  synchronize: false,
+  synchronize: true,
   logging: false,
   entities: [
     Estudiante,
