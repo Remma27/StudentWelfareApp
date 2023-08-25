@@ -18,16 +18,22 @@ export class BitacoraProfesorComponent {
   ) {}
 
   guardar() {
-    this.srvBitacora.insert(this.bitacoraForm.baseForm.value).subscribe(
-      (dato) => {
-        console.log(dato);
-        this.mensajeria.success('¡Guardado correctamente!');
-        this.bitacoraForm.baseForm.reset();
-        window.location.reload();
-      },
-      (error) => {
-        this.mensajeria.error(error);
-      }
-    );
+    if (this.bitacoraForm.baseForm.valid) {
+      this.srvBitacora.insert(this.bitacoraForm.baseForm.value).subscribe(
+        (dato) => {
+          console.log(dato);
+          this.mensajeria.success('¡Guardado correctamente!');
+          this.bitacoraForm.baseForm.reset();
+          window.location.reload();
+        },
+        (error) => {
+          this.mensajeria.error(
+            'El estudiante no esta registrado en la base de datos'
+          );
+        }
+      );
+    } else {
+      this.mensajeria.error('Se produjo un error');
+    }
   }
 }

@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="cita.component.scss" />
 <!--<title>Bitacora</title>
   </head>
+
   <body>-->
 <div class="container">
   <div class="row">
@@ -26,8 +27,9 @@
         <p>Digite el id del estudiante</p>
         <mat-form-field>
           <mat-label></mat-label>
-          <input matInput type="number" formControlName="estudiante" />
+          <input matInput type="number" formControlName="Estudiante_Id" />
         </mat-form-field>
+
 
         <p>Digite el nombre del encargado</p>
         <mat-form-field>
@@ -41,12 +43,14 @@
           <textarea matInput formControlName="Observacion_Cita"> </textarea>
         </mat-form-field>
 
+
         <p>Elige la fecha correcta</p>
         <mat-form-field>
           <mat-label></mat-label>
-          <input matInput type="date" formControlName="Encargado_Nombre" />
+          <input matInput type="date" formControlName="Fecha_Cita" />
         </mat-form-field>
       </form>
+
 
       <div class="example-button-row div3">
         <button
