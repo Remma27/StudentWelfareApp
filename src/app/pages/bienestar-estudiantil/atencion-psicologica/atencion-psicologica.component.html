@@ -9,7 +9,7 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="atencion-psicologica.component.scss">
+    <link rel="stylesheet" href="atencion-psicologica.component.scss" />
     <title>Solicitud de cita</title>
   </head>
   <body>
@@ -20,52 +20,48 @@
         </div>
 
         <div class="col-8 div2">
-          <form >
+          <form>
             <p>¿Desea su atención presencial o remota</p>
             <div class="check">
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="inlineRadio1"
-                   
-                  />
-                  <label class="form-check-label" for="inlineRadio1"
-                    >Presencial</label
-                  >
-                </div>
-                <div class="form-check form-check-inline">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="inlineRadio2"
-                
-                    
-                  />
-                  <label class="form-check-label" for="inlineRadio2"
-                    >Masculino</label
-                  >
-                </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio1"
+                  formControlName="Respuesta_Cuestionario"
+                />
+                <label class="form-check-label" for="inlineRadio1"
+                  >Presencial</label
+                >
               </div>
-<br>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio2"
+                  formControlName="Respuesta_Cuestionario"
+                />
+                <label class="form-check-label" for="inlineRadio2"
+                  >Virtual</label
+                >
+              </div>
+            </div>
+            <br />
 
             <p>¿Cuál sería el motivo de su consulta?</p>
             <mat-form-field>
               <mat-label></mat-label>
-              <textarea matInput formControlName="Observacion"> </textarea>
+              <textarea matInput formControlName="Respuesta_Cuestionario">
+              </textarea>
             </mat-form-field>
-
 
             <p>¿En qué sede estudia?</p>
             <mat-form-field>
               <mat-label>Sede</mat-label>
-              <mat-select>
-                <mat-option
-                  *ngFor="let Sede of Sede"
-                  [value]="Sede.value"
-                >
+              <mat-select formControlName="Respuesta_Cuestionario">
+                <mat-option *ngFor="let Sede of Sede" [value]="Sede.value">
                   {{ Sede.viewValue }}
                 </mat-option>
               </mat-select>
@@ -74,7 +70,7 @@
             <p>¿A qué hora tiene disponibilidads?</p>
             <mat-form-field>
               <mat-label>Horario</mat-label>
-              <mat-select>
+              <mat-select formControlName="Respuesta_Cuestionario">
                 <mat-option
                   *ngFor="let Horario of Horario"
                   [value]="Horario.value"
@@ -87,20 +83,20 @@
             <p>Mencione 2 días de su preferencia que desee las citas</p>
             <mat-form-field>
               <mat-label></mat-label>
-              <textarea matInput > </textarea>
+              <textarea matInput formControlName="Respuesta_Cuestionario">
+              </textarea>
             </mat-form-field>
 
             <p>¿Alguna observación que quiera expresar?</p>
             <mat-form-field>
               <mat-label></mat-label>
-              <textarea matInput > </textarea>
+              <textarea matInput formControlName="Respuesta_Cuestionario">
+              </textarea>
             </mat-form-field>
           </form>
 
           <div class="example-button-row boton">
-            <button mat-flat-button color="primary" >
-              Finalizar
-            </button>
+            <button mat-flat-button color="primary">Finalizar</button>
           </div>
         </div>
         <div class="col-2"></div>
