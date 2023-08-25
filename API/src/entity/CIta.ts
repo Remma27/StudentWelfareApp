@@ -36,5 +36,5 @@ export class Cita {
 
   @Column({ default: true })
   @IsNotEmpty({ message: 'Debe ingresar valores' })
-  Estado: boolean;
+  Estado: string;
 }

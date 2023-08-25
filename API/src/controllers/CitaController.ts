@@ -10,9 +10,7 @@ export class CitaController {
   static getAll = async (req: Request, res: Response) => {
     try {
       const citasRepo = AppDataSource.getRepository(Cita);
-      const citas = await citasRepo.find({
-        where: { Estado: true },
-      });
+      const citas = await citasRepo.find({});
       if (citas.length === 0)
         return res.status(404).json({ message: 'No hay citas activas' });
       return res.status(200).json(citas);
@@ -28,7 +26,7 @@ export class CitaController {
       let cita;
       try {
         cita = await citasRepo.findOneOrFail({
-          where: { Cita_Id, Estado: true },
+          where: { Cita_Id },
         });
       } catch (error) {
         return res
@@ -67,7 +65,7 @@ export class CitaController {
       cita.Encargado_Nombre = Encargado_Nombre;
       cita.Observacion_Cita = Observacion_Cita;
       cita.Fecha_Cita = Fecha_Cita;
-      cita.Estado = true;
+      cita.Estado = 'Comfirmada';
       const errores = await validate(cita, {
         validationError: { target: false, value: false },
       });
@@ -102,6 +100,7 @@ export class CitaController {
         Encargado_Nombre,
         Observacion_Cita,
         Fecha_Cita,
+        Estado,
       } = req.body;
       const citasRepo = AppDataSource.getRepository(Cita);
       const citaExistente = await citasRepo.findOne({
@@ -123,7 +122,7 @@ export class CitaController {
       cita.Encargado_Nombre = Encargado_Nombre;
       cita.Observacion_Cita = Observacion_Cita;
       cita.Fecha_Cita = Fecha_Cita;
-      cita.Estado = true;
+      cita.Estado = Estado;
       const errores = await validate(cita, {
         validationError: { target: false, value: false },
       });
@@ -154,12 +153,11 @@ export class CitaController {
       let cita: Cita;
       try {
         cita = await citasRepo.findOneOrFail({
-          where: { Cita_Id, Estado: true },
+          where: { Cita_Id },
         });
       } catch (error) {
         return res.status(404).json({ message: 'Cita no encontrada ' });
       }
-      cita.Estado = false;
       const errores = await validate(cita, {
         validationError: { target: false, value: false },
       });
@@ -167,7 +165,7 @@ export class CitaController {
         return res.status(400).json(errores);
       }
       try {
-        await citasRepo.save(cita);
+        await citasRepo.delete(cita);
         return res
           .status(200)
           .json({ message: 'Cita eliminada correctamente' });
