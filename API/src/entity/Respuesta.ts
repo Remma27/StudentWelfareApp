@@ -14,7 +14,6 @@ import { Estudiante } from './Estudiante';
 @Entity()
 export class Respuesta {
   @PrimaryGeneratedColumn()
-  @IsNotEmpty({ message: 'Debe ingresar valores' })
   Respuesta_Id: number;
 
   @ManyToOne(() => Pregunta, (pregunta) => pregunta.respuesta)

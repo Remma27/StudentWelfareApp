@@ -44,21 +44,13 @@ export class EvaluacionServicioController {
   static insert = async (req: Request, res: Response) => {
     /*formato
         
-      "Evaluacion_Id": 3,
       "Estudiante_Id": 1,
         
     */
     try {
-      const { Evaluacion_Id, Estudiante_Id } = req.body;
+      const { Estudiante_Id } = req.body;
 
       const EvaluacionRepo = AppDataSource.getRepository(EvaluacionServicio);
-      const EvaluacionExistente = await EvaluacionRepo.findOne({
-        where: { Evaluacion_Id, Estado: true },
-      });
-      if (EvaluacionExistente)
-        return res
-          .status(400)
-          .json({ message: 'Ya existe evaluacion del servicio' });
 
       const repoEstudiante = AppDataSource.getRepository(Estudiante);
       const estudiante = await repoEstudiante.findOne({
@@ -69,7 +61,6 @@ export class EvaluacionServicioController {
       }
 
       let evaluacion = new EvaluacionServicio();
-      evaluacion.Evaluacion_Id = Evaluacion_Id;
       evaluacion.estudiante = Estudiante_Id;
       evaluacion.Estado = true;
 
@@ -122,7 +113,6 @@ export class EvaluacionServicioController {
         return res.status(400).json({ message: 'No existe el estudiante' });
       }
       let evaluacion = new EvaluacionServicio();
-      evaluacion.Evaluacion_Id = Evaluacion_Id;
       evaluacion.estudiante = Estudiante_Id;
       evaluacion.Estado = true;
 

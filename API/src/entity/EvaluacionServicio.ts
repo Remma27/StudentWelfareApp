@@ -6,14 +6,14 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Estudiante } from './Estudiante';
 import { Respuesta } from './Respuesta';
 
 @Entity()
 export class EvaluacionServicio {
-  @PrimaryColumn()
-  @IsNotEmpty({ message: 'Debe ingresar valores' })
+  @PrimaryGeneratedColumn()
   Evaluacion_Id: number;
 
   @ManyToOne(() => Estudiante, (estudiante) => estudiante.evaluacionServicio)
