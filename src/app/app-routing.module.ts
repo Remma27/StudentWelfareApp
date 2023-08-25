@@ -4,7 +4,7 @@ import { AuthGuard } from './guards/auth-guard.guard';
 
 const routes: Routes = [
   {
-    path: 'BienestarEstudiantil', canActivate: [AuthGuard],
+    path: 'BienestarEstudiantil',
     loadChildren: () =>
       import('./pages/bienestar-estudiantil/bienestar-estudiantil.module').
         then((b) => b.BienestarEstudiantilModule)
