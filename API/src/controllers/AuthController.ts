@@ -1,7 +1,9 @@
+
 import { Request, Response } from 'express';
 import { AppDataSource } from '../data-source';
 import { Usuario } from '../entity/Usuario';
 import * as jwt from 'jsonwebtoken';
+
 
 export class AuthController {
   static login = async (req: Request, res: Response) => {

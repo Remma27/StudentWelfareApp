@@ -9,6 +9,8 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { SeguimientoComponent } from './seguimiento/seguimiento.component';
 import { MenuComponent } from './menu/menu.component';
 import { CitaComponent } from './cita/cita.component';
+import { RetroalimentacionComponent } from './retroalimentacion/retroalimentacion.component';
+import { EstadoCitaComponent } from './estado-cita/estado-cita.component';
 
 const routes: Routes = [
   { path: 'Menu', component: MenuComponent },
@@ -26,6 +28,8 @@ const routes: Routes = [
       { path: 'Reportes', component: ReportesComponent },
       { path: 'Seguimiento', component: SeguimientoComponent },
       { path: 'Cita', component: CitaComponent },
+      { path: 'Retroalimentacion', component: RetroalimentacionComponent },
+      { path: 'estadoCita', component: EstadoCitaComponent },
       { path: '', redirectTo: 'AdecuacionCurricular', pathMatch: 'full' }, //ruta por defecot
     ],
   },

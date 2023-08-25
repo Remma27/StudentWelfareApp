@@ -18,6 +18,8 @@ import { AdminReportesComponent } from './reportes/admin-reportes/admin-reportes
 import { CitaComponent } from './cita/cita.component';
 import { SeguimientoComponent } from './seguimiento/seguimiento.component';
 import { MenuComponent } from './menu/menu.component';
+import { RetroalimentacionComponent } from './retroalimentacion/retroalimentacion.component';
+import { EstadoCitaComponent } from './estado-cita/estado-cita.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { MenuComponent } from './menu/menu.component';
     CitaComponent,
     SeguimientoComponent,
     MenuComponent,
+    RetroalimentacionComponent,
+    EstadoCitaComponent,
   ],
   imports: [
     CommonModule,
