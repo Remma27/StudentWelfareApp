@@ -17,7 +17,18 @@ export class EstadoCitaComponent {
     'Fecha_Cita',
     'Acciones',
   ];
-  dataSource = new MatTableDataSource();
+
+  displayedColumns2: string[] = [
+    'Cita_Id',
+    'Estudiante_Id',
+    'Encargado_Nombre',
+    'Observacion_Cita',
+    'Fecha_Cita',
+  ];
+  confirmadas = new MatTableDataSource();
+  progreso = new MatTableDataSource();
+  Completada = new MatTableDataSource();
+  Cancelada = new MatTableDataSource();
 
   constructor(
     private srvCitas: CitaService,
@@ -29,18 +40,40 @@ export class EstadoCitaComponent {
   }
 
   cargarlista() {
-    this.srvCitas.getAll().subscribe(
+    this.srvCitas.getByEstado('Confirmada').subscribe(
       (datos) => {
-        this.dataSource.data = datos;
+        this.confirmadas.data = datos;
       },
       (error) => {
         this.mensajeria.error('No hay datos');
       }
     );
-  }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.srvCitas.getByEstado('En Progreso').subscribe(
+      (datos) => {
+        this.progreso.data = datos;
+      },
+      (error) => {
+        this.mensajeria.error('No hay datos');
+      }
+    );
+
+    this.srvCitas.getByEstado('Completada').subscribe(
+      (datos) => {
+        this.Completada.data = datos;
+      },
+      (error) => {
+        this.mensajeria.error('No hay datos');
+      }
+    );
+
+    this.srvCitas.getByEstado('Cancelada').subscribe(
+      (datos) => {
+        this.Cancelada.data = datos;
+      },
+      (error) => {
+        this.mensajeria.error('No hay datos');
+      }
+    );
   }
 }

@@ -19,6 +19,12 @@ export class CitaService {
       .get<Citas>('http://localhost:3000/Citas/' + Cita_Id)
       .pipe(catchError(this.handlerError));
   }
+
+  getByEstado(Estado: string): Observable<Citas[]> {
+    return this.http
+      .get<Citas[]>('http://localhost:3000/Citas/getEstado/' + Estado)
+      .pipe(catchError(this.handlerError));
+  }
   insert(cita: Citas): Observable<Citas> {
     return this.http
       .post<Citas>('http://localhost:3000/Citas', cita)

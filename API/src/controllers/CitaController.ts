@@ -39,6 +39,26 @@ export class CitaController {
     }
   };
 
+  static getByEstado = async (req: Request, res: Response) => {
+    try {
+      const estado = req.params['Estado']; // Estado es un string
+      const citasRepo = AppDataSource.getRepository(Cita);
+
+      try {
+        const cita = await citasRepo.find({
+          where: { Estado: estado },
+        });
+        return res.status(200).json(cita);
+      } catch (error) {
+        return res
+          .status(404)
+          .json({ message: 'Cita no encontrada o inactiva' });
+      }
+    } catch (error) {
+      return res.status(400).json({ error: error.message });
+    }
+  };
+
   static insert = async (req: Request, res: Response) => {
     /*formato
             "Estudiante_Id":9,
