@@ -9,6 +9,7 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
+  { path: 'Menu', component: MenuComponent },
   {
     path: '',
     component: BienestarEstudiantilComponent, // cargar el componente bienestar estudiantil en todas sus subrutas
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'AdecuacionCurricular', pathMatch: 'full' }, //ruta por defecot
     ],
   },
+
 ];
 
 @NgModule({

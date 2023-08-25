@@ -54,7 +54,7 @@ export class LoginComponent {
         if (loginSuccess) {
           this.usuarioForm.baseForm.reset();
           this.mensajeria.success('Inicio de sesión exitoso');
-          this.router.navigate(['/BienestarEstudiantil']);
+          this.router.navigate(['/BienestarEstudiantil/Menu']);
         } else {
           this.mensajeria.error('Cédula o contraseña incorrectos');
         }
