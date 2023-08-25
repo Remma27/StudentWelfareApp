@@ -97,6 +97,57 @@
     color: #f7ca18; 
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+    
+  }
+  
+  .dropdown-btn {
+    background-color: #1b3069;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px; /* Aumenta el tamaño del texto */
+    border: none;
+    cursor: pointer;
+    
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    list-style: none;
+    padding: 0;
+    
+  }
+  
+  .dropdown-content li {
+    padding: 10px;
+    transition: background-color 0.3s ease; /* Transición de color de fondo */
+  }
+  
+  /* Cambio de color al pasar el cursor sobre un elemento */
+.dropdown-content li:hover {
+    background-color: #dcdcdc;
+    transform: translateX(-10px); 
+    box-decoration-break: 0px 5px 10px rgba(0, 0, 0, 10);
+  }
+
+
+
+  .dropdown-content a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1; /* Mostrar gradualmente */
+    transform: translateY(0);
+  }
+
 //DESVANECIDO EN APERTURA
 @keyframes fadeIn {
     from {
