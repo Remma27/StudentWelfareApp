@@ -4,11 +4,12 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryColumn,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Provincia } from './Provincia';
 import { Canton } from './Canton';
+import { Estudiante } from './Estudiante';
 
 @Entity()
 export class Distrito {
@@ -27,4 +28,7 @@ export class Distrito {
   @Column()
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Nombre: string;
+
+  @OneToMany(() => Estudiante, (estudiante) => estudiante.distrito)
+  estudiantes: Estudiante[];
 }

@@ -1,17 +1,22 @@
-import { IsEmail, IsIn, IsInt, IsNotEmpty, Length } from 'class-validator';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { IsEmail, IsIn, IsNotEmpty } from 'class-validator';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+} from 'typeorm';
 import { BitacoraDocente } from './BitacoraDocente';
 import { Cita } from './CIta';
 import { EvaluacionServicio } from './EvaluacionServicio';
+import { Distrito } from './Distrito';
+import { Respuesta } from './Respuesta';
 
 @Entity()
 export class Estudiante {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   Estudiante_Id: number;
-
-  @Column()
-  @IsNotEmpty({ message: 'Debe ingresar valores' })
-  Cedula: number;
 
   @Column()
   @IsNotEmpty({ message: 'Debe ingresar valores' })
@@ -34,9 +39,9 @@ export class Estudiante {
   @IsEmail({}, { message: 'No cumple con el formato de correo electronico' })
   Correo_Electronico: string;
 
-  @Column()
-  @IsNotEmpty({ message: 'Debe ingresar valores' })
-  Distrito_Id: number;
+  @ManyToOne(() => Distrito, (distrito) => distrito.estudiantes)
+  @JoinColumn({ name: 'Distrito_Id' })
+  distrito: Distrito;
 
   @Column()
   @IsNotEmpty({ message: 'Debe ingresar valores' })
@@ -59,29 +64,17 @@ export class Estudiante {
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Ano_Graduacion_Secundaria: number;
 
-  /*
-  @Column()
-  @IsNotEmpty({ message: 'Debe ingresar valores' })
-  Boleta_Matricula: string;
-  */
-
-  /*
-  @Column()
-  @IsNotEmpty({ message: 'Debe ingresar valores' })
-  Foto_Cedula: string;
-  */
-
   @OneToMany(() => BitacoraDocente, (bitacora) => bitacora.estudiante)
   bitacora: BitacoraDocente[];
 
   @OneToMany(() => Cita, (cita) => cita.estudiante)
   cita: Cita[];
 
-  @OneToMany(
-    () => EvaluacionServicio,
-    (evaluacionServicio) => evaluacionServicio.estudiante
-  )
+  @OneToMany(() => Respuesta, (respuesta) => respuesta.estudiante)
   evaluacionServicio: EvaluacionServicio[];
+
+  @OneToMany(() => Respuesta, (respuesta) => respuesta.estudiante)
+  respuestas: Respuesta[];
 
   @Column({ default: true })
   @IsNotEmpty({ message: 'Debe ingresar valores' })

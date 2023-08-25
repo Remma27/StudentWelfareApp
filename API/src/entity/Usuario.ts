@@ -16,12 +16,6 @@ export class Usuario {
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Contrasena: string;
 
-  @Column()
-  Perfil: string;
-
-  @Column({ default: false })
-  EstaEnSesion: boolean;
-
   @Column({ default: true })
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Estado: boolean;

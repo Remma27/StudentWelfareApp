@@ -1,3 +1,4 @@
+import { Estudiantes } from './estudiantes';
 import { Canton } from './canton';
 import { Provincia } from './provincia';
 
@@ -6,4 +7,5 @@ export interface Distrito {
   Provincia_Id: Provincia;
   Canton_Id: Canton;
   Nombre: string;
+  estudiantes: Estudiantes[];
 }

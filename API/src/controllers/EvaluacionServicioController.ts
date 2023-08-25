@@ -1,19 +1,21 @@
-import { Request, Response } from "express";
-import { AppDataSource } from "../data-source";
-import { EvaluacionServicio } from "../entity/EvaluacionServicio";
-import { validate } from "class-validator";
+import { Request, Response } from 'express';
+import { AppDataSource } from '../data-source';
+import { EvaluacionServicio } from '../entity/EvaluacionServicio';
+import { validate } from 'class-validator';
+import { Estudiante } from '../entity/Estudiante';
 
 export class EvaluacionServicioController {
   static getAll = async (req: Request, res: Response) => {
     try {
       const EvaluacionRepo = AppDataSource.getRepository(EvaluacionServicio);
       const evaluacion = await EvaluacionRepo.find({
-        where: { Estado: true }, relations: { estudiante: true },
+        where: { Estado: true },
+        relations: { estudiante: true },
       });
       if (evaluacion.length === 0)
         return res
           .status(404)
-          .json({ message: "No hay informacion de evaluaciones de servicio" });
+          .json({ message: 'No hay informacion de evaluaciones de servicio' });
       return res.status(200).json(evaluacion);
     } catch (error) {
       return res.status(400).json({ error: error });
@@ -22,16 +24,16 @@ export class EvaluacionServicioController {
 
   static getById = async (req: Request, res: Response) => {
     try {
-      const Evaluacion_Id = parseInt(req.params["id"]);
+      const Evaluacion_Id = parseInt(req.params['id']);
       const EvaluacionRepo = AppDataSource.getRepository(EvaluacionServicio);
       let evaluacion;
       try {
         evaluacion = await EvaluacionRepo.findOneOrFail({
           where: { Evaluacion_Id, Estado: true },
-          relations: { estudiante: true }
+          relations: { estudiante: true },
         });
       } catch (error) {
-        return res.status(404).json({ message: "Informacion no encontrada" });
+        return res.status(404).json({ message: 'Informacion no encontrada' });
       }
       return res.status(200).json(evaluacion);
     } catch (error) {
@@ -52,12 +54,20 @@ export class EvaluacionServicioController {
       const EvaluacionRepo = AppDataSource.getRepository(EvaluacionServicio);
       const EvaluacionExistente = await EvaluacionRepo.findOne({
         where: { Evaluacion_Id, Estado: true },
-        relations: { estudiante: true }
       });
       if (EvaluacionExistente)
         return res
           .status(400)
-          .json({ message: "Ya existe evaluacion del servicio" });
+          .json({ message: 'Ya existe evaluacion del servicio' });
+
+      const repoEstudiante = AppDataSource.getRepository(Estudiante);
+      const estudiante = await repoEstudiante.findOne({
+        where: { Estudiante_Id, Estado: true },
+      });
+      if (!estudiante) {
+        return res.status(400).json({ message: 'No existe el estudiante' });
+      }
+
       let evaluacion = new EvaluacionServicio();
       evaluacion.Evaluacion_Id = Evaluacion_Id;
       evaluacion.estudiante = Estudiante_Id;
@@ -72,12 +82,12 @@ export class EvaluacionServicioController {
       try {
         await EvaluacionRepo.save(evaluacion);
         return res.status(201).json({
-          message: "La evaluacion del servicio ha sido insertada correctamente",
+          message: 'La evaluacion del servicio ha sido insertada correctamente',
         });
       } catch (error) {
         return res.status(400).json({
           message:
-            "La evaluacion del servicio no ha podido ser insertada correctamente",
+            'La evaluacion del servicio no ha podido ser insertada correctamente',
         });
       }
     } catch (error) {
@@ -102,7 +112,15 @@ export class EvaluacionServicioController {
       if (!EvaluacionExistente)
         return res
           .status(400)
-          .json({ message: "No existe evaluacion de servicios" });
+          .json({ message: 'No existe evaluacion de servicios' });
+
+      const repoEstudiante = AppDataSource.getRepository(Estudiante);
+      const estudiante = await repoEstudiante.findOne({
+        where: { Estudiante_Id, Estado: true },
+      });
+      if (!estudiante) {
+        return res.status(400).json({ message: 'No existe el estudiante' });
+      }
       let evaluacion = new EvaluacionServicio();
       evaluacion.Evaluacion_Id = Evaluacion_Id;
       evaluacion.estudiante = Estudiante_Id;
@@ -117,12 +135,12 @@ export class EvaluacionServicioController {
       try {
         await EvaluacionRepo.save(evaluacion);
         return res.status(201).json({
-          message: "La evaluacion del servicio ha sido insertada correctamente",
+          message: 'La evaluacion del servicio ha sido insertada correctamente',
         });
       } catch (error) {
         return res.status(400).json({
           message:
-            "La evaluacion del servicio no ha podido ser insertada correctamente",
+            'La evaluacion del servicio no ha podido ser insertada correctamente',
         });
       }
     } catch (error) {
@@ -132,9 +150,9 @@ export class EvaluacionServicioController {
 
   static delete = async (req: Request, res: Response) => {
     try {
-      const Evaluacion_Id = parseInt(req.params["id"]);
+      const Evaluacion_Id = parseInt(req.params['id']);
       if (!Evaluacion_Id)
-        return res.status(400).json({ message: "Debe indicar el id" });
+        return res.status(400).json({ message: 'Debe indicar el id' });
       const EvaluacionRepo = AppDataSource.getRepository(EvaluacionServicio);
       let evalu: EvaluacionServicio;
       try {
@@ -144,7 +162,7 @@ export class EvaluacionServicioController {
       } catch (error) {
         return res
           .status(404)
-          .json({ message: "Informacion de sostenibilidad no encontrada" });
+          .json({ message: 'Informacion de sostenibilidad no encontrada' });
       }
       evalu.Estado = false;
       const erros = await validate(evalu, {
@@ -156,11 +174,11 @@ export class EvaluacionServicioController {
       try {
         await EvaluacionRepo.save(evalu);
         return res.status(200).json({
-          message: "evaluacion de servicio eliminada correctamente",
+          message: 'evaluacion de servicio eliminada correctamente',
         });
       } catch (error) {
         return res.status(400).json({
-          message: "No se ha podido eliminar la evaluacion de servicio",
+          message: 'No se ha podido eliminar la evaluacion de servicio',
         });
       }
     } catch (error) {
