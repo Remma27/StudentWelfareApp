@@ -10,9 +10,12 @@ import { CitaService } from 'src/app/shared/services/cita.service';
 })
 export class EstadoCitaComponent {
   displayedColumns: string[] = [
+    'Cita_Id',
+    'Estudiante_Id',
     'Encargado_Nombre',
     'Observacion_Cita',
     'Fecha_Cita',
+    'Acciones',
   ];
   dataSource = new MatTableDataSource();
 
@@ -31,7 +34,7 @@ export class EstadoCitaComponent {
         this.dataSource.data = datos;
       },
       (error) => {
-        this.mensajeria.error(error);
+        this.mensajeria.error('No hay datos');
       }
     );
   }

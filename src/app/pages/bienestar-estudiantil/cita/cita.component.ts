@@ -27,7 +27,9 @@ export class CitaComponent {
           );
         },
         (error) => {
-          this.mensajeria.error(error);
+          this.mensajeria.error(
+            'El estudiante no esta registrado en la base de datos'
+          );
         }
       );
     } else {

@@ -10,7 +10,7 @@ export class CitaController {
   static getAll = async (req: Request, res: Response) => {
     try {
       const citasRepo = AppDataSource.getRepository(Cita);
-      const citas = await citasRepo.find({});
+      const citas = await citasRepo.find({ where: { estudiante: true } });
       if (citas.length === 0)
         return res.status(404).json({ message: 'No hay citas activas' });
       return res.status(200).json(citas);
@@ -54,10 +54,11 @@ export class CitaController {
 
       const estudianteRepo = AppDataSource.getRepository(Estudiante);
       const estudianteExistente = await estudianteRepo.findOne({
-        where: { Estudiante_Id, Estado: true },
+        where: { Estudiante_Id },
       });
+
       if (!estudianteExistente) {
-        return res.status(400).json({ message: 'Estudiante no existente' });
+        return res.status(404).json({ message: 'Estudiante no existente' });
       }
 
       let cita = new Cita();
@@ -65,7 +66,7 @@ export class CitaController {
       cita.Encargado_Nombre = Encargado_Nombre;
       cita.Observacion_Cita = Observacion_Cita;
       cita.Fecha_Cita = Fecha_Cita;
-      cita.Estado = 'Comfirmada';
+      cita.Estado = 'Confirmada';
       const errores = await validate(cita, {
         validationError: { target: false, value: false },
       });
@@ -113,8 +114,8 @@ export class CitaController {
       const estudianteExistente = await estudianteRepo.findOne({
         where: { Estudiante_Id, Estado: true },
       });
-      if (!estudianteExistente) {
-        return res.status(400).json({ message: 'Estudiante no existente' });
+      if (estudianteExistente) {
+        return res.status(404).json({ message: 'Estudiante no existente' });
       }
 
       let cita = new Cita();

@@ -6,13 +6,13 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Cita } from './CIta';
 
 @Entity()
 export class Seguimiento {
-  @PrimaryColumn()
-  @IsNotEmpty({ message: 'Debe ingresar valores' })
+  @PrimaryGeneratedColumn()
   Seguimiento_Id: number;
 
   @ManyToOne(() => Cita, (cita) => cita.seguimiento)

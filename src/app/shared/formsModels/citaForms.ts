@@ -6,7 +6,7 @@ export class CitaForm {
   baseForm: FormGroup;
   constructor(private fb: FormBuilder) {
     this.baseForm = this.fb.group({
-      estudiante: [0, [Validators.required, Validators.maxLength(9)]],
+      Estudiante_Id: [0, [Validators.required, Validators.maxLength(9)]],
       Encargado_Nombre: ['', [Validators.required, Validators.maxLength(20)]],
       Observacion_Cita: ['', [Validators.required]],
       Fecha_Cita: ['', [Validators.required]],
