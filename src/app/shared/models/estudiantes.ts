@@ -7,7 +7,7 @@ export interface Estudiantes {
   Telefono: number;
   Telefono2: number;
   Correo_Electronico: string;
-  Distrito_Id: Distrito;
+  distrito: Distrito;
   Direccion_Exacta_Procedencia: string;
   Direccion_Exacta_Tiempo_Lectivo: string;
   Nacionalidad: string;

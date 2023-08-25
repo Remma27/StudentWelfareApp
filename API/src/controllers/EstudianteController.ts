@@ -107,6 +107,7 @@ export class EstudianteController {
         validationError: { target: false, value: false },
       });
       if (errores.length > 0) {
+        console.log(errores);
         return res.status(400).json(errores);
       }
       try {
@@ -115,11 +116,13 @@ export class EstudianteController {
           .status(201)
           .json({ message: 'Estudiante insertado correctamente' });
       } catch (error) {
+        console.log(error);
         return res
           .status(400)
           .json({ message: 'No se pudo insertar el estudiante' });
       }
     } catch (error) {
+      console.log(error);
       return res.status(400).json({ error: error });
     }
   };

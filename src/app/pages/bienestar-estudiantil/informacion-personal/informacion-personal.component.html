@@ -62,10 +62,10 @@
             <input
               class="form-check-input"
               type="radio"
-              name="inlineRadioOptions"
               id="inlineRadio1"
               formControlName="Genero"
-              value="M"
+              [value]="'M'"
+              [checked]="true"
             />
             <label class="form-check-label" for="inlineRadio1">Masculino</label>
           </div>
@@ -73,15 +73,14 @@
             <input
               class="form-check-input"
               type="radio"
-              name="inlineRadioOptions"
               id="inlineRadio2"
               formControlName="Genero"
-              value="F"
+              [value]="'F'"
+              [checked]="false"
             />
             <label class="form-check-label" for="inlineRadio2">Femenino</label>
           </div>
         </div>
-
         <br />
         <br />
 
@@ -172,7 +171,7 @@
         <h4>Distrito</h4>
         <mat-form-field>
           <mat-label></mat-label>
-          <mat-select formControlName="Distrito_Id">
+          <mat-select formControlName="distrito">
             <mat-option
               *ngFor="let distrito of distritos"
               [value]="distrito.Distrito_Id"
@@ -198,7 +197,9 @@
       </form>
 
       <div class="example-button-row boton">
-        <button mat-flat-button color="primary">Finalizar</button>
+        <button mat-flat-button color="primary" (click)="guardar()">
+          Finalizar
+        </button>
       </div>
     </div>
   </div>

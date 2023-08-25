@@ -46,7 +46,6 @@ export class InformacionPersonalComponent {
     private srvProvincias: ProvinciaService,
     private srvCantones: CantonService,
     private srvDistritos: DistritoService,
-
     private mensajeria: ToastrService
   ) {}
 
@@ -71,6 +70,8 @@ export class InformacionPersonalComponent {
   }
 
   guardar() {
+    console.log(this.estudianteForm.baseForm.value);
+    console.log(this.estudianteForm.baseForm.valid);
     if (this.estudianteForm.baseForm.valid) {
       this.srvEstudiantes.insert(this.estudianteForm.baseForm.value).subscribe(
         () => {
