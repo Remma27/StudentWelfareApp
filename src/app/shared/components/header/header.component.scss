@@ -107,7 +107,7 @@
     background-color: #1b3069;
     color: white;
     padding: 10px 20px;
-    font-size: 18px; /* Aumenta el tamaño del texto */
+    font-size: 18px; 
     border: none;
     cursor: pointer;
     
@@ -128,7 +128,6 @@
     transition: background-color 0.3s ease; /* Transición de color de fondo */
   }
   
-  /* Cambio de color al pasar el cursor sobre un elemento */
 .dropdown-content li:hover {
     background-color: #dcdcdc;
     transform: translateX(-10px); 
@@ -144,7 +143,7 @@
   
   .dropdown:hover .dropdown-content {
     display: block;
-    opacity: 1; /* Mostrar gradualmente */
+    opacity: 1; 
     transform: translateY(0);
   }
 
