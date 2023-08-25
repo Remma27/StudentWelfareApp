@@ -3,7 +3,7 @@ import { AppDataSource } from '../data-source';
 import { Usuario } from '../entity/Usuario';
 import { validate } from 'class-validator';
 import { tiempoSesion } from '../middlewares/tiempoSesion';
-import * as bcrypt from 'bcryptjs'
+import * as bcrypt from 'bcryptjs';
 
 export class UsuarioController {
   static getAll = async (req: Request, res: Response) => {
@@ -101,8 +101,6 @@ export class UsuarioController {
       const hashedPassword = await bcrypt.hash(Contrasena, saltRounds);
 
       usuario.Contrasena = hashedPassword;
-      usuario.Perfil = 'Estudiante';
-      usuario.EstaEnSesion = false;
       usuario.Estado = true;
       const errors = await validate(usuario, {
         validationError: { target: false, value: false },
@@ -135,8 +133,6 @@ export class UsuarioController {
       const hashedPassword = await bcrypt.hash(Contrasena, saltRounds);
 
       usuario.Contrasena = hashedPassword;
-      usuario.Perfil = Perfil;
-      usuario.EstaEnSesion = EstaEnSesion;
       usuario.Estado = true;
       const erros = await validate(usuario, {
         validationError: { target: false, value: false },

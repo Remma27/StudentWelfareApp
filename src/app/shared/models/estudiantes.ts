@@ -2,7 +2,6 @@ import { Distrito } from './distrito';
 
 export interface Estudiantes {
   Estudiante_Id: number;
-  Cedula: number;
   Genero: string;
   Fecha_Nacimiento: Date;
   Telefono: number;

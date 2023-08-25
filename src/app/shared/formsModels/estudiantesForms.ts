@@ -6,7 +6,7 @@ export class EstudiantesForm {
   baseForm: FormGroup;
   constructor(private fb: FormBuilder) {
     this.baseForm = this.fb.group({
-      Cedula: ['', [Validators.required, Validators.maxLength(9)]],
+      Estudiante_Id: ['', [Validators.required, Validators.maxLength(9)]],
       Genero: ['', [Validators.required]],
       Fecha_Nacimiento: [Date.now, [Validators.required]],
       Telefono: [

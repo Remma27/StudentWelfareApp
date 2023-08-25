@@ -9,7 +9,6 @@ import { Seguimiento } from './entity/Seguimiento';
 import { Usuario } from './entity/Usuario';
 import { EvaluacionServicio } from './entity/EvaluacionServicio';
 import { Cuestionario } from './entity/Cuestionario';
-import { RespuestaDocumento } from './entity/RespuestaDocumento';
 import { Provincia } from './entity/Provincia';
 import { Canton } from './entity/Canton';
 import { Distrito } from './entity/Distrito';
@@ -33,7 +32,6 @@ export const AppDataSource = new DataSource({
     Usuario,
     EvaluacionServicio,
     Cuestionario,
-    RespuestaDocumento,
     Provincia,
     Canton,
     Distrito,
