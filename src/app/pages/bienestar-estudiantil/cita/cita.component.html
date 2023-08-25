@@ -15,20 +15,18 @@
   <body>
     <div class="container">
       <div class="row">
-       
-
         <div class="col-12 div2">
-          <form>
+          <form [formGroup]="citaForm.baseForm">
             <p>Digite el id del estudiante</p>
             <mat-form-field>
               <mat-label></mat-label>
-              <input matInput type="number" formControlName="Estudiante_Id" />
+              <input matInput type="number" formControlName="estudiante" />
             </mat-form-field>
 
             <p>Digite el nombre del encargado</p>
             <mat-form-field>
               <mat-label></mat-label>
-              <input matInput />
+              <input matInput formControlName="Encargado_Nombre" />
             </mat-form-field>
 
             <p>
@@ -36,20 +34,30 @@
             </p>
             <mat-form-field>
               <mat-label>Observaciones</mat-label>
-              <textarea matInput formControlName="Observacion"> </textarea>
+              <textarea matInput formControlName="Observacion_Cita"> </textarea>
             </mat-form-field>
           </form>
           <p>Elige la fecha correcta</p>
           <mat-form-field class="example-full-width">
             <mat-label>Elige fecha</mat-label>
-            <input matInput [matDatepicker]="picker" />
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="Fecha_Cita"
+            />
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
           <button mat-raised-button (click)="picker.open()">Abrir</button>
 
-          <div class="example-button-row div3 ">
-            <button type="button" class="btn btnds position-static boton2">Enviar</button>
+          <div class="example-button-row div3">
+            <button
+              type="button"
+              class="btn btnds position-static boton2"
+              (click)="guardar()"
+            >
+              Enviar
+            </button>
           </div>
         </div>
       </div>

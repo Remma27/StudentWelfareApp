@@ -12,7 +12,6 @@ export class CitaController {
       const citasRepo = AppDataSource.getRepository(Cita);
       const citas = await citasRepo.find({
         where: { Estado: true },
-        relations: { estudiante: true },
       });
       if (citas.length === 0)
         return res.status(404).json({ message: 'No hay citas activas' });
@@ -30,7 +29,6 @@ export class CitaController {
       try {
         cita = await citasRepo.findOneOrFail({
           where: { Cita_Id, Estado: true },
-          relations: { estudiante: true },
         });
       } catch (error) {
         return res
@@ -45,29 +43,16 @@ export class CitaController {
 
   static insert = async (req: Request, res: Response) => {
     /*formato
-            "Cita_Id":1,
             "Estudiante_Id":9,
             "Encargado_Nombre":"Juntuan Mario",
             "Aprobacion_Cita":"Pendiente",
             "Fecha_Cita":"2023-12-12"
         */
     try {
-      const {
-        Cita_Id,
-        Estudiante_Id,
-        Encargado_Nombre,
-        Aprobacion_Cita,
-        Fecha_Cita,
-      } = req.body;
+      const { Estudiante_Id, Encargado_Nombre, Observacion_Cita, Fecha_Cita } =
+        req.body;
 
       const citasRepo = AppDataSource.getRepository(Cita);
-
-      const citaExistente = await citasRepo.findOne({
-        where: { Cita_Id, Estado: true },
-      });
-
-      if (citaExistente)
-        return res.status(400).json({ message: 'Cita existente' });
 
       const estudianteRepo = AppDataSource.getRepository(Estudiante);
       const estudianteExistente = await estudianteRepo.findOne({
@@ -78,10 +63,9 @@ export class CitaController {
       }
 
       let cita = new Cita();
-      cita.Cita_Id = Cita_Id;
       cita.estudiante = Estudiante_Id;
       cita.Encargado_Nombre = Encargado_Nombre;
-      cita.Aprobacion_Cita = Aprobacion_Cita;
+      cita.Observacion_Cita = Observacion_Cita;
       cita.Fecha_Cita = Fecha_Cita;
       cita.Estado = true;
       const errores = await validate(cita, {
@@ -116,7 +100,7 @@ export class CitaController {
         Cita_Id,
         Estudiante_Id,
         Encargado_Nombre,
-        Aprobacion_Cita,
+        Observacion_Cita,
         Fecha_Cita,
       } = req.body;
       const citasRepo = AppDataSource.getRepository(Cita);
@@ -135,10 +119,9 @@ export class CitaController {
       }
 
       let cita = new Cita();
-      cita.Cita_Id = Cita_Id;
       cita.estudiante = Estudiante_Id;
       cita.Encargado_Nombre = Encargado_Nombre;
-      cita.Aprobacion_Cita = Aprobacion_Cita;
+      cita.Observacion_Cita = Observacion_Cita;
       cita.Fecha_Cita = Fecha_Cita;
       cita.Estado = true;
       const errores = await validate(cita, {
