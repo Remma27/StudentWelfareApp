@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 const lista = [
   MatButtonModule,
@@ -19,7 +20,7 @@ const lista = [
   MatSelectModule,
   MatListModule,
   MatProgressSpinnerModule,
-  
+  MatDatepickerModule,
 ];
 
 @NgModule({
