@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UsuariosForm } from 'src/app/shared/formsModels/usuariosForms';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { UsuariosService } from 'src/app/shared/services/usuarios.service';
 
 @Component({
@@ -14,10 +15,11 @@ export class LoginComponent {
     public usuarioForm: UsuariosForm,
     private srvUsuarios: UsuariosService,
     private mensajeria: ToastrService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private srvAuth: AuthService
+  ) { }
 
-  IniciarSesion() {
+  /*IniciarSesion() {
     const Usuario_Id = this.usuarioForm.baseForm.get('Usuario_Id')?.value;
     const Contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
 
@@ -39,6 +41,27 @@ export class LoginComponent {
       },
       (error) => {
         this.mensajeria.error(error);
+      }
+    );
+  }*/
+
+  IniciarSesion() {
+    const Usuario_Id = this.usuarioForm.baseForm.get('Usuario_Id')?.value;
+    const Contrasena = this.usuarioForm.baseForm.get('Contrasena')?.value;
+
+    this.srvAuth.login(Usuario_Id, Contrasena).subscribe(
+      (loginSuccess) => {
+        if (loginSuccess) {
+          this.usuarioForm.baseForm.reset();
+          this.mensajeria.success('Inicio de sesión exitoso');
+          this.router.navigate(['/BienestarEstudiantil/Menu']);
+        } else {
+          this.mensajeria.error('Cédula o contraseña incorrectos');
+        }
+      },
+      (error) => {
+        console.log(error);
+        this.mensajeria.error('Error al iniciar sesión');
       }
     );
   }
