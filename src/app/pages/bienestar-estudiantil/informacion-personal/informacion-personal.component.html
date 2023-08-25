@@ -1,232 +1,207 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="informacion-personal.component.scss" />
-    <title>Bitacora</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+  crossorigin="anonymous"
+/>
+<link rel="stylesheet" href="informacion-personal.component.scss" />
+<!--<title>Bitacora</title>
   </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-2 div1">
-          <p>Información Personal</p>
+  <body>-->
+<div class="container">
+  <div class="row">
+    <div class="col-12 div1">
+      <p>Información Personal</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 div2">
+      <form [formGroup]="estudianteForm.baseForm">
+        <h2>Boleta de matricula</h2>
+        <p>Digite su numero de cedula</p>
+        <mat-form-field>
+          <mat-label></mat-label>
+          <input matInput type="number" formControlName="Cedula" />
+        </mat-form-field>
+
+        <h4>Seleccione el Cuatrimestre</h4>
+        <mat-form-field>
+          <mat-label>Cuatrimestre</mat-label>
+          <mat-select>
+            <mat-option
+              *ngFor="let cuatrimestre of Cuatrimestre"
+              [value]="cuatrimestre.value"
+            >
+              {{ cuatrimestre.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Boleta de matricula</label>
+          <input class="form-control" type="file" id="formFile" />
         </div>
 
-        <div class="col-10 div2">
-          <form [formGroup]="estudianteForm.baseForm">
-            <h2>Boleta de matricula</h2>
-            <p>Digite su numero de cedula</p>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <input matInput type="number" formControlName="Cedula" />
-            </mat-form-field>
+        <div class="mb-3">
+          <label for="formFile" class="form-label"
+            >Subir foto de la cedula</label
+          >
+          <input class="form-control" type="file" id="formFile" />
+        </div>
+        <hr />
 
-            <h4>Seleccione el Cuatrimestre</h4>
-            <mat-form-field>
-              <mat-label>Cuatrimestre</mat-label>
-              <mat-select>
-                <mat-option
-                  *ngFor="let cuatrimestre of Cuatrimestre"
-                  [value]="cuatrimestre.value"
-                >
-                  {{ cuatrimestre.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <div class="mb-3">
-              <label for="formFile" class="form-label"
-                >Boleta de matricula</label
-              >
-              <input class="form-control" type="file" id="formFile" />
-            </div>
-
-            <div class="mb-3">
-              <label for="formFile" class="form-label"
-                >Subir foto de la cedula</label
-              >
-              <input class="form-control" type="file" id="formFile" />
-            </div>
-            <hr />
-
-            <H2>Datos Personales</H2>
-            <div class="check">
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio1"
-                  formControlName="Genero"
-                  value="M"
-                />
-                <label class="form-check-label" for="inlineRadio1"
-                  >Masculino</label
-                >
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio2"
-                  formControlName="Genero"
-                  value="F"
-                />
-                <label class="form-check-label" for="inlineRadio2"
-                  >Femenino</label
-                >
-              </div>
-            </div>
-
-            <br />
-            <br />
-
-            <p>Fecha de nacimiento</p>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <input matInput type="date" formControlName="Fecha_Nacimiento" />
-            </mat-form-field>
-
-            <h4>Nacionalidad</h4>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <mat-select formControlName="Nacionalidad">
-                <mat-option
-                  *ngFor="let nacionalidad of Nacionalidad"
-                  [value]="nacionalidad.value"
-                >
-                  {{ nacionalidad.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <p>Colegio de procedencia</p>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <input matInput formControlName="Colegio_Procedencia" />
-            </mat-form-field>
-
-            <p>Año de gracuación de secundaria</p>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <input
-                matInput
-                type="number"
-                formControlName="Ano_Graduacion_Secundaria"
-              />
-            </mat-form-field>
-
-            <hr />
-            <h2>Contacto</h2>
-
-            <p>Numero de telefono</p>
-            <mat-form-field>
-              <mat-label>Obligatorio</mat-label>
-              <input matInput type="number" formControlName="Telefono" />
-            </mat-form-field>
-
-            <mat-form-field>
-              <mat-label>Opcional</mat-label>
-              <input matInput type="number" formControlName="Telefono2" />
-            </mat-form-field>
-
-            <p>Correo electrónico</p>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <input
-                matInput
-                type="email"
-                formControlName="Correo_Electronico"
-              />
-            </mat-form-field>
-
-            <hr />
-            <h2>Ubicación</h2>
-
-            <h4>Provincia</h4>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <mat-select
-                [disabled]="
-                  estudianteForm.baseForm.get('Nacionalidad')?.value !== 'C'
-                "
-              >
-                <mat-option
-                  *ngFor="let provincia of provincias"
-                  [value]="provincia.Provincia_Id"
-                >
-                  {{ provincia.Nombre | uppercase }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <h4>Canton</h4>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <mat-select
-                formControlName="Canton"
-                [disabled]="
-                  estudianteForm.baseForm.get('Nacionalidad')?.value !== 'C'
-                "
-              >
-                <mat-option
-                  *ngFor="let canton of cantones"
-                  [value]="canton.Canton_Id"
-                >
-                  {{ canton.Nombre | uppercase }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <h4>Distrito</h4>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <mat-select
-                formControlName="Distrito"
-                [disabled]="
-                  estudianteForm.baseForm.get('Nacionalidad')?.value !== 'C'
-                "
-              >
-                <mat-option
-                  *ngFor="let distrito of distritos"
-                  [value]="distrito.Distrito_Id"
-                >
-                  {{ distrito.Nombre | uppercase }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <p>Dirección exacta de procedencia</p>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <textarea matInput formControlName="Direccion_Exacta_Procedencia">
-              </textarea>
-            </mat-form-field>
-
-            <p>Dirección exacta durante tiempo lectivo</p>
-            <mat-form-field>
-              <mat-label></mat-label>
-              <textarea
-                matInput
-                formControlName="Direccion_Exacta_Tiempo_Lectivo"
-              >
-              </textarea>
-            </mat-form-field>
-          </form>
-
-          <div class="example-button-row boton">
-            <button mat-flat-button color="primary">Finalizar</button>
+        <H2>Datos Personales</H2>
+        <div class="check">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio1"
+              formControlName="Genero"
+              value="M"
+            />
+            <label class="form-check-label" for="inlineRadio1">Masculino</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="inlineRadioOptions"
+              id="inlineRadio2"
+              formControlName="Genero"
+              value="F"
+            />
+            <label class="form-check-label" for="inlineRadio2">Femenino</label>
           </div>
         </div>
+
+        <br />
+        <br />
+
+        <p>Fecha de nacimiento</p>
+        <mat-form-field>
+          <mat-label></mat-label>
+          <input matInput type="date" formControlName="Fecha_Nacimiento" />
+        </mat-form-field>
+
+        <h4>Nacionalidad</h4>
+        <mat-form-field>
+          <mat-label></mat-label>
+          <mat-select formControlName="Nacionalidad">
+            <mat-option
+              *ngFor="let nacionalidad of Nacionalidad"
+              [value]="nacionalidad.value"
+            >
+              {{ nacionalidad.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <p>Colegio de procedencia</p>
+        <mat-form-field>
+          <mat-label></mat-label>
+          <input matInput formControlName="Colegio_Procedencia" />
+        </mat-form-field>
+
+        <p>Año de gracuación de secundaria</p>
+        <mat-form-field>
+          <mat-label></mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="Ano_Graduacion_Secundaria"
+          />
+        </mat-form-field>
+
+        <hr />
+        <h2>Contacto</h2>
+
+        <p>Numero de telefono</p>
+        <mat-form-field>
+          <mat-label>Obligatorio</mat-label>
+          <input matInput type="number" formControlName="Telefono" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Opcional</mat-label>
+          <input matInput type="number" formControlName="Telefono2" />
+        </mat-form-field>
+
+        <p>Correo electrónico</p>
+        <mat-form-field>
+          <mat-label></mat-label>
+          <input matInput type="email" formControlName="Correo_Electronico" />
+        </mat-form-field>
+
+        <hr />
+        <h2>Ubicación</h2>
+
+        <h4>Provincia</h4>
+        <mat-form-field>
+          <mat-label></mat-label>
+          <mat-select>
+            <mat-option
+              *ngFor="let provincia of provincias"
+              [value]="provincia.Provincia_Id"
+            >
+              {{ provincia.Nombre | uppercase }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <h4>Canton</h4>
+        <mat-form-field>
+          <mat-label></mat-label>
+          <mat-select>
+            <mat-option
+              *ngFor="let canton of cantones"
+              [value]="canton.Canton_Id"
+            >
+              {{ canton.Nombre | uppercase }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <h4>Distrito</h4>
+        <mat-form-field>
+          <mat-label></mat-label>
+          <mat-select formControlName="Distrito_Id">
+            <mat-option
+              *ngFor="let distrito of distritos"
+              [value]="distrito.Distrito_Id"
+            >
+              {{ distrito.Nombre | uppercase }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <p>Dirección exacta de procedencia</p>
+        <mat-form-field>
+          <mat-label></mat-label>
+          <textarea matInput formControlName="Direccion_Exacta_Procedencia">
+          </textarea>
+        </mat-form-field>
+
+        <p>Dirección exacta durante tiempo lectivo</p>
+        <mat-form-field>
+          <mat-label></mat-label>
+          <textarea matInput formControlName="Direccion_Exacta_Tiempo_Lectivo">
+          </textarea>
+        </mat-form-field>
+      </form>
+
+      <div class="example-button-row boton">
+        <button mat-flat-button color="primary">Finalizar</button>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+</div>
+<!--</body>
+</html>-->

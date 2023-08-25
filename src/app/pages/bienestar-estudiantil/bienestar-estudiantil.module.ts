@@ -11,13 +11,13 @@ import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
-import { MenuComponent } from 'src/app/shared/components/menu/menu.component';
+//import { MenuComponent } from 'src/app/shared/components/menu/menu.component';
 import { FooterComponent } from 'src/app/shared/components/footer/footer.component';
 import { ReportesService } from 'src/app/shared/services/reportes.service';
 import { AdminReportesComponent } from './reportes/admin-reportes/admin-reportes.component';
 import { CitaComponent } from './cita/cita.component';
 import { SeguimientoComponent } from './seguimiento/seguimiento.component';
-
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +28,12 @@ import { SeguimientoComponent } from './seguimiento/seguimiento.component';
     BitacoraProfesorComponent,
     ReportesComponent,
     HeaderComponent,
-    MenuComponent,
+    //MenuComponent,
     FooterComponent,
     AdminReportesComponent,
     CitaComponent,
     SeguimientoComponent
+    MenuComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +41,8 @@ import { SeguimientoComponent } from './seguimiento/seguimiento.component';
     MaterialModule,
     ReactiveFormsModule,
   ],
-  providers: [/*ReportesService*/],
+  providers: [
+    /*ReportesService*/
+  ],
 })
-export class BienestarEstudiantilModule { }
+export class BienestarEstudiantilModule {}

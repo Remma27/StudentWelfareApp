@@ -13,6 +13,7 @@ import reportes from './reportes';
 import provincia from './provincia';
 import canton from './canton';
 import distrito from './distrito';
+import auth from './auth';
 
 const routes = Router();
 
@@ -30,5 +31,6 @@ routes.use('/Reportes', reportes);
 routes.use('/Provincia', provincia);
 routes.use('/Canton', canton);
 routes.use('/Distrito', distrito);
+routes.use('/Auth', auth);
 
 export default routes;

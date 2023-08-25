@@ -1,5 +1,5 @@
 
-.container {
+/*.container {
     position: absolute;
     bottom: 0;
     width: 2000px;
@@ -15,4 +15,77 @@
     margin-left: 20px;
     margin-top: 10px;
 
+  }*/
+
+  footer {
+    width: 100%;
+    background-image: url('../../../../assets/imagenes/footer_BG.jpg');
+    padding: 20px 0;
+    color: #ffffff;
+    text-align: center;
+    transform: translateX(-50px); 
+    animation: slideFadeIn 1s ease-in-out forwards;
   }
+  
+  .footer-image {
+    display: inline-block;
+    margin: 0 10px;
+    transition: transform 0.2s, box-shadow 0.2s; 
+}
+
+  .footer-image:hover {
+    transform: translateY(-5px); 
+    box-decoration-break: 0px 5px 10px rgba(0, 0, 0, 10); 
+  }
+
+.image-title {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #1b3069;
+}
+
+.footer-text {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+  }
+  
+  .fa-brands {
+    font-size: 45px;
+    margin-right: 20px;
+  }
+  
+  /* Estilos para asegurar que el footer se ajuste dinámicamente */
+  body {
+    margin-bottom: 80px; /* Ajusta este valor según la altura de tu footer */
+  }
+  
+  //DESVANECIDO EN APERTURA
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+//DEZLIZAMIENTO EN APERTURA
+@keyframes slideFadeIn {
+  from {
+      opacity: 0;
+      transform: translateX(-50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}

@@ -1,112 +1,120 @@
-/* Estilos personalizados */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    background-color:  #1b3069;
-    color: white;
-    position: relative;
-}
-
-.left-div {
-    display: flex;
-    align-items: center;
-}
-
-.left-div img {
-    max-width: 120px;
-    margin-right: 50px;
-    margin-left: 20px;
-}
-
-.left-div h2{
-    font-size: 40px;
-}
-
-.right-div {
-    display: flex;
-    align-items: center;
-    margin-top: 90px;
-}
-.right-div .btn {
-    margin-right: 0px;
-    border-radius: 0; /* Borde completamente cuadrado */
+.header-top {
+    background-color: #1b3069;
+    color: #fff;
+    padding: 10px 0;
+    margin-bottom: 0;
+    z-index: 2;
     
 }
 
-.right-div .btn-special {
-    background-color: white; /* Cambia el color de fondo a blanco */
-            color: black; /* Cambia el color del texto a negro */
+.logo {
+    max-width: 100px;
 }
 
-
-.right-div .image-container1{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.fa-brands {
+    margin-left: 15px;
+    font-size: 25px;
+    display: inline-block;
+    
 }
 
-.right-div .image-container1 i {
-    margin-left: 10px; /* Ajusta el margen izquierdo del icono */
-    font-size: 30px;
+.divider {
+    border: 1px solid  rgba(224, 230, 230, 0.8); 
+    margin: 0;
+    width: 100%;
+    position: relative;
 }
 
-.right-div .btn-with-icon {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.navbar{
+    background-color: #1b3069;
+    color: #fff;
+    
 }
 
-.right-div .btn i {
-    margin-left: 10px; /* Ajusta el margen izquierdo del icono */
-    font-size: 24px; /* Tamaño del icono */
+.navbar-nav .nav-link {
+    margin: 0 5px; 
 }
 
-.dropdown-container {
+.background-image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh; 
+}
+
+.background-img {
     position: absolute;
-    top: 20px;
-    right: 5px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.90); //OPACIDAD
+
 }
 
-.dropdown-toggle .fa-solid {
-    max-width: 20px; /* Ajusta el tamaño de la imagen dentro del botón */
+.header-top, .header-bottom {
+    color: #fff;
+    padding: 10px 0;
+    position: relative;
+    margin-bottom: 0;
+    z-index: 1;
+    opacity: 0; 
+    animation: fadeIn 1s ease-in-out forwards; //ANIMACION DE ENTRADA
+    transition: transform 0.2s, box-shadow 0.2s; 
 }
 
-/* Estilos para dispositivos móviles (hasta 575.98px) */
-@media (max-width: 575.98px) {
-    .header {
-        padding: 10px;
-        flex-direction: column; /* Cambia la dirección de la flexbox en dispositivos pequeños */
-        align-items: center; /* Alinear elementos al centro */
-        text-align: center; /* Alinear texto al centro */
-        max-width: 100%;
-    }
+.header-bottom .navbar-nav .nav-link {
+    color: #ffffff; 
+    transition: color 0.3s ease; 
+}
 
-    .left-div img {
-        max-width: 100%; /* La imagen ocupará el ancho completo del contenedor */
-        margin-right: 0; /* Elimina el margen derecho */
-        margin-bottom: 10px; /* Agrega un margen inferior */
-        margin-left: 0; /* Elimina el margen izquierdo */
-    }
+.header-bottom .navbar-nav .nav-link:hover {
+    color: #f7ca18; 
+}
 
-    .left-div h2 {
-        font-size: 24px;
-        margin-top: 10px; /* Agrega un margen superior */
-    }
+.search-button {
+    color: white;
+    border: none;
+    background: transparent;
+}
 
-    .right-div {
-        margin-top: 20px; /* Ajusta el margen superior */
-    }
+.search-input {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-left: 5px;
+}
 
-    .right-div .btn {
-        margin-right: 0;
-        font-size: 12px; /* Ajusta el tamaño de fuente de los botones */
-    }
+.btn-link{
+    color: white;
+    transition: color 0.3s ease; 
 
-    .right-div .image-container1 i {
-        font-size: 20px; /* Reduce el tamaño del icono */
+}
+
+.btn-link:hover{
+    color: #f7ca18; 
+}
+
+//DESVANECIDO EN APERTURA
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 
-
+//DEZLIZAMIENTO EN APERTURA
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

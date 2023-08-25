@@ -6,13 +6,14 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Provincia } from './Provincia';
 import { Distrito } from './Distrito';
 
 @Entity()
 export class Canton {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Canton_Id: number;
 

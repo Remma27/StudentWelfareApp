@@ -6,22 +6,29 @@ import { AtencionPsicologicaComponent } from './atencion-psicologica/atencion-ps
 import { BitacoraProfesorComponent } from './bitacora-profesor/bitacora-profesor.component';
 import { InformacionPersonalComponent } from './informacion-personal/informacion-personal.component';
 import { ReportesComponent } from './reportes/reportes.component';
-import { CitaComponent } from './cita/cita.component';
-import { SeguimientoComponent } from './seguimiento/seguimiento.component';
+
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
-  { path: 'Menu', component: BienestarEstudiantilComponent },
-  { path: 'AdecuacionCurricular', component: AdecuacionCurricularComponent },
-  { path: 'AtencionPsicologica', component: AtencionPsicologicaComponent },
-  { path: 'BitacoraProfesor', component: BitacoraProfesorComponent },
-  { path: 'InformacionPersonal', component: InformacionPersonalComponent },
-  { path: 'Reportes', component: ReportesComponent },
-  {path:'Cita', component:CitaComponent},
-  {path:'Seguimiento', component:SeguimientoComponent}
+  { path: 'Menu', component: MenuComponent },
+  {
+    path: '',
+    component: BienestarEstudiantilComponent, // cargar el componente bienestar estudiantil en todas sus subrutas
+    children: [
+      { path: 'AdecuacionCurricular', component: AdecuacionCurricularComponent },
+      { path: 'AtencionPsicologica', component: AtencionPsicologicaComponent },
+      { path: 'BitacoraProfesor', component: BitacoraProfesorComponent },
+      { path: 'InformacionPersonal', component: InformacionPersonalComponent },
+      { path: 'Reportes', component: ReportesComponent },
+      {path:'Seguimiento', component:SeguimientoComponent},
+      {path:'Cita', component:CitaComponent},
+      { path: '', redirectTo: 'AdecuacionCurricular', pathMatch: 'full' }, //ruta por defecot
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class BienestarEstudiantilRoutingModule {}
+export class BienestarEstudiantilRoutingModule { }
