@@ -1,0 +1,498 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../../../../assets/imagenes/Biblioteca_BG.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//CSS PARA HEADER, DIVISIONES Y CONTENIDO
+.header-top {
+    background-color: #1b3069;
+    color: #fff;
+    padding: 10px 0;
+    margin-bottom: 0;
+    z-index: 2;
+
+}
+
+.logo {
+    max-width: 100px;
+}
+
+.fa-brands {
+    margin-left: 15px;
+    font-size: 25px;
+    display: inline-block;
+    
+}
+
+.divider {
+    border: 1px solid  rgba(224, 230, 230, 0.8); 
+    margin: 0;
+    width: 100%;
+    position: relative;
+}
+
+.navbar{
+    background-color: #1b3069;
+    color: #fff;
+    
+}
+
+.navbar-nav .nav-link {
+    margin: 0 5px; 
+}
+
+.background-image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh; 
+}
+
+.background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.90); //OPACIDAD
+
+}
+
+.header-top, .header-bottom {
+    background-color: rgba(70, 48, 150, 0.8); //OPACIDAD DE LAS DIVISIONES DEL HEADER
+    color: #fff;
+    padding: 10px 0;
+    position: relative;
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+.header-bottom .navbar-nav .nav-link {
+    color: #ffffff; 
+    transition: color 0.3s ease; 
+}
+
+.header-bottom .navbar-nav .nav-link:hover {
+    color: #f7ca18; 
+}
+
+.search-button {
+    color: white;
+    border: none;
+    background: transparent;
+}
+
+.search-input {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.btn-link{
+    color: white;
+    transition: color 0.3s ease; 
+
+}
+
+.btn-link:hover{
+    color: #f7ca18; 
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); //OPACIDAD DE CARD
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    opacity: 0; //LA OPACIDAD EN GENERAL SE ENCUENTRA EN CERO
+    transform: translateX(-50px); //DESLIZA LOS CARDS A LA DERECHA
+    animation: slideFadeIn 1s ease-in-out forwards; //ANIMACION DE ENTRADA
+}
+
+
+
+
+.card-header-overlay {
+    width: 300px; 
+    height: 350px; 
+    background-color: rgba(255, 255, 255, 0.747);     border: none;
+    color: black;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-left: 0%;
+    margin-top: 40%;
+    
+}
+
+.diagonal-card {
+    display: flex;
+    width: 140%; 
+    height: 340px; 
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    margin-left: -250px; 
+    margin-top: 16%;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url("../../../../assets/imagenes/UTN_Wallpaper.jpg");
+    background-size: contain;
+    background-position: center;
+    background-blend-mode: multiply;
+    background-position-x: -35%;
+    opacity: 0; 
+    animation: fadeIn 1s ease-in-out forwards; //ANIMACION DE ENTRADA
+    transition: transform 0.2s, box-shadow 0.2s; 
+}
+
+.diagonal-card:hover {
+    transform: translateY(-10px); 
+    box-decoration-break: 0px 5px 10px rgba(0, 0, 0, 10);
+}
+
+.card-image {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.diagonal-overlay {
+    width: 170%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: skew(-50.5deg);
+    transform-origin: bottom right;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.6) 50%, transparent 50%);
+    z-index: 2;
+}
+
+
+.card-content {
+    flex: 1;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.212); 
+    
+    position: relative;
+    z-index: 3;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    
+}
+
+.card-body .btn-custom {
+    background-color: #1b3069;
+    color: #ffffff; 
+    border-color: #ffffff; 
+    width: 100%;
+    transition: transform 0.2s, box-shadow 0.2s; 
+
+
+}
+
+.btn-custom:hover{
+    transform: translateY(-5px); 
+    box-decoration-break: 0px 5px 10px rgba(0, 0, 0, 10);
+}
+
+.header-link {
+    flex-grow: 5px; 
+    text-decoration: none; 
+    flex-basis: 0;
+}
+
+.card-links {
+    text-decoration: none; 
+    flex-basis: 0;
+    transition: color 0.3s ease; 
+}
+
+a {
+    color: black; 
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #bd9b14; 
+  }
+
+//FIN DE CSS DE HEADER Y SU CONTENIDO
+//----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//CSS PARA LA ETIQUETA MAIN Y SUS CONTENIDO
+
+main {
+    display: flex;
+    align-items: flex-start; // MANTIENE ALINEADOS LOS ELEMETNTOS SIEMPRE ARRIBA
+    justify-content: space-between;
+    padding: 20px;
+    background-image: url('../../../../assets/imagenes/Biblioteca_BG.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0; 
+    animation: fadeIn 1s ease-in-out forwards; 
+}
+
+.left-container {
+    flex: 1;
+    max-width: 70%; 
+    padding: 20px;
+    border-radius: 15px;
+}
+
+video {
+    width: 90%;
+    height: auto;
+}
+
+.right-container{
+    max-width: 80%;
+    width: 40%;
+    margin-top: 1.5%;
+
+}
+
+.card-Right-Container {
+    position: relative;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    color: white;
+    height: 300px;
+    transition: transform 0.2s, box-shadow 0.2s; 
+}
+
+.card-Right-Container:hover{
+    transform: translateY(-5px); 
+    box-decoration-break: 0px 5px 10px rgba(0, 0, 0, 10);
+}
+
+
+
+.card-Right-Container-title {
+    text-align: center;
+    margin-right: -160px;
+    margin-top: 100px;
+    font-size: 24px;
+}
+
+.card-Right-Container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 100));
+}
+
+.card-Left-Container {
+    position: relative;
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    color: white;
+    height: 550px;
+    width: 620px;
+    transition: transform 0.2s, box-shadow 0.2s; 
+}
+
+.card-Left-Container:hover{
+    transform: translateY(-5px); 
+    box-decoration-break: 0px 5px 10px rgba(0, 0, 0, 10);
+}
+
+.card-Left-Container {
+    text-align: center;
+    margin-right: -160px;
+    margin-top: 100px;
+    font-size: 24px;
+}
+
+.card-Left-Container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+}
+
+.card-left-container-title {
+    text-align: center;
+    margin-right: -160px;
+    margin-top: 220px;
+    font-size: 40px;
+}
+
+.card-image-1 {
+    background-image: url('../../../../assets/imagenes/Estudiantes1.jpg');
+    background-size: cover;
+}
+
+.card-image-2 {
+    background-image: url('../../../../assets/imagenes/Estudiantes2.jpg'); 
+    background-size: cover;
+}
+
+.card-image-3 {
+    background-image: url('../../../../assets/imagenes/Estudiantes3.jpg'); 
+    background-size: cover;
+}
+
+.card-image-4 {
+    background-image: url('../../../../assets/imagenes/Biblioteca_UTN.jpg'); 
+    background-size: cover;
+}
+
+
+
+
+
+
+//FIN DE CSS DE MAIN Y SU CONTENIDO
+//----------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//CSS PARA LA ETIQUETA FOOTER Y SUS CONTENIDOS
+
+footer {
+    background-image: url('../../../../assets/imagenes/footer_BG.jpg');
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    opacity: 0; 
+    transform: translateX(-50px); 
+    animation: slideFadeIn 1s ease-in-out forwards;
+}
+
+.footer-image {
+    display: inline-block;
+    margin: 0 10px;
+    transition: transform 0.2s, box-shadow 0.2s; 
+}
+
+.footer-image:hover {
+    transform: translateY(-5px); 
+    box-decoration-break: 0px 5px 10px rgba(0, 0, 0, 10); 
+  }
+
+.image-title {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #1b3069;
+}
+
+.footer-text {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+
+// FIN DE CSS PARA LA ETIQUETA FOOTER Y SUS CONTENIDOS
+//----------------------------------------------------------------------------------------------------------------------
+
+//ANIMACIONES DE ENTRADA
+
+
+//DESVANECIDO EN APERTURA
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+//DEZLIZAMIENTO EN APERTURA
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
+
+//CSS PARA BORDES NEÓN
+.neon-border {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.neon-border:before {
+    content: '';
+    position: absolute;
+    top: -0px;
+    left: -0px;
+    right: -0px;
+    bottom: -0px;
+    border: 2px solid rgba(10, 104, 226, 0.8);
+    border-radius: 15px;
+    z-index: 0;
+}
+
+
+
+/*
+.background-container {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../../assets/imagenes/Biblioteca_BG.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; 
+    opacity: 0; 
+    animation: fadeIn 1s ease-in-out forwards; 
+
+}
+*/

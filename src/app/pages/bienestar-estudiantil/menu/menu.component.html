@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="menu.component.scss" />
+    <title>MenuBienestarEstudiantil</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+    <body>
+        
+    <header>
+        
+        <!--
+            Los card tanto el de clase "CARD-OVERLAY" como el "DIAGONAL CARD" se encuentran dentro de un
+            el cumple la funcion de servir como imagen de fondo del header, de forma que ambos card se superponen
+            por encima de la imagen con una opacidad establecida dentro de los css
+        -->
+
+        <!--
+            La clase neon border permite agregar un borde neon en blanco y azul configurado para que se adapte al
+            tamaño de cualquier contenedor
+        -->
+        <div class="background-image neon-border">
+            <img src="../../../../assets/imagenes/menu_estudiantes.jpg" alt="Header_Estudiantes" class="background-img">
+        
+            <!--
+            Card overlay cumple la funcion de otorgar un segundo menu extra al usuario para la seleccion de otros
+            servicios que ofrece la plataforma, en un inicio la idea era que este menú se desplegara una vez que el usuario
+            usuario colocara el cursor sobre el mismo, pero no adquirio funcionalidad. Se optó por colocarlo al lado
+            izquierdo de la parte superior en la pagina dentro del header
+
+            NOTA: Este card resulta ser responsivo de forma eficiente pero se posiciona por encima del card de clase
+            "DIAGONAL-CARD", esto puede ser por alguna configuracion del DIAGONAL-CARD en su css, queda pendiente su
+            correcta configuracion
+        -->
+        <div class="card-overlay ">
+            <div class="container ">
+                <div class="row h-100 d-flex flex-column ">
+                    <div class="col-lg-6 ">
+                        <div class="card card-header-overlay flex-fill ">
+                            <div class="card-body">
+                                <div class="d-flex flex-column"> <!-- Agregado un contenedor con clases flex -->
+                                    <a class="header-link" href="https://www.utn.ac.cr/admision" target="_blank">
+                                        <button class="btn btn-custom mb-3 neon-border">Admision</button>
+                                    </a>
+                                    <a class="header-link" href="https://www.utn.ac.cr/matricula" target="_blank">
+                                        <button class="btn btn-custom mb-3 neon-border">Matricula</button>
+                                    </a>
+                                    <a class="header-link" href="https://www.utn.ac.cr/calendario-institucional-y-de-procesos" target="_blank">
+                                        <button class="btn btn-custom mb-3 neon-border">Calendarios Institucionales</button>
+                                    </a>
+                                    <a class="header-link" href="https://www.utn.ac.cr/content/utn-transparente" target="_blank">
+                                        <button class="btn btn-custom mb-3 neon-border">UTN Transparente</button>
+                                    </a>
+                                    <a class="header-link" href="" target="_blank">
+                                        <button class="btn btn-custom mb-3 neon-border">Correo Estudiantil</button>
+                                    </a>
+                                    <a class="header-link" href="https://avatar.utn.ac.cr/avatar_utn/log/menu.jsp" target="_blank">
+                                        <button class="btn btn-custom mb-3 neon-border">Avatar</button>
+                                    </a>
+                                </div>                           
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            Diagonal-card cumple el proposito de tarjeta informativa sobre las noticias que la universidad publica diariamente en la plataforma
+            para todo aquel que desee ingresar a la misma, se encuentra posicionada hacia el lado superior derecho dentro del header, Diagonal-card
+            se encuentra divida en dos secciones, en su seccion izquierda tiene un apartado para imagenes con un diseño de una diagonal con una
+            opacidad especificada dentro de los css de este card y dicha diagonal va desde la esquina inferior izquierda a la esquina superior derecha
+            de la imagen de forma que se complemente con su contraparte para texto, haciendolo ver difuminado la seccion izquierda tiene un 
+            indice menor (está un numero por debajo del campo de texto) a la seccion de su derecha la cual contiene titulo y parrafo para 
+            descripciones breves.
+
+            NOTA: Diagonal-card no cumple responsividad, se anteposiciona por detras de el card de clase "Card-overlay" conforme la imagen disminuye
+            su tamaño
+            
+        -->
+            <div class="col-lg-6 ">
+                <a href="https://www.utn.ac.cr/accion-universitaria/noticias-utn-old" target="_blank" rel="noopener noreferrer"> 
+                </a>
+                <div class="diagonal-card neon-border">
+                    <div class="card-image">
+                        <img class="image" src="../../../../assets/imagenes/Estudiantes4.jpg" alt="Imagen">
+                    </div>
+                    <div class="diagonal-overlay"></div>
+                    <div class="card-content">
+                        <a class="header-link" href="https://www.utn.ac.cr/accion-universitaria/noticias-utn-old" target="_blank" rel="noopener noreferrer"> 
+                            <h2>NOTICIAS UTN</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Vivamus in ipsum nisiullamcorper purus eros id lectus. Duis gravida 
+                            sagittis ligula, at aliquet eros auctor sit amet. Aliquam accumsan 
+                            sit amet tellus luctus condimentum. Nullam cursus, urna et suscipit pretium, lorem risus imperdiet purus.
+                            Nullam cursus, urna et suscipit pretium, lorem risus imperdiet purus
+                        </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+            Para logar el diseño de este header se optó por crear dos contenedores los cuales dan la apariencia de un encabezado subdividido,
+            configurandolo de manera que el contenedor superior sea quien contenga el logotipo, el titulo de la plataforma y los enlaces de redes
+            sociales de la institucion.
+            El contenedor superior se le asignó la clase "header-top" donde sus tres complementos los logotipos y el titulo se colocan en linea horizontal
+            El contenedor inferior se le asignó la clase "header-bottom" donde sus complementes los enlaces de modulos, boton de busqueda y dropdown se 
+            colocan en linea horizontal
+        -->
+            <div class="header-top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-2">
+                        <img src="../../../../assets/imagenes/Logo UTN - Copy.png" alt="LogoUTN" class="logo">
+                    </div>
+                    <div class="col-lg-8 text-center">
+                        <h1>Universidad Tecnica Nacional</h1>
+                    </div>
+                    <div class="col-lg-2 social-icons d-flex justify-content-end">
+                        <a href="http://" target="_blank">
+                            <i class="fa-brands fa-square-facebook" style="color: #ffffff;"></i>
+                        </a>
+                        <a href="http://" target="_blank">
+                            <i class="fa-brands fa-square-twitter" style="color: #ffffff;"></i>
+                        </a>
+                        <a href="http://" target="_blank">
+                            <i class="fa-brands fa-square-youtube" style="color: #ffffff;"></i>
+                        </a>
+                        <a href="http://" target="_blank">
+                            <i class="fa-brands fa-square-whatsapp" style="color: #ffffff;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+            El contenedor inferior se le asignó la clase "header-bottom" donde sus complementes los enlaces de modulos, boton de busqueda y dropdown se 
+            colocan en linea horizontal
+
+            NOTA: Ambos contenedores resultan ser responsivos de forma eficiente, pero los 6 botones de enlaces una vez que la pantalla disminuye
+            su tamaño dejan de apreciarse en pantalla en margenes muy pequeños, correccion pendiente
+        -->
+        <hr class="divider">
+        <nav class="navbar navbar-expand-lg navbar-dark   header-bottom">
+            <div class="container">
+                <button id="search-button" class="btn btn-link search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+                <input type="text" class="search-input" style="display: none;">
+
+                <div class="collapse navbar-collapse justify-content-center " id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="https://www.utn.ac.cr/">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.utn.ac.cr/content/de-un-vistazo">Acerca de</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" routerLink="/BienestarEstudiantil">Servicios estudiantiles</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Sedes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Organizacion</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Academia</a></li>
+                    </ul>
+                </div>
+                <!--
+                    Dropdown ubicado en la esquina derecha dentro del contenedor inferior del header
+
+                    NOTA: No es funcional, no despliega los items, correccion pendiente
+                -->
+                <div class="dropdown">
+                    <button class="btn btn-link dropdown-toggle" type="button" id="menuDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Menú
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="menuDropdown">
+                        <a class="dropdown-item" href="#">Hola</a>
+                        <a class="dropdown-item" href="#">Opción 2</a>
+                        <a class="dropdown-item" href="#">Opción 3</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <hr class="divider">
+        </div>
+    </header>
+    <!--
+            Dentro de la etiqueta main existen dos contenedores ubicados de forma paralela uno al lado del otro
+            El contenedor de la izquierda se identifica con la clase "Lef-container" mientras que el contenedor de la derecha lo por medio de la clase
+            "Right-container".
+            El contenedor izquierdo tiene sub-divisiones para contenido multimedia y tarjetas para enlaces de modul0s de la institucion, ambas sub-divisiones
+            o contenedores están envueltos en la clase neon-border para el su borde iluminado con los colores representativos de la institucion
+            entre blanco y azul
+            El contenedor derecho tiene sub-divisiones para contenido de tarjetas para enlaces de moduloss de la institucion, ambas sub-divisiones
+            o contenedores están envueltos en la clase neon-border para el su borde iluminado con los colores representativos de la institucion
+            entre blanco y azul
+
+            NOTA: Los contenedores de la derecha resultan ser responsivos de forma no tan eficiente, puesto que se adaptan a los margenes de las
+            diferentes pantallas pero el contenido de las tarjetas se ve afectado, en relacion a los titulos pues no se llegan a apreciar de forma correcta
+            al disminuirse el tamaño de la pantalla. CORRECCION PENDIENTE
+            La tarjeta del contenedor izquierdo no está siendo responsivo, el card se antepone por debajo del contenedor derecho, provocando que no se adapte
+            correctamente al tamaño de la pantalla --CORRECCION PENDIENTE
+            Con respecto al contenido multimedia (video) este si se adapta correctamente a los tamaños
+        -->
+    <main>
+        <div class="left-container ">
+            <div></div>
+            <video muted loop controls class="neon-border">
+                <source src="../../../../assets/imagenes/UTN_VIDEO.mp4" type="video/mp4">
+            </video>
+            <a class="card-links" href="https://www.utn.ac.cr/bibliotecas" target="_blank">
+                <div class="card mt-3 neon-border card-image-4 card-Left-Container">
+                    <div class="row no-gutters">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-left-container-title">BIBLIOTECA</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="right-container">
+            <a class="card-links" href="https://www.utn.ac.cr/carreras" target="_blank">
+                <div class="card card-image-1 card-Right-Container neon-border ">
+                    <div class="row no-gutters">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-Right-Container-title">CARRERAS</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="card-links" href="https://www.utn.ac.cr/cursos-libres-por-sede" target="_blank">
+                <div class="card mt-3 card-image-2 card-Right-Container neon-border ">
+                    <div class="row no-gutters">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-Right-Container-title">CURSOS LIBRES Y EXTENSIONES</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="card-links" href="https://www.utn.ac.cr/procesos-estudiantiles" target="_blank">
+                <div class="card mt-3 card-image-3 card-Right-Container neon-border">
+                    <div class="row no-gutters">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-Right-Container-title">PROCESOS ESTUDIANTILES</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+    <!--
+            Dentro de la etiqueta footer se encuentran 3 contenedores, el contenedor 1 almacena los diferentes enlaces que llevan a modulos administrativos
+            de la institucion, el segundo contenedor almacena informacion acerca de las politicas de privacidad y contacto, el contenedor 3 es un mensaje
+            explicativo acerca de este proyecto
+
+            Es responsivo al 100%
+        -->
+    <footer>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-1">
+                    <div class="footer-image">
+                        <a class="footer-links" href="https://www.utn.ac.cr/content/centros-y-programas" target="_blank" >
+                            <img src="../../../../assets/imagenes/LOGO_centrosProgramas.png" alt="Imagen 1" width="80">
+                        </a>
+                        <div class="image-title">Centros y Programas</div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="footer-image">
+                        <a class="footer-links" href="https://www.utn.ac.cr/contratacion-administrativa" target="_blank">
+                            <img src="../../../../assets/imagenes/LOGO_contratacionAdministrativa.png" alt="Imagen 2" width="80">
+                        </a>
+                        <div class="image-title">Contratacion Administrativa</div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="footer-image">
+                        <a class="footer-links" href="https://campusvirtual.utn.ac.cr/" target="_blank">
+                            <img src="../../../../assets/imagenes/LOGO_campusVirtual.png" alt="Imagen 2" width="80">
+                        </a>
+                        <div class="image-title">Campus Virtual</div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="footer-image">
+                        <a class="footer-links" href="https://www.utn.ac.cr/content/enlaces-de-inter%C3%A9s" target="_blank">
+                            <img src="../../../../assets/imagenes/LOGO_enlacesInteres.png" alt="Imagen 2" width="80">
+                        </a>
+                        <div class="image-title">Enlaces de interes</div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="footer-image">
+                        <a class="footer-links" href="https://www.utn.ac.cr/tribunal-electoral" target="_blank">
+                            <img src="../../../../assets/imagenes/LOGO_TribunalElectoral.png" alt="Imagen 2" width="80">
+                        </a>
+                        <div class="image-title">Tribunal Electoral</div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="footer-image">
+                        <a class="footer-links" href="https://www.utn.ac.cr/content/publicaciones-utn" target="_blank">
+                            <img src="../../../../assets/imagenes/LOGO_publicaciones.png" alt="Imagen 2" width="80">
+                        </a>
+                        <div class="image-title">Publicaciones</div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="footer-image">
+                        <a class="footer-links" href="https://www.utn.ac.cr/directorio-interno" target="_blank">
+                            <img src="../../../../assets/imagenes/LOGO_directorioInstitucional.png" alt="Imagen 2" width="80">
+                        </a>
+                        <div class="image-title">Directorio Institucional</div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="footer-image">
+                        <a class="footer-links" href="https://repositorio.utn.ac.cr/" target="_blank">
+                            <img src="../../../../assets/imagenes/LOGO_repositorioInstitucional.png" alt="Imagen 2" width="80">
+                        </a>
+                        <div class="image-title">Repositorio Institucional</div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="footer-image">
+                        <a class="footer-links" href="https://www.utn.ac.cr/content/mapa-del-sitio" target="_blank">
+                            <img src="../../../../assets/imagenes/LOGO_mapaSitio.png" alt="Imagen 2" width="80">
+                        </a>
+                        <div class="image-title">Mapa del sitio</div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="footer-image">
+                        <a class="footer-links" href="https://www.utn.ac.cr/content/sistema-de-intermediaci%C3%B3n-de-empleo" target="_blank">
+                            <img src="../../../../assets/imagenes/LOGO_sistemaIntermediacion.png" alt="Imagen 2" width="80">
+                        </a>
+                        
+                        <div class="image-title">
+                            Sistema de intermediacion de empleo
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-text">
+            © 2015 UTN Todos los Derechos Reservados &nbsp;|&nbsp; <a href="https://www.utn.ac.cr/content/t%C3%A9rminos-y-condiciones">Términos y Condiciones</a> &nbsp;|&nbsp;
+            <a href="https://www.utn.ac.cr/content/buzon-de-calificacion-sitio-utn">Buzón de calificación del sitio UTN</a>  &nbsp;|&nbsp;  <a href="https://transparencia.utn.ac.cr/contacto">Contacto</a>
+        </div>
+        <div class="footer-text">
+            Esta pagina es obra de estudiantes de la Universidad Tecnica Nacional como parte del proyecto para Bienestar Estudiantil
+        </div>
+    </footer>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

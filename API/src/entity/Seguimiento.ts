@@ -14,9 +14,7 @@ export class Seguimiento {
     @JoinColumn({ name: 'Cita_Id' })
     cita: Cita;
 
-    @Column()
-    @IsNotEmpty({ message: 'Debe ingresar valores' })
-    Agenda_Cita: string;
+    
 
     @Column()
     @IsNotEmpty({ message: 'Debe ingresar valores' })

@@ -1,0 +1,60 @@
+body{
+    background-color: white;
+}
+.div1{
+    position: relative;
+    width: 700px;
+    height: 50px;
+    background-color:  #e4e4e4;
+    text-align: center;  
+   margin-left: 80px;
+    top: 90px;
+    z-index: 2;
+    border-radius: 4px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    border: solid 1px;
+    
+}
+
+.div2{
+    position: absolute;
+    background-color: #f7f7f7;
+    width: 900px;
+    height: 650px;
+    top: 120px;
+    padding: 80px;
+    z-index: 1;
+     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+     border: solid 1px ;
+}
+
+.boton{
+    position: relative;
+    top: 150px;
+    float: right;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    
+}
+
+h2{
+    padding: 10px;
+}
+
+mat-form-field{
+    padding: 10px;
+}
+
+.boton2{
+    position: relative;
+    background-color:#1b3069;
+    color: white;
+    border-radius: 1;
+    border-color: #0000;
+    float: right;
+    top: 150px;
+}
+
+.div3{
+    position: relative;
+    top: 60px;
+}
