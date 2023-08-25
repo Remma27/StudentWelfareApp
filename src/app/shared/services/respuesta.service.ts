@@ -1,39 +1,38 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Estudiantes } from '../models/estudiantes';
+import { Respuesta } from '../models/respuesta';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EstudiantesService {
+export class RespuestaService {
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Estudiantes[]> {
+  getAll(): Observable<Respuesta[]> {
     return this.http
-      .get<Estudiantes[]>('http://localhost:3000/Estudiantes')
+      .get<Respuesta[]>('http://localhost:3000/Respuestas')
       .pipe(catchError(this.handlerError));
   }
-  getById(Estudiante_Id: number): Observable<Estudiantes> {
+  getById(Respuesta_Id: number): Observable<Respuesta> {
     return this.http
-      .get<Estudiantes>('http://localhost:3000/Estudiantes/' + Estudiante_Id)
+      .get<Respuesta>('http://localhost:3000/Respuestas/' + Respuesta_Id)
       .pipe(catchError(this.handlerError));
   }
-  insert(estudiante: Estudiantes): Observable<Estudiantes> {
-    console.log(estudiante);
+  insert(respuesta: Respuesta): Observable<Respuesta> {
     return this.http
-      .post<Estudiantes>('http://localhost:3000/Estudiantes', estudiante)
+      .post<Respuesta>('http://localhost:3000/Respuestas', respuesta)
       .pipe(catchError(this.handlerError));
   }
-  update(estudiante: Estudiantes): Observable<Estudiantes> {
+  update(respuesta: Respuesta): Observable<Respuesta> {
     return this.http
-      .patch<Estudiantes>('http://localhost:3000/Estudiantes', estudiante)
+      .patch<Respuesta>('http://localhost:3000/Respuestas', respuesta)
       .pipe(catchError(this.handlerError));
   }
 
-  delete(Estudiante_Id: number): Observable<Estudiantes> {
+  delete(Respuesta_Id: number): Observable<Respuesta> {
     return this.http
-      .delete<Estudiantes>('http://localhost:3000/Estudiantes/' + Estudiante_Id)
+      .delete<Respuesta>('http://localhost:3000/Estudiantes/' + Respuesta_Id)
       .pipe(catchError(this.handlerError));
   }
 

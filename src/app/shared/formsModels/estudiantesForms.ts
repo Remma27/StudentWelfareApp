@@ -8,14 +8,14 @@ export class EstudiantesForm {
     this.baseForm = this.fb.group({
       Estudiante_Id: ['', [Validators.required, Validators.maxLength(9)]],
       Genero: ['', [Validators.required]],
-      Fecha_Nacimiento: [Date.now, [Validators.required]],
+      Fecha_Nacimiento: ['', [Validators.required]],
       Telefono: [
         0,
         [Validators.required, Validators.minLength(8), Validators.maxLength(8)],
       ],
       Telefono2: [0, [Validators.minLength(8), Validators.maxLength(8)]],
       Correo_Electronico: ['', [Validators.required, Validators.email]],
-      Distrito_Id: [0, [Validators.required]],
+      distrito: [0, [Validators.required]],
       Direccion_Exacta_Procedencia: [
         '',
         [
