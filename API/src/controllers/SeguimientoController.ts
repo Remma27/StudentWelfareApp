@@ -43,31 +43,21 @@ export class SeguimientoController {
 
   static insert = async (req: Request, res: Response) => {
     /*formato
-
-        "Seguimiento_Id":1,
         "Cita_Id":1,
         "Resumen_Cita":"Esta enfermo de la mente",
         "Fecha_Correspondiente":"2026-12-12"
         */
     try {
-      const { Seguimiento_Id, Cita_Id, Resumen_Cita, Fecha_Correspondiente } =
-        req.body;
+      const { Cita_Id, Resumen_Cita, Fecha_Correspondiente } = req.body;
       const seguimientoRepo = AppDataSource.getRepository(Seguimiento);
-      const seguimientoExistente = await seguimientoRepo.findOne({
-        where: { Seguimiento_Id, Estado: true },
-      });
-      if (seguimientoExistente)
-        return res.status(400).json({ message: 'Seguimiento existente' });
-
       const citaRepo = AppDataSource.getMongoRepository(Cita);
       const citaExistente = await citaRepo.findOne({
         where: { Cita_Id, Estado: true },
       });
       if (!citaExistente) {
-        return res.status(400).json({ message: 'La cita no exite' });
+        return res.status(404).json({ message: 'La cita no exite' });
       }
       let seguimiento = new Seguimiento();
-      seguimiento.Seguimiento_Id = Seguimiento_Id;
       seguimiento.cita = Cita_Id;
       seguimiento.Resumen_Cita = Resumen_Cita;
       seguimiento.Fecha_Correspondiente = Fecha_Correspondiente;
@@ -113,7 +103,6 @@ export class SeguimientoController {
         return res.status(400).json({ message: 'La cita no exite' });
       }
       let seguimiento = new Seguimiento();
-      seguimiento.Seguimiento_Id = Seguimiento_Id;
       seguimiento.cita = Cita_Id;
       seguimiento.Resumen_Cita = Resumen_Cita;
       seguimiento.Fecha_Correspondiente = Fecha_Correspondiente;
