@@ -32,7 +32,7 @@ import { MenuComponent } from './menu/menu.component';
     FooterComponent,
     AdminReportesComponent,
     CitaComponent,
-    SeguimientoComponent
+    SeguimientoComponent,
     MenuComponent,
   ],
   imports: [
