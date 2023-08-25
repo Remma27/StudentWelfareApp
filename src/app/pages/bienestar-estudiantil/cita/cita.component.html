@@ -36,19 +36,15 @@
               <mat-label>Observaciones</mat-label>
               <textarea matInput formControlName="Observacion_Cita"> </textarea>
             </mat-form-field>
+
+            <p>Elige la fecha correcta</p>
+            <mat-form-field>
+              <mat-label></mat-label>
+              <input matInput type="date" formControlName="Encargado_Nombre" />
+            </mat-form-field>
           </form>
-          <p>Elige la fecha correcta</p>
-          <mat-form-field class="example-full-width">
-            <mat-label>Elige fecha</mat-label>
-            <input
-              matInput
-              [matDatepicker]="picker"
-              formControlName="Fecha_Cita"
-            />
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-          <button mat-raised-button (click)="picker.open()">Abrir</button>
+          
+          
 
           <div class="example-button-row div3">
             <button
