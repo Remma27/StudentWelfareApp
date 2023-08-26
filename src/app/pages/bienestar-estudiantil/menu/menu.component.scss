@@ -254,6 +254,20 @@ a {
     cursor: pointer;
     
   }
+
+  .dropdown-button{
+    width: 100%;
+    margin-left: 10px;
+    transform: translateX(-15px); 
+    box-decoration-break: 0px 5px 10px rgba(0, 0, 0, 10);
+    border: transparent;
+  }
+
+  .dropdown-links{
+    text-align: start;
+    display: block;
+    width: 100%;
+  }
   
   .dropdown-content {
     display: none;
@@ -272,7 +286,7 @@ a {
   
 .dropdown-content li:hover {
     background-color: #dcdcdc;
-    transform: translateX(-10px); 
+    transform: translateX(-20px); 
     box-decoration-break: 0px 5px 10px rgba(0, 0, 0, 10);
   }
 
