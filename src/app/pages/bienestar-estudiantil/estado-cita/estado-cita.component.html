@@ -93,9 +93,9 @@
   <ng-container matColumnDef="Acciones">
     <th mat-header-cell *matHeaderCellDef><h3>Acciónes</h3></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-button color="warn" style="z-index: 0;">En Progreso</button>
-      <button mat-button color="warn" style="z-index: 0;">Cancelar</button>
-      <button mat-button color="warn" style="z-index: 0;">Completada</button>
+      <button mat-button color="warn" (click)="actualizarProgreso()">En Progreso</button>
+      <button mat-button color="warn" (click)="actualizarCanceladas()">Cancelar</button>
+      <button mat-button color="warn" (click)="actualizarCompletadas()">Completada</button>
     </td>
   </ng-container>
 
@@ -147,8 +147,8 @@
   <ng-container matColumnDef="Acciones">
     <th mat-header-cell *matHeaderCellDef><h3>Acciónes</h3></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-button color="warn" style="z-index: 0;">Cancelar</button>
-      <button mat-button color="warn" style="z-index: 0;">Completada</button>
+      <button mat-button color="warn" (click)="actualizarCanceladas()">Cancelar</button>
+      <button mat-button color="warn" (click)="actualizarCompletadas()">Completada</button>
     </td>
   </ng-container>
 
