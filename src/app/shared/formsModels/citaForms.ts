@@ -10,6 +10,7 @@ export class CitaForm {
       Encargado_Nombre: ['', [Validators.required, Validators.maxLength(20)]],
       Observacion_Cita: ['', [Validators.required]],
       Fecha_Cita: ['', [Validators.required]],
+      Estado: ['Confirmada'],
     });
   }
 }
