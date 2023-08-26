@@ -129,21 +129,26 @@ export class CitaController {
         Estado,
       } = req.body;
       const citasRepo = AppDataSource.getRepository(Cita);
-      const citaExistente = await citasRepo.findOne({
+      /*const citaExistente = await citasRepo.findOne({
         where: { Cita_Id },
       });
       if (!citaExistente)
-        return res.status(404).json({ message: 'Cita inexistente' });
+        return res.status(404).json({ message: 'Cita inexistente' });*/
 
-      const estudianteRepo = AppDataSource.getRepository(Estudiante);
+      /*const estudianteRepo = AppDataSource.getRepository(Estudiante);
       const estudianteExistente = await estudianteRepo.findOne({
         where: { Estudiante_Id, Estado: true },
       });
       if (estudianteExistente) {
         return res.status(404).json({ message: 'Estudiante no existente' });
+      }*/
+      let cita: Cita;
+      try {
+        cita = await citasRepo.findOneOrFail({ where: { Cita_Id } });
+      } catch (error) {
+        return res.status(404).json({ message: 'Cita inexistente' });
       }
-
-      let cita = new Cita();
+      //let cita = new Cita();
       cita.estudiante = Estudiante_Id;
       cita.Encargado_Nombre = Encargado_Nombre;
       cita.Observacion_Cita = Observacion_Cita;
