@@ -37,13 +37,14 @@
     
 }
 
-h2{
-    padding: 10px;
-}
-
-mat-form-field{
-    padding: 10px;
-}
+mat-form-field {
+    width:  340px; /* O el porcentaje deseado */
+  }
+  
+  /* Ajusta el ancho del textarea dentro del mat-form-field */
+  mat-form-field mat-input-element {
+    width: 340px; /* O el porcentaje deseado */
+  }
 
 
 .boton2{
