@@ -100,7 +100,7 @@
 .dropdown {
     position: relative;
     display: inline-block;
-    
+    z-index: 1;
   }
   
   .dropdown-btn {
@@ -110,7 +110,7 @@
     font-size: 18px; 
     border: none;
     cursor: pointer;
-    
+    z-index: 1;
   }
   
   .dropdown-content {
@@ -120,18 +120,22 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     list-style: none;
     padding: 0;
-    
+    z-index: 1;
   }
   
   .dropdown-content li {
     padding: 10px;
     transition: background-color 0.3s ease; 
+    z-index: 2;
+
   }
   
 .dropdown-content li:hover {
     background-color: #dcdcdc;
     transform: translateX(-10px); 
     box-decoration-break: 0px 5px 10px rgba(0, 0, 0, 10);
+    z-index: 1;
+
   }
 
 
@@ -139,12 +143,14 @@
   .dropdown-content a {
     text-decoration: none;
     color: black;
+    z-index: 1;
   }
   
   .dropdown:hover .dropdown-content {
     display: block;
     opacity: 1; 
     transform: translateY(0);
+    z-index: 1;
   }
 
 //DESVANECIDO EN APERTURA
