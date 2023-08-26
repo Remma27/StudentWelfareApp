@@ -2,37 +2,38 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Respuesta } from '../models/respuesta';
+import { environments } from 'src/environments/enviroments';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RespuestaService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<Respuesta[]> {
     return this.http
-      .get<Respuesta[]>('http://localhost:3000/Respuestas')
+      .get<Respuesta[]>(`${environments.API_URL}/Respuestas`)
       .pipe(catchError(this.handlerError));
   }
   getById(Respuesta_Id: number): Observable<Respuesta> {
     return this.http
-      .get<Respuesta>('http://localhost:3000/Respuestas/' + Respuesta_Id)
+      .get<Respuesta>(`${environments.API_URL}/Respuestas/` + Respuesta_Id)
       .pipe(catchError(this.handlerError));
   }
   insert(respuesta: Respuesta): Observable<Respuesta> {
     return this.http
-      .post<Respuesta>('http://localhost:3000/Respuestas', respuesta)
+      .post<Respuesta>(`${environments.API_URL}/Respuestas`, respuesta)
       .pipe(catchError(this.handlerError));
   }
   update(respuesta: Respuesta): Observable<Respuesta> {
     return this.http
-      .patch<Respuesta>('http://localhost:3000/Respuestas', respuesta)
+      .patch<Respuesta>(`${environments.API_URL}/Respuestas`, respuesta)
       .pipe(catchError(this.handlerError));
   }
 
   delete(Respuesta_Id: number): Observable<Respuesta> {
     return this.http
-      .delete<Respuesta>('http://localhost:3000/Estudiantes/' + Respuesta_Id)
+      .delete<Respuesta>(`${environments.API_URL}/Respuestas/` + Respuesta_Id)
       .pipe(catchError(this.handlerError));
   }
 
