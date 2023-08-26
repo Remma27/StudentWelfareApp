@@ -8,6 +8,8 @@ import { PasswordComponent } from './password/password.component';
 const routes: Routes = [
   //{ path: '', component: SeguridadComponent },
   { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  {path: 'recovery', component: PasswordComponent },
   { path: 'SignUp', component: SignupComponent },
   { path: 'Password', component: PasswordComponent },
 ];
