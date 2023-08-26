@@ -30,19 +30,21 @@ export class EstadoCitaComponent {
   Completada = new MatTableDataSource();
   Cancelada = new MatTableDataSource();
 
+  progr = 'En Progreso';
+
   constructor(
     private srvCitas: CitaService,
     private mensajeria: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.cargarConfirmada();
-    this.cargarProgeso();
+    this.cargarProgreso();
     this.cargarCompletada();
     this.cargarCancelada();
   }
 
-  cargarProgeso() {
+  cargarProgreso() {
     this.srvCitas.getByEstado('En Progreso').subscribe(
       (datos) => {
         this.progreso.data = datos;
@@ -84,5 +86,26 @@ export class EstadoCitaComponent {
         this.mensajeria.error('No hay datos');
       }
     );
+  }
+
+  actualizarProgreso(): void {
+    /*this.srvCitas.getByEstado('Confirmada').subscribe(
+     (datos)=>{
+       if(datos){
+         let nuevoEstado={
+           Estado:datos.Estado
+         }
+       }
+     }
+    )*/
+  }
+
+
+  actualizarCanceladas(): void {
+
+  }
+
+  actualizarCompletadas(): void {
+
   }
 }
