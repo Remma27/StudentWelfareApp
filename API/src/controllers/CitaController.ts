@@ -67,8 +67,13 @@ export class CitaController {
             "Fecha_Cita":"2023-12-12"
         */
     try {
-      const { Estudiante_Id, Encargado_Nombre, Observacion_Cita, Fecha_Cita } =
-        req.body;
+      const {
+        Estudiante_Id,
+        Encargado_Nombre,
+        Observacion_Cita,
+        Fecha_Cita,
+        Estado,
+      } = req.body;
 
       const citasRepo = AppDataSource.getRepository(Cita);
 
@@ -86,7 +91,7 @@ export class CitaController {
       cita.Encargado_Nombre = Encargado_Nombre;
       cita.Observacion_Cita = Observacion_Cita;
       cita.Fecha_Cita = Fecha_Cita;
-      cita.Estado = 'Confirmada';
+      cita.Estado = Estado;
       const errores = await validate(cita, {
         validationError: { target: false, value: false },
       });

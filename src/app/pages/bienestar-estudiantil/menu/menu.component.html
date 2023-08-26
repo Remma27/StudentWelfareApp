@@ -155,7 +155,6 @@
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="https://www.utn.ac.cr/">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="https://www.utn.ac.cr/content/de-un-vistazo">Acerca de</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" routerLink="/BienestarEstudiantil">Servicios estudiantiles</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Sedes</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Organización</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Academia</a></li>
@@ -167,15 +166,20 @@
                     NOTA: No es funcional, no despliega los items, correccion pendiente
                 -->
                 <div class="dropdown">
-                    <button class="btn btn-link dropdown-toggle" type="button" id="menuDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Menú
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="menuDropdown">
-                        <a class="dropdown-item" href="#">Hola</a>
-                        <a class="dropdown-item" href="#">Opción 2</a>
-                        <a class="dropdown-item" href="#">Opción 3</a>
-                    </div>
-                </div>
+                    <button class="dropdown-btn">Menú</button>
+                    <ul class="dropdown-content">
+                      <li><a href="#" routerLink="/BienestarEstudiantil/AdecuacionCurricular">Adecuacion Curricular</a></li>
+                      <li><a href="#" routerLink="/BienestarEstudiantil/AtencionPsicologica">Atencion Psicologica</a></li>
+                      <li><a href="#" routerLink="/BienestarEstudiantil/BitacoraProfesor">Bitacora Profesor</a></li>
+                      <li><a href="#" routerLink="/BienestarEstudiantil/InformacionPersonal">Informacion Personal</a></li>
+                      <li><a href="#" routerLink="/BienestarEstudiantil/Reportes">Reportes</a></li>
+                      <li><a href="#" routerLink="/BienestarEstudiantil/Cita">Citas</a></li>
+                      <li><a href="#" routerLink="/BienestarEstudiantil/estadoCita">Estado de Citas</a></li>
+                      <li><a href="#" routerLink="/BienestarEstudiantil/Retroalimentacion">Retroalimentacion</a></li>
+                      <li><a href="#" routerLink="/BienestarEstudiantil/Seguimiento">Seguimiento</a></li>
+        
+                    </ul>
+                  </div>
             </div>
         </nav>
         <hr class="divider">

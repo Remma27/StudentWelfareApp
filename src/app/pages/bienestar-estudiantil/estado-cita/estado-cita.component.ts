@@ -36,19 +36,13 @@ export class EstadoCitaComponent {
   ) {}
 
   ngOnInit() {
-    this.cargarlista();
+    this.cargarConfirmada();
+    this.cargarProgeso();
+    this.cargarCompletada();
+    this.cargarCancelada();
   }
 
-  cargarlista() {
-    this.srvCitas.getByEstado('Confirmada').subscribe(
-      (datos) => {
-        this.confirmadas.data = datos;
-      },
-      (error) => {
-        this.mensajeria.error('No hay datos');
-      }
-    );
-
+  cargarProgeso() {
     this.srvCitas.getByEstado('En Progreso').subscribe(
       (datos) => {
         this.progreso.data = datos;
@@ -57,7 +51,9 @@ export class EstadoCitaComponent {
         this.mensajeria.error('No hay datos');
       }
     );
+  }
 
+  cargarCompletada() {
     this.srvCitas.getByEstado('Completada').subscribe(
       (datos) => {
         this.Completada.data = datos;
@@ -66,10 +62,23 @@ export class EstadoCitaComponent {
         this.mensajeria.error('No hay datos');
       }
     );
+  }
 
+  cargarCancelada() {
     this.srvCitas.getByEstado('Cancelada').subscribe(
       (datos) => {
         this.Cancelada.data = datos;
+      },
+      (error) => {
+        this.mensajeria.error('No hay datos');
+      }
+    );
+  }
+
+  cargarConfirmada() {
+    this.srvCitas.getByEstado('Confirmada').subscribe(
+      (datos) => {
+        this.confirmadas.data = datos;
       },
       (error) => {
         this.mensajeria.error('No hay datos');

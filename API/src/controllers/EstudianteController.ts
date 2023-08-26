@@ -68,7 +68,7 @@ export class EstudianteController {
         Correo_Electronico,
         distrito,
         Direccion_Exacta_Procedencia,
-        Direccion_Tiempo_Lectivo,
+        Direccion_Exacta_Tiempo_Lectivo,
         Nacionalidad,
         Colegio_Procedencia,
         Ano_Graduacion_Secundaria,
@@ -95,13 +95,13 @@ export class EstudianteController {
       estudiante.Nacionalidad = Nacionalidad;
       estudiante.Colegio_Procedencia = Colegio_Procedencia;
       estudiante.Ano_Graduacion_Secundaria = Ano_Graduacion_Secundaria;
-      estudiante.Estado = true;
 
       estudiante.Telefono = Telefono;
       estudiante.Telefono2 = Telefono2;
       estudiante.Correo_Electronico = Correo_Electronico;
       estudiante.Direccion_Exacta_Procedencia = Direccion_Exacta_Procedencia;
-      estudiante.Direccion_Exacta_Tiempo_Lectivo = Direccion_Tiempo_Lectivo;
+      estudiante.Direccion_Exacta_Tiempo_Lectivo = Direccion_Exacta_Tiempo_Lectivo;
+      estudiante.Estado = true;
 
       const errores = await validate(estudiante, {
         validationError: { target: false, value: false },
