@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
+import { Citas } from 'src/app/shared/models/citas';
 import { CitaService } from 'src/app/shared/services/cita.service';
 
 @Component({
@@ -29,8 +30,6 @@ export class EstadoCitaComponent {
   progreso = new MatTableDataSource();
   Completada = new MatTableDataSource();
   Cancelada = new MatTableDataSource();
-
-  progr = 'En Progreso';
 
   constructor(
     private srvCitas: CitaService,
@@ -89,24 +88,52 @@ export class EstadoCitaComponent {
     );
   }
 
-  actualizarProgreso(): void {
-    /*this.srvCitas.getByEstado('Confirmada').subscribe(
-     (datos)=>{
-       if(datos){
-         let nuevoEstado={
-           Estado:datos.Estado
-         }
-       }
-     }
-    )*/
+  actualizarProgreso(cita: any): void {
+    const nuevoEstado = { Estado: 'En Progreso' };
+    cita.Estado = nuevoEstado.Estado;
+
+    this.srvCitas.update(cita).subscribe(
+      (respuesta) => {
+        this.mensajeria.success('Cita en progreso actualizada exitosamente.');
+        this.cargarConfirmada();
+        this.cargarProgreso();
+      },
+      (error) => {
+        console.log(error);
+        this.mensajeria.error('Error al actualizar la cita en progreso.');
+      }
+    );
   }
 
+  actualizarCanceladas(cita: any): void {
+    const nuevoEstado = { Estado: 'Cancelada' };
+    cita.Estado = nuevoEstado.Estado;
 
-  actualizarCanceladas(): void {
-
+    this.srvCitas.update(cita).subscribe(
+      (respuesta) => {
+        this.mensajeria.success('Cita cancelada exitosamente.');
+        this.cargarCancelada();
+      },
+      (error) => {
+        console.log(error);
+        this.mensajeria.error('Error al cancelar la cita.');
+      }
+    );
   }
 
-  actualizarCompletadas(): void {
+  actualizarCompletadas(cita: any): void {
+    const nuevoEstado = { Estado: 'Completada' };
+    cita.Estado = nuevoEstado.Estado
 
+    this.srvCitas.update(cita).subscribe(
+      (respuesta) => {
+        this.mensajeria.success('Cita completada exitosamente.');
+        this.cargarCompletada();
+      },
+      (error) => {
+        console.log(error);
+        this.mensajeria.error('Error al marcar la cita como completada.');
+      }
+    );
   }
 }

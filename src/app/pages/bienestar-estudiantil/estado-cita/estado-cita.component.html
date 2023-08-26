@@ -93,13 +93,13 @@
   <ng-container matColumnDef="Acciones">
     <th mat-header-cell *matHeaderCellDef><h3>Acciónes</h3></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-button color="warn" (click)="actualizarProgreso()">
+      <button mat-button color="warn" (click)="actualizarProgreso(element)">
         En Progreso
       </button>
-      <button mat-button color="warn" (click)="actualizarCanceladas()">
+      <button mat-button color="warn" (click)="actualizarCanceladas(element)">
         Cancelar
       </button>
-      <button mat-button color="warn" (click)="actualizarCompletadas()">
+      <button mat-button color="warn" (click)="actualizarCompletadas(element)">
         Completada
       </button>
     </td>
@@ -126,7 +126,7 @@
 
   <ng-container matColumnDef="Estudiante_Id">
     <th mat-header-cell *matHeaderCellDef><h3>Estudiante</h3></th>
-    <td mat-cell *matCellDef="let element">{{ element.Estudiante_Id }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.Estudiante_Id}}</td>
   </ng-container>
 
   <ng-container matColumnDef="Encargado_Nombre">
@@ -153,10 +153,10 @@
   <ng-container matColumnDef="Acciones">
     <th mat-header-cell *matHeaderCellDef><h3>Acciónes</h3></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-button color="warn" (click)="actualizarCanceladas()">
+      <button mat-button color="warn" (click)="actualizarCanceladas(element)">
         Cancelar
       </button>
-      <button mat-button color="warn" (click)="actualizarCompletadas()">
+      <button mat-button color="warn" (click)="actualizarCompletadas(element)">
         Completada
       </button>
     </td>
