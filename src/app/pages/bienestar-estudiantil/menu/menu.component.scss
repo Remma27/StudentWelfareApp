@@ -239,6 +239,56 @@ a {
     color: #bd9b14; 
   }
 
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    
+  }
+  
+  .dropdown-btn {
+    background-color: transparent; //OPACIDAD DE LAS DIVISIONES DEL HEADER
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px; 
+    border: none;
+    cursor: pointer;
+    
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    list-style: none;
+    padding: 0;
+    
+  }
+  
+  .dropdown-content li {
+    padding: 10px;
+    transition: background-color 0.3s ease; 
+  }
+  
+.dropdown-content li:hover {
+    background-color: #dcdcdc;
+    transform: translateX(-10px); 
+    box-decoration-break: 0px 5px 10px rgba(0, 0, 0, 10);
+  }
+
+
+
+  .dropdown-content a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1; 
+    transform: translateY(0);
+  }
+
 //FIN DE CSS DE HEADER Y SU CONTENIDO
 //----------------------------------------------------------------------------------------------------------------------
 
