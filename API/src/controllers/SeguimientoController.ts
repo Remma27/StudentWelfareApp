@@ -48,11 +48,12 @@ export class SeguimientoController {
         "Fecha_Correspondiente":"2026-12-12"
         */
     try {
-      const { Cita_Id, Resumen_Cita, Fecha_Correspondiente } = req.body;
+      const { Cita_Id, Resumen_Cita, Fecha_Correspondiente, Otra_Cita } =
+        req.body;
       const seguimientoRepo = AppDataSource.getRepository(Seguimiento);
       const citaRepo = AppDataSource.getMongoRepository(Cita);
       const citaExistente = await citaRepo.findOne({
-        where: { Cita_Id, Estado: true },
+        where: { Cita_Id, Estado: 'Completada' },
       });
       if (!citaExistente) {
         return res.status(404).json({ message: 'La cita no exite' });
@@ -61,6 +62,7 @@ export class SeguimientoController {
       seguimiento.cita = Cita_Id;
       seguimiento.Resumen_Cita = Resumen_Cita;
       seguimiento.Fecha_Correspondiente = Fecha_Correspondiente;
+      seguimiento.Otra_Cita = Otra_Cita;
       seguimiento.Estado = true;
       const erros = await validate(seguimiento, {
         validationError: { target: false, value: false },
@@ -85,19 +87,23 @@ export class SeguimientoController {
 
   static update = async (req: Request, res: Response) => {
     try {
-      const { Seguimiento_Id, Cita_Id, Resumen_Cita, Fecha_Correspondiente } =
-        req.body;
+      const {
+        Seguimiento_Id,
+        Cita_Id,
+        Resumen_Cita,
+        Fecha_Correspondiente,
+        Otra_Cita,
+      } = req.body;
       const seguimientoRepo = AppDataSource.getRepository(Seguimiento);
       const seguimientoExistente = await seguimientoRepo.findOne({
         where: { Seguimiento_Id, Estado: true },
-        relations: { cita: true },
       });
       if (!seguimientoExistente)
         return res.status(400).json({ message: 'Seguimiento inexistente' });
 
       const citaRepo = AppDataSource.getMongoRepository(Cita);
       const citaExistente = await citaRepo.findOne({
-        where: { Cita_Id, Estado: true },
+        where: { Cita_Id, Estado: 'Completada' },
       });
       if (!citaExistente) {
         return res.status(400).json({ message: 'La cita no exite' });
@@ -106,6 +112,7 @@ export class SeguimientoController {
       seguimiento.cita = Cita_Id;
       seguimiento.Resumen_Cita = Resumen_Cita;
       seguimiento.Fecha_Correspondiente = Fecha_Correspondiente;
+      seguimiento.Otra_Cita = Otra_Cita;
       seguimiento.Estado = true;
       const erros = await validate(seguimiento, {
         validationError: { target: false, value: false },

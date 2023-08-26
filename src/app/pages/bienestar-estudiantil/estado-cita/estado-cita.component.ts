@@ -46,6 +46,7 @@ export class EstadoCitaComponent {
     this.srvCitas.getByEstado('En Progreso').subscribe(
       (datos) => {
         this.progreso.data = datos;
+        console.log(datos);
       },
       (error) => {
         this.mensajeria.error('No hay datos');

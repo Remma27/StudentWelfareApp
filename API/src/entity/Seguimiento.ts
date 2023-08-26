@@ -4,8 +4,6 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  OneToMany,
-  PrimaryColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Cita } from './CIta';
@@ -26,6 +24,10 @@ export class Seguimiento {
   @Column()
   @IsNotEmpty({ message: 'Debe ingresar valores' })
   Fecha_Correspondiente: Date;
+
+  @Column()
+  @IsNotEmpty({ message: 'Debe ingresar valores' })
+  Otra_Cita: boolean;
 
   @Column()
   @IsNotEmpty({ message: 'Debe ingresar valores' })
