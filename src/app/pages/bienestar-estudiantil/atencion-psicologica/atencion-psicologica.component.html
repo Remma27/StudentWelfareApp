@@ -31,7 +31,7 @@
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio1"
-              formControlName="Respuesta_Cuestionario"
+             
             />
             <label class="form-check-label" for="inlineRadio1"
               >Presencial</label
@@ -43,7 +43,7 @@
               type="radio"
               name="inlineRadioOptions"
               id="inlineRadio2"
-              formControlName="Respuesta_Cuestionario"
+             
             />
             <label class="form-check-label" for="inlineRadio2">Virtual</label>
           </div>
@@ -53,24 +53,24 @@
         <p>¿Cuál sería el motivo de su consulta?</p>
         <mat-form-field>
           <mat-label></mat-label>
-          <textarea matInput formControlName="Respuesta_Cuestionario">
+          <textarea matInput >
           </textarea>
         </mat-form-field>
 
         <p>¿En qué sede estudia?</p>
         <mat-form-field>
           <mat-label>Sede</mat-label>
-          <mat-select formControlName="Respuesta_Cuestionario">
+          <mat-select >
             <mat-option *ngFor="let Sede of Sede" [value]="Sede.value">
               {{ Sede.viewValue }}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
-        <p>¿A qué hora tiene disponibilidads?</p>
+        <p>¿A qué hora tiene disponibilidad?</p>
         <mat-form-field>
           <mat-label>Horario</mat-label>
-          <mat-select formControlName="Respuesta_Cuestionario">
+          <mat-select >
             <mat-option *ngFor="let Horario of Horario" [value]="Horario.value">
               {{ Horario.viewValue }}
             </mat-option>
@@ -80,14 +80,14 @@
         <p>Mencione 2 días de su preferencia que desee las citas</p>
         <mat-form-field>
           <mat-label></mat-label>
-          <textarea matInput formControlName="Respuesta_Cuestionario">
+          <textarea matInput >
           </textarea>
         </mat-form-field>
 
         <p>¿Alguna observación que quiera expresar?</p>
         <mat-form-field>
           <mat-label></mat-label>
-          <textarea matInput formControlName="Respuesta_Cuestionario">
+          <textarea matInput >
           </textarea>
         </mat-form-field>
       </form>
