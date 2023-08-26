@@ -20,6 +20,7 @@ export class EstudiantesService {
       .pipe(catchError(this.handlerError));
   }
   insert(estudiante: Estudiantes): Observable<Estudiantes> {
+    console.log(estudiante);
     return this.http
       .post<Estudiantes>('http://localhost:3000/Estudiantes', estudiante)
       .pipe(catchError(this.handlerError));

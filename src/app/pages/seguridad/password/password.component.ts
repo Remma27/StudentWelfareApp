@@ -35,9 +35,6 @@ export class PasswordComponent {
             Usuario_Id: usuario.Usuario_Id,
             Correo: usuario.Correo,
             Contrasena: nuevaContrasena,
-            Perfil: usuario.Perfil,
-            EstaEnSesion: usuario.EstaEnSesion,
-            Estado: usuario.Estado,
           };
 
           this.srvUsuarios.update(usuarioActualizado).subscribe(

@@ -1,5 +1,6 @@
-body{
+.container {
     background-color: white;
+
 }
 .div1{
     position: relative;
@@ -20,7 +21,7 @@ body{
     position: absolute;
     background-color: #f7f7f7;
     width: 900px;
-    height: 3400px;
+    height: 2650px;
     top: 120px;
     padding: 80px;
     z-index: 1;
@@ -28,11 +29,12 @@ body{
      border: solid 1px ;
 }
 
-button{
-    background-color:#1b3069;
-    color: white;
-    border-radius: 1;
-    border-color: #0000;
+.boton{
+    position: relative;
+    top: 50px;
+    float: right;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    
 }
 
 h2{
@@ -41,5 +43,16 @@ h2{
 
 mat-form-field{
     padding: 10px;
+}
+
+
+.boton2{
+    position: relative;
+    background-color:#1b3069;
+    color: white;
+    border-radius: 1;
+    border-color: #0000;
+    float: right;
+    top: 150px;
 }
 

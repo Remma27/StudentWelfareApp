@@ -1,0 +1,254 @@
+<!--
+<H2>Citas pendientes</H2>
+<br />
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="Cita_Id">
+    <th mat-header-cell *matHeaderCellDef><h3>Id</h3></th>
+    <td mat-cell *matCellDef="let element">{{ element.Cita_Id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Estudiante_Id">
+    <th mat-header-cell *matHeaderCellDef><h3>Estudiante</h3></th>
+    <td mat-cell *matCellDef="let element">{{ element.Estudiante_Id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Encargado_Nombre">
+    <th mat-header-cell *matHeaderCellDef><h3>Encargado</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Encargado_Nombre | uppercase }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Observacion_Cita">
+    <th mat-header-cell *matHeaderCellDef><h3>Observacion</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Observacion_Cita | uppercase }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Fecha_Cita">
+    <th mat-header-cell *matHeaderCellDef><h3>Fecha</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Fecha_Cita | date : "shortDate" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Acciones">
+    <th mat-header-cell *matHeaderCellDef><h3>Acciones</h3></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button color="warn">Aceptar</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">
+      <h2>No hay datos en esta tablas</h2>
+    </td>
+  </tr>
+</table>
+
+-->
+
+<br />
+<h2>Citas confirmadas</h2>
+<br />
+<table mat-table [dataSource]="confirmadas" class="mat-elevation-z8">
+  <ng-container matColumnDef="Cita_Id">
+    <th mat-header-cell *matHeaderCellDef><h3>Id</h3></th>
+    <td mat-cell *matCellDef="let element">{{ element.Cita_Id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Estudiante_Id">
+    <th mat-header-cell *matHeaderCellDef><h3>Estudiante</h3></th>
+    <td mat-cell *matCellDef="let element">{{ element.Estudiante_Id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Encargado_Nombre">
+    <th mat-header-cell *matHeaderCellDef><h3>Encargado</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Encargado_Nombre | uppercase }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Observacion_Cita">
+    <th mat-header-cell *matHeaderCellDef><h3>Observacion</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Observacion_Cita | uppercase }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Fecha_Cita">
+    <th mat-header-cell *matHeaderCellDef><h3>Fecha</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Fecha_Cita | date : "shortDate" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Acciones">
+    <th mat-header-cell *matHeaderCellDef><h3>Acciones</h3></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button color="warn">En Progreso</button>
+      <button mat-button color="warn">Cancelar</button>
+      <button mat-button color="warn">Completada</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">
+      <h2>No hay datos en esta tablas</h2>
+    </td>
+  </tr>
+</table>
+
+<br />
+<h2>Citas en progreso</h2>
+<br />
+<table mat-table [dataSource]="progreso" class="mat-elevation-z8">
+  <ng-container matColumnDef="Cita_Id">
+    <th mat-header-cell *matHeaderCellDef><h3>Id</h3></th>
+    <td mat-cell *matCellDef="let element">{{ element.Cita_Id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Estudiante_Id">
+    <th mat-header-cell *matHeaderCellDef><h3>Estudiante</h3></th>
+    <td mat-cell *matCellDef="let element">{{ element.Estudiante_Id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Encargado_Nombre">
+    <th mat-header-cell *matHeaderCellDef><h3>Encargado</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Encargado_Nombre | uppercase }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Observacion_Cita">
+    <th mat-header-cell *matHeaderCellDef><h3>Observacion</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Observacion_Cita | uppercase }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Fecha_Cita">
+    <th mat-header-cell *matHeaderCellDef><h3>Fecha</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Fecha_Cita | date : "shortDate" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Acciones">
+    <th mat-header-cell *matHeaderCellDef><h3>Acciones</h3></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button color="warn">Cancelar</button>
+      <button mat-button color="warn">Completada</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">
+      <h2>No hay datos en esta tablas</h2>
+    </td>
+  </tr>
+</table>
+<br />
+<h2>Citas canceladas</h2>
+<br />
+
+<table mat-table [dataSource]="Cancelada" class="mat-elevation-z8">
+  <ng-container matColumnDef="Cita_Id">
+    <th mat-header-cell *matHeaderCellDef><h3>Id</h3></th>
+    <td mat-cell *matCellDef="let element">{{ element.Cita_Id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Estudiante_Id">
+    <th mat-header-cell *matHeaderCellDef><h3>Estudiante</h3></th>
+    <td mat-cell *matCellDef="let element">{{ element.Estudiante_Id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Encargado_Nombre">
+    <th mat-header-cell *matHeaderCellDef><h3>Encargado</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Encargado_Nombre | uppercase }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Observacion_Cita">
+    <th mat-header-cell *matHeaderCellDef><h3>Observacion</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Observacion_Cita | uppercase }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Fecha_Cita">
+    <th mat-header-cell *matHeaderCellDef><h3>Fecha</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Fecha_Cita | date : "shortDate" }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">
+      <h2>No hay datos en esta tablas</h2>
+    </td>
+  </tr>
+</table>
+<br />
+<h2>Citas completadas</h2>
+<br />
+
+<table mat-table [dataSource]="Completada" class="mat-elevation-z8">
+  <ng-container matColumnDef="Cita_Id">
+    <th mat-header-cell *matHeaderCellDef><h3>Id</h3></th>
+    <td mat-cell *matCellDef="let element">{{ element.Cita_Id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Estudiante_Id">
+    <th mat-header-cell *matHeaderCellDef><h3>Estudiante</h3></th>
+    <td mat-cell *matCellDef="let element">{{ element.Estudiante_Id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Encargado_Nombre">
+    <th mat-header-cell *matHeaderCellDef><h3>Encargado</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Encargado_Nombre | uppercase }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Observacion_Cita">
+    <th mat-header-cell *matHeaderCellDef><h3>Observacion</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Observacion_Cita | uppercase }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Fecha_Cita">
+    <th mat-header-cell *matHeaderCellDef><h3>Fecha</h3></th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.Fecha_Cita | date : "shortDate" }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">
+      <h2>No hay datos en esta tablas</h2>
+    </td>
+  </tr>
+</table>
+<br />

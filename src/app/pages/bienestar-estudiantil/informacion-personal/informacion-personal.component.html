@@ -15,19 +15,19 @@
   <body>-->
 <div class="container">
   <div class="row">
-    <div class="col-12 div1">
-      <p>Información Personal</p>
+    <div class="col-12">
+      <p></p>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-12 div2">
+    <div class="col-12">
       <form [formGroup]="estudianteForm.baseForm">
         <h2>Boleta de matricula</h2>
         <p>Digite su numero de cedula</p>
         <mat-form-field>
           <mat-label></mat-label>
-          <input matInput type="number" formControlName="Cedula" />
+          <input matInput type="number" formControlName="Estudiante_Id" />
         </mat-form-field>
 
         <h4>Seleccione el Cuatrimestre</h4>
@@ -62,10 +62,10 @@
             <input
               class="form-check-input"
               type="radio"
-              name="inlineRadioOptions"
               id="inlineRadio1"
               formControlName="Genero"
-              value="M"
+              [value]="'M'"
+              [checked]="true"
             />
             <label class="form-check-label" for="inlineRadio1">Masculino</label>
           </div>
@@ -73,15 +73,14 @@
             <input
               class="form-check-input"
               type="radio"
-              name="inlineRadioOptions"
               id="inlineRadio2"
               formControlName="Genero"
-              value="F"
+              [value]="'F'"
+              [checked]="false"
             />
             <label class="form-check-label" for="inlineRadio2">Femenino</label>
           </div>
         </div>
-
         <br />
         <br />
 
@@ -172,7 +171,7 @@
         <h4>Distrito</h4>
         <mat-form-field>
           <mat-label></mat-label>
-          <mat-select formControlName="Distrito_Id">
+          <mat-select formControlName="distrito">
             <mat-option
               *ngFor="let distrito of distritos"
               [value]="distrito.Distrito_Id"
@@ -197,11 +196,24 @@
         </mat-form-field>
       </form>
 
-      <div class="example-button-row boton">
-        <button mat-flat-button color="primary">Finalizar</button>
+      <div class="example-button-row div3">
+        <button
+          type="button"
+          class="btn btnds position-static boton2"
+          (click)="guardar()"
+        >
+          Enviar
+        </button>
       </div>
     </div>
   </div>
 </div>
+<div class="col-2"></div>
+
 <!--</body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"
+  ></script>
 </html>-->

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { AppDataSource } from '../data-source';
 import { Estudiante } from '../entity/Estudiante';
 import { validate } from 'class-validator';
+import { Distrito } from '../entity/Distrito';
 
 export class EstudianteController {
   static getAll = async (req: Request, res: Response) => {
@@ -9,6 +10,7 @@ export class EstudianteController {
       const estudiantesRepo = AppDataSource.getRepository(Estudiante);
       const estudiantes = await estudiantesRepo.find({
         where: { Estado: true },
+        relations: { bitacora: true, cita: true, respuestas: true },
       });
       if (estudiantes.length === 0)
         return res.status(404).json({ message: 'No hay estudiantes activos' });
@@ -26,6 +28,7 @@ export class EstudianteController {
       try {
         estudiante = await estudiantesRepo.findOneOrFail({
           where: { Estudiante_Id, Estado: true },
+          relations: { bitacora: true, cita: true, respuestas: true },
         });
       } catch (error) {
         return res
@@ -41,13 +44,13 @@ export class EstudianteController {
   static insert = async (req: Request, res: Response) => {
     /*formato
 {
-    "Cedula": 604800970,
+    "Estudiante_Id": 604800970,
     "Genero": "M",
     "Fecha_Nacimiento": "2003-07-27",
     "Telefono": 12232132,
     "Telefono2": 21233221,
     "Correo_Electronico": "emma@gmail.com",
-    "Distrito_Id": 23223,
+    "distrito": 23223,
     "Direccion_Exacta_Procedencia": "Los almendros barranca pun",
     "Direccion_Tiempo_Lectivo": "El Roble Puntarenas",
     "Nacionalidad": "C",
@@ -57,13 +60,13 @@ export class EstudianteController {
         */
     try {
       const {
-        Cedula,
+        Estudiante_Id,
         Genero,
         Fecha_Nacimiento,
         Telefono,
         Telefono2,
         Correo_Electronico,
-        Distrito_Id,
+        distrito,
         Direccion_Exacta_Procedencia,
         Direccion_Tiempo_Lectivo,
         Nacionalidad,
@@ -72,15 +75,23 @@ export class EstudianteController {
       } = req.body;
       const estudiantesRepo = AppDataSource.getRepository(Estudiante);
       const estudianteExistente = await estudiantesRepo.findOne({
-        where: { Cedula, Estado: true },
+        where: { Estudiante_Id, Estado: true },
       });
       if (estudianteExistente)
         return res.status(400).json({ message: 'Estudiante existente' });
+
+      const distritoRepo = AppDataSource.getRepository(Distrito);
+      const distritoExistente = await distritoRepo.findOne({
+        where: { Distrito_Id: distrito },
+      });
+      if (!distritoExistente) {
+        return res.status(400).json({ message: 'Distrito no existe' });
+      }
       let estudiante = new Estudiante();
-      estudiante.Cedula = Cedula;
+      estudiante.Estudiante_Id = Estudiante_Id;
       estudiante.Genero = Genero;
       estudiante.Fecha_Nacimiento = Fecha_Nacimiento;
-      estudiante.Distrito_Id = Distrito_Id;
+      estudiante.distrito = distrito;
       estudiante.Nacionalidad = Nacionalidad;
       estudiante.Colegio_Procedencia = Colegio_Procedencia;
       estudiante.Ano_Graduacion_Secundaria = Ano_Graduacion_Secundaria;
@@ -96,6 +107,7 @@ export class EstudianteController {
         validationError: { target: false, value: false },
       });
       if (errores.length > 0) {
+        console.log(errores);
         return res.status(400).json(errores);
       }
       try {
@@ -104,11 +116,13 @@ export class EstudianteController {
           .status(201)
           .json({ message: 'Estudiante insertado correctamente' });
       } catch (error) {
+        console.log(error);
         return res
           .status(400)
           .json({ message: 'No se pudo insertar el estudiante' });
       }
     } catch (error) {
+      console.log(error);
       return res.status(400).json({ error: error });
     }
   };
@@ -116,13 +130,13 @@ export class EstudianteController {
   static update = async (req: Request, res: Response) => {
     /*formato
 {
-    "Cedula": 604800970,
+    "Estudiante_Id":604800970,
     "Genero": "M",
     "Fecha_Nacimiento": "2003-07-27",
     "Telefono": 12232132,
     "Telefono2": 21233221,
     "Correo_Electronico": "emma@gmail.com",
-    "Distrito_Id": 23223,
+    "distrito": 23223,
     "Direccion_Exacta_Procedencia": "Los almendros barranca pun",
     "Direccion_Tiempo_Lectivo": "El Roble Puntarenas",
     "Nacionalidad": "C",
@@ -133,13 +147,12 @@ export class EstudianteController {
     try {
       const {
         Estudiante_Id,
-        Cedula,
         Genero,
         Fecha_Nacimiento,
         Telefono,
         Telefono2,
         Correo_Electronico,
-        Distrito_Id,
+        distrito,
         Direccion_Exacta_Procedencia,
         Direccion_Tiempo_Lectivo,
         Nacionalidad,
@@ -152,14 +165,21 @@ export class EstudianteController {
       });
       if (!estudianteExistente)
         return res.status(404).json({ message: 'Estudiante inexistente' });
+
+      const distritoRepo = AppDataSource.getRepository(Distrito);
+      const distritoExistente = await distritoRepo.findOne({
+        where: { Distrito_Id: distrito },
+      });
+      if (!distritoExistente) {
+        return res.status(400).json({ message: 'Distrito no existe' });
+      }
       let estudiante = new Estudiante();
-      estudiante.Cedula = Cedula;
       estudiante.Genero = Genero;
       estudiante.Fecha_Nacimiento = Fecha_Nacimiento;
       estudiante.Telefono = Telefono;
       estudiante.Telefono2 = Telefono2;
       estudiante.Correo_Electronico = Correo_Electronico;
-      estudiante.Distrito_Id = Distrito_Id;
+      estudiante.distrito = distrito;
       estudiante.Direccion_Exacta_Procedencia = Direccion_Exacta_Procedencia;
       estudiante.Direccion_Exacta_Tiempo_Lectivo = Direccion_Tiempo_Lectivo;
       estudiante.Nacionalidad = Nacionalidad;
