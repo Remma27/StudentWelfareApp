@@ -6,9 +6,9 @@ export class EstudiantesForm {
   baseForm: FormGroup;
   constructor(private fb: FormBuilder) {
     this.baseForm = this.fb.group({
-      Estudiante_Id: ['', [Validators.required, Validators.maxLength(9)]],
+      Estudiante_Id: [0, [Validators.required, Validators.maxLength(9)]],
       Genero: ['', [Validators.required]],
-      Fecha_Nacimiento: ['', [Validators.required]],
+      Fecha_Nacimiento: [Date, [Validators.required]],
       Telefono: [
         0,
         [Validators.required, Validators.minLength(8), Validators.maxLength(8)],

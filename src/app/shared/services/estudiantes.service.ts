@@ -2,38 +2,38 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Estudiantes } from '../models/estudiantes';
+import { environments } from 'src/environments/enviroments';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EstudiantesService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<Estudiantes[]> {
     return this.http
-      .get<Estudiantes[]>('http://localhost:3000/Estudiantes')
+      .get<Estudiantes[]>(`${environments.API_URL}/Estudiantes`)
       .pipe(catchError(this.handlerError));
   }
   getById(Estudiante_Id: number): Observable<Estudiantes> {
     return this.http
-      .get<Estudiantes>('http://localhost:3000/Estudiantes/' + Estudiante_Id)
+      .get<Estudiantes>(`${environments.API_URL}/Estudiantes/` + Estudiante_Id)
       .pipe(catchError(this.handlerError));
   }
   insert(estudiante: Estudiantes): Observable<Estudiantes> {
-    console.log(estudiante);
     return this.http
-      .post<Estudiantes>('http://localhost:3000/Estudiantes', estudiante)
+      .post<Estudiantes>(`${environments.API_URL}/Estudiantes`, estudiante)
       .pipe(catchError(this.handlerError));
   }
   update(estudiante: Estudiantes): Observable<Estudiantes> {
     return this.http
-      .patch<Estudiantes>('http://localhost:3000/Estudiantes', estudiante)
+      .patch<Estudiantes>(`${environments.API_URL}/Estudiantes`, estudiante)
       .pipe(catchError(this.handlerError));
   }
 
   delete(Estudiante_Id: number): Observable<Estudiantes> {
     return this.http
-      .delete<Estudiantes>('http://localhost:3000/Estudiantes/' + Estudiante_Id)
+      .delete<Estudiantes>(`${environments.API_URL}/Estudiantes/` + Estudiante_Id)
       .pipe(catchError(this.handlerError));
   }
 
